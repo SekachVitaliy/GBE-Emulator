@@ -5,7 +5,7 @@ Derived from the local Claude Code transcripts of this project (17 transcript fi
 ## Time
 - Calendar span: 2026-11-05 18:48 to 2026-11-09 16:38 (EET), 3 days 21 h 50 min, including idle periods and a usage-limit pause.
 - Active time: about **6 h 12 min**, computed as the sum of gaps of at most 15 minutes between consecutive events across all transcripts. Agents ran in parallel, so this is elapsed active time, not agent-hours.
-- Human time is not tracked; the human's role was approving direction (what to run, disk cleanup, publishing) between agent runs.
+- Human time: about 2-3 hours (self-reported); see `WORKFLOW.md` for what the human did and decided.
 
 ## Tokens (all models, all agents)
 | Kind | Tokens |
