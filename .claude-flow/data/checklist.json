@@ -1,0 +1,74 @@
+{
+ "items": [
+  {
+   "id": "t01",
+   "subject": "Scaffold Rust cdylib crate gba-emu/ (wasm32-unknown-unknown) exporting the 10 ABI functions from gba-eval/spec/ABI.md; build script; empty-frame smoke test",
+   "status": "completed"
+  },
+  {
+   "id": "t02",
+   "subject": "Bus + memory map: BIOS stub at 0x0 (gba_bios_stub.bin, run as ARM), EWRAM/IWRAM/IO/palette/VRAM/OAM/ROM mirrors, waitstates, open bus, 32 MiB ROM buffer",
+   "status": "completed"
+  },
+  {
+   "id": "t03",
+   "subject": "ARM7TDMI CPU: full ARM + THUMB instruction sets, banked registers, mode switches, exceptions/IRQ, cycle counting; pass corpus procedural cpu/memory ROMs",
+   "status": "completed"
+  },
+  {
+   "id": "t04",
+   "subject": "Interrupts, HALT/STOP, timers (cascade, prescalers), DMA 0-3 (all timings, special modes); pass timer/dma/halt_irq ROMs",
+   "status": "completed"
+  },
+  {
+   "id": "t05",
+   "subject": "PPU: scanline renderer modes 0-5, text/affine BGs, sprites (regular+affine), windows, alpha/brightness blending, mosaic, VBlank/HBlank/VCount, framebuffer 0xAABBGGRR",
+   "status": "completed"
+  },
+  {
+   "id": "t06",
+   "subject": "APU: PSG channels 1-4, Direct Sound A/B via timer+DMA FIFO, SOUNDBIAS, resample to emu_audio_rate, drain buffer via emu_audio_samples",
+   "status": "completed"
+  },
+  {
+   "id": "t07",
+   "subject": "Input latching (emu_set_keys, KEYINPUT, keypad IRQ), save types (SRAM/Flash/EEPROM) as needed by gameplay replays",
+   "status": "completed"
+  },
+  {
+   "id": "t08",
+   "subject": "Grader loop: build wasm, run gba-eval grader (docker or --native) on corpus, record per-section scores in .claude-flow/data/scores.md; fix top failures first",
+   "status": "completed"
+  },
+  {
+   "id": "t09",
+   "subject": "Performance: stay within grader fuel_per_frame; profile hot paths (CPU dispatch, PPU)",
+   "status": "completed"
+  },
+  {
+   "id": "t10",
+   "subject": "Handoff docs: README (build/run/grade), PLAN.md, DECISIONS.md, KNOWN_LIMITATIONS.md, NEXT_STEPS.md, tool/model versions, logs; no credentials",
+   "status": "completed"
+  },
+  {
+   "id": "t11",
+   "subject": "CPU refinement: UMULL/SMULL carry flag, IRQ entry 8 vs 10 cycles, IRQ sampling point (anguna), mgba-multiply-long",
+   "status": "completed"
+  },
+  {
+   "id": "t12",
+   "subject": "DMA fixes: mgba-dma (8 failing, ch0 reading write-only IO), dma-priority, DMA cycle accounting vs reference; mgba-io-read open bus",
+   "status": "completed"
+  },
+  {
+   "id": "t13",
+   "subject": "Replay video accuracy (60% weight): diagnose celeste/spout/bulletgba/heartwrench/chip-advance first diverging frames vs Mesen via lockstep; fix PPU/timing",
+   "status": "pending"
+  },
+  {
+   "id": "t14",
+   "subject": "Audio accuracy: spout, chip-advance, tonc-snd1 spectral distance vs Mesen; fix APU mixing/timing",
+   "status": "completed"
+  }
+ ]
+}

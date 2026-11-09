@@ -1,0 +1,16 @@
+// usage: node refframe.mjs rom replay.txt N out.ppm  -> reference fb after N graded frames (6 warmup frames first)
+import fs from 'fs';
+const m = await WebAssembly.compile(fs.readFileSync(new URL('../target/wasm32-unknown-unknown/release/gba_emu.wasm', import.meta.url)));
+const env = {}; for (const i of WebAssembly.Module.imports(m)) { env[i.module] ??= {}; env[i.module][i.name] = () => 0; }
+const x = (await WebAssembly.instantiate(m, env)).exports;
+const romb = fs.readFileSync(process.argv[2]);
+const ev = fs.readFileSync(process.argv[3], 'utf8').split('\n').filter(l => l.trim() && !l.startsWith('#')).map(l => l.split(/\s+/)).map(w => [+w[0], parseInt(w[1], 16)]);
+const N = +process.argv[4];
+x.emu_init(); new Uint8Array(x.memory.buffer, x.emu_rom_buffer(), romb.length).set(romb); x.emu_load_rom(romb.length);
+x.emu_set_keys(0); 
+let k = 0, cur = 0;
+for (let f = 0; f < N; f++) { while (k < ev.length && ev[k][0] <= f) cur = ev[k++][1]; x.emu_set_keys(cur); x.emu_run_frame(); }
+const fb = new Uint32Array(x.memory.buffer, x.emu_framebuffer(), 240 * 160);
+const out = Buffer.alloc(15 + 240 * 160 * 3); const hdr = 'P6\n240 160\n255\n'; out.write(hdr);
+for (let i = 0; i < 38400; i++) { out[15 + i * 3] = fb[i] & 255; out[16 + i * 3] = (fb[i] >> 8) & 255; out[17 + i * 3] = (fb[i] >> 16) & 255; }
+fs.writeFileSync(process.argv[5], out);

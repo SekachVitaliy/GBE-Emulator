@@ -1,0 +1,196 @@
+config: reference=gba-eval/reference/mesen.wasm
+candidate: gba_emu (109690 bytes)
+
+indexed 77 ROMs under "corpus/roms"
+corpus: 27 testcases
+
+── aw-arm-alu (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 4/600 frames diverge (first: 2)
+│   avg 25 px/frame (0.06% of screen)
+│   worst: frame 3 (44 px = 0.1%)
+└──────────────────────────────────────────────────
+── aw-arm-ldr-str (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 5/600 frames diverge (first: 2)
+│   avg 23 px/frame (0.06% of screen)
+│   worst: frame 3 (44 px = 0.1%)
+└──────────────────────────────────────────────────
+── aw-arm-ldm-stm (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 3/400 frames diverge (first: 2)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 3 (44 px = 0.1%)
+└──────────────────────────────────────────────────
+── aw-thumb-alu (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 3/400 frames diverge (first: 2)
+│   avg 27 px/frame (0.07% of screen)
+│   worst: frame 3 (44 px = 0.1%)
+└──────────────────────────────────────────────────
+── aw-thumb-ldr-str (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 3/500 frames diverge (first: 2)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 3 (44 px = 0.1%)
+└──────────────────────────────────────────────────
+── aw-thumb-ldm-stm (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 3/500 frames diverge (first: 2)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 3 (44 px = 0.1%)
+└──────────────────────────────────────────────────
+── memory (procedural/memory) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✓ all 60 frames within pixel noise floor
+└──────────────────────────────────────────────────
+── mgba-io-read (procedural/memory) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 1/600 frames diverge (first: 2)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 2 (28 px = 0.1%)
+└──────────────────────────────────────────────────
+── mgba-shifter (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 1/600 frames diverge (first: 2)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 2 (28 px = 0.1%)
+└──────────────────────────────────────────────────
+── mgba-carry (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 1/600 frames diverge (first: 2)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 2 (28 px = 0.1%)
+└──────────────────────────────────────────────────
+── mgba-multiply-long (procedural/cpu) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 1/600 frames diverge (first: 2)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 2 (28 px = 0.1%)
+└──────────────────────────────────────────────────
+── mgba-dma (procedural/dma) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 2/600 frames diverge (first: 2)
+│   avg 23 px/frame (0.06% of screen)
+│   worst: frame 2 (28 px = 0.1%)
+└──────────────────────────────────────────────────
+── timer-reload (procedural/timer) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 1/60 frames diverge (first: 1)
+│   avg 12 px/frame (0.03% of screen)
+│   worst: frame 1 (12 px = 0.0%)
+└──────────────────────────────────────────────────
+── timer-start-stop (procedural/timer) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✓ all 60 frames within pixel noise floor
+└──────────────────────────────────────────────────
+── dma-priority (procedural/dma) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✓ all 60 frames within pixel noise floor
+└──────────────────────────────────────────────────
+── ppu-vram-mirror (procedural/halt_irq) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: —
+│ ✗ 3/1200 frames diverge (first: 0)
+│   avg 248 px/frame (0.65% of screen)
+│   worst: frame 76 (260 px = 0.7%)
+└──────────────────────────────────────────────────
+── celeste-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: 0.9999
+│ ✗ 2/7439 frames diverge (first: 2)
+│   avg 125 px/frame (0.33% of screen)
+│   worst: frame 2 (240 px = 0.6%)
+└──────────────────────────────────────────────────
+── spout-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 0.5971  audio: 0.5645
+│ ✗ 2485/4475 frames diverge (first: 338)
+│   avg 3804 px/frame (9.91% of screen)
+│   worst: frame 2773 (6763 px = 17.6%)
+└──────────────────────────────────────────────────
+── heartwrench-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 0.9545  audio: 0.9872
+│ ✗ 2701/7326 frames diverge (first: 2749)
+│   avg 3777 px/frame (9.84% of screen)
+│   worst: frame 6741 (37704 px = 98.2%)
+└──────────────────────────────────────────────────
+── tonc-snd1 (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 0.9997  audio: 0.9986
+│ ✗ 1/60 frames diverge (first: 0)
+│   avg 240 px/frame (0.62% of screen)
+│   worst: frame 0 (240 px = 0.6%)
+└──────────────────────────────────────────────────
+── piugba-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 0.9995  audio: 0.9737
+│ ✗ 356/1937 frames diverge (first: 11)
+│   avg 275 px/frame (0.72% of screen)
+│   worst: frame 11 (27245 px = 71.0%)
+└──────────────────────────────────────────────────
+── waimanu-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 0.9989  audio: 0.9999
+│ ✗ 50/4086 frames diverge (first: 277)
+│   avg 14827 px/frame (38.61% of screen)
+│   worst: frame 505 (38400 px = 100.0%)
+└──────────────────────────────────────────────────
+── goodboy-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: 0.9999
+│ ✗ 176/5650 frames diverge (first: 79)
+│   avg 28 px/frame (0.07% of screen)
+│   worst: frame 202 (325 px = 0.8%)
+└──────────────────────────────────────────────────
+── chip-advance-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: 0.9994
+│ ✗ 116/3523 frames diverge (first: 1)
+│   avg 26436 px/frame (68.84% of screen)
+│   worst: frame 256 (36986 px = 96.3%)
+└──────────────────────────────────────────────────
+── bulletgba-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: 0.9997
+│ ✗ 297/4467 frames diverge (first: 3)
+│   avg 89 px/frame (0.23% of screen)
+│   worst: frame 114 (569 px = 1.5%)
+└──────────────────────────────────────────────────
+── varooom-3d-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 0.9912  audio: 0.9999
+│ ✗ 7412/7976 frames diverge (first: 137)
+│   avg 726 px/frame (1.89% of screen)
+│   worst: frame 4674 (3531 px = 9.2%)
+└──────────────────────────────────────────────────
+── collie-defense-gameplay (replay/gameplay) ──────────────────────────
+┌─ Mesen (cached) vs gba_emu ─────────────────────────
+│ video: 1.0000  audio: 0.9996
+│ ✓ all 6427 frames within pixel noise floor
+└──────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════╗
+║  OVERALL: 0.9343                                        ║
+╠══════════════════════════════════════════════════════════╣
+║  procedural   0.8000 ████████████████░░░░
+║  replay       0.9583 ███████████████████░
+║  audio        0.9967 ████████████████████
+╚══════════════════════════════════════════════════════════╝
+written to "gba-emu/results/20261109T161348"

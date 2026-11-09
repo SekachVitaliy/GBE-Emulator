@@ -1,0 +1,15 @@
+# build outputs and caches
+gba-emu/target/
+node_modules/
+.cache/
+.swarm/
+# grader runs: keep only results/final (small JSON summaries); WAV/PNG are large
+gba-emu/results/*/
+!gba-emu/results/final/
+*.wav
+*.png
+*.ppm
+# secrets and local state
+.env
+.env.*
+.DS_Store

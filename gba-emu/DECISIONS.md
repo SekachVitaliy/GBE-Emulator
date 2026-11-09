@@ -1,0 +1,38 @@
+# Key decisions
+
+- **Module split by file ownership** (cpu / ppu / apu / bus+machine) with fixed interfaces in `ARCH.md`, so agents could work in parallel without merge conflicts (no git available). Cost: the bus owns timers/DMA/IRQ, which couples it tightly to CPU cycle accounting.
+- **Cycle accounting via the bus**: every access adds waitstate cycles to `bus.cycles`; `Bus::sync()` converts deltas into ppu/apu/timer ticks in chunks of at most 256 cycles and never past a timer overflow.
+- **6 warmup frames in `Emu::reset()`**: the grader runs the reference for 6 frames before frame 0, so reset silently runs 6 frames (audio discarded) to stay aligned. Only the debug `steps()` helper in `lib.rs` (used by `scripts/lockstep.sh`) sets `warmup_frames = 0`; the ABI path always warms up. Related: the PPU is aligned to line 225 cycle 19 at ROM entry (`Bus::align_ppu`) and a frame ends when the PPU reaches line 160.
+- **Reset display state**: DISPCNT=0x80 (forced blank, so frame 0 is white like the reference), BG2/BG3 PA/PD = 0x100.
+- **open_bus**: the CPU publishes `bus.open_bus` (the prefetched word: pc+8 in ARM, pc+4 in Thumb, not the executing opcode, as mgba-suite io-read expects) and `bus.fetch_pc`; unmapped and write-only reads return it. During DMA the DMA latch is returned instead. BIOS reads at addresses >= 0x4000 or from outside BIOS return `bios_latch`.
+- **HBlank at cycle 1006** of each 1232-cycle line (960 visible + 46 delay); the scanline is rendered at HBlank start.
+- **Save-type detection** by scanning ROM for the SDK strings `FLASH1M_V`, `FLASH512_V`/`FLASH_V`, `EEPROM_V`, otherwise SRAM (`src/bus/save.rs`). Flash IDs 0x62,0x13 (128K) and 0x32,0x1B (64K).
+- **Timer calibration constants** START_DELAY=1, READ_ADJ=2, fitted against the timer-reload/start-stop test ROMs; to be re-fitted whenever CPU timing changes.
+- **Reference cache regenerated in place** in `gba-eval/corpus/reference-cache` because the committed files are git-LFS pointers and git-lfs is unavailable (see GRADING.md).
+- **Mesen used only as a black-box oracle** (frame and instruction-trace comparison); no source consulted.
+- **Regression guard in grade.sh**: scores can drop during timing refits, so every run is compared to the best logged overall and source is tarred on each new best.
+
+- **BIOS image**: `assets/bios.bin` is a byte-for-byte copy of the benchmark-provided `gba-eval/spec/gba_bios_stub.bin` (16 KiB, required by spec/ABI.md to be installed at 0x0 and run as ARM). It is not a dumped Nintendo BIOS, which is why its vector table differs from the retail image. No BIOS HLE is used.
+- **DMA start/preempt (verified vs mesen lockstep, spout @310473)**: an immediate-timing DMA (enable write) becomes runnable 2 cycles after the write and starts at the next bus access/idle cycle with +1 startup (event-triggered DMA: +2); it does NOT run inside the enabling instruction. Lower-numbered pending channels (sound FIFO refills) preempt a running DMA between units (bus clock is synced every >=32 cycles inside the DMA loop). The first non-sequential ROM access after a DMA with a Game Pak source costs N-1 (non-prefetch mode; fits 8 vs 9 in spout).
+- **Prefetch buffer (explicit model, `pf_fetch` in bus.rs, fits lockstep)**: opcode fetches (via `Bus::fetch16/32`, hooked in cpu.rs's `impl CpuBus for Bus`) use a buffer of <=8 halfwords with one in-flight halfword fetch (S each after the first). Hit = 1 cycle; empty = wait for the in-flight fetch; address miss (taken branch) = N(+S), and the branch first waits for an in-flight fetch only if it already started (remaining < S; a fetch started this very cycle is aborted for free). A ROM data read of >=2 bytes discards the buffer; a byte read keeps it and restarts the producer N+1 after the access. Lockstep mismatches (400k steps): bulletgba 715->434, heartwrench 950->797, xniq 7820->6189, varooom-3d 4983->4243, collie 195->164. If cpu.rs is rewritten, re-add the two `fetch16/fetch32` overrides or the model silently falls back to plain reads.
+- **Halt wake (verified tonc irq-demo lockstep, first diff 210266 -> 276234)**: leaving halt adds +2 cycles to the first instruction after the wake (charged at its first bus access via `wake_pen`) and `irq_line()` is false for that instruction (`woke`, cleared by the next `sync()`).
+- **Batched sync (perf, cycle-exact; score unchanged at 0.9272)**: `sync()` only ticks PPU/APU/timers when `cycles >= next_ev` (next timer overflow / line boundary / 256). Anything that observes ticked state first catches up: IO reads/writes and VRAM/PAL/OAM writes call `sync_to(mark)` (`mark` = cycles at the last instruction boundary); IF and timer-counter reads call `sync()` with `next_ev = 0`; IO writes invalidate `next_ev`; `align_ppu()` flushes first (otherwise the PPU phase is off by the lag; this cost piugba until fixed). `eq` mirrors the old `synced` for the DMA preempt cadence. New code that reads PPU/APU/timer state outside those paths must call `sync_to(self.mark)` first.
+- **IRQ/DMA sampling (lockstep fits, score 0.9272 -> 0.9343)**: PPU interrupt flags (vblank/hblank/vcount) count as pending 2 cycles before their tick time (`PPU_IRQ_EARLY`; fixes heartwrench @302746, goodboy @230468, waimanu @271116 but heartwrench @342930 is then one instruction early, so the true rule depends on more than the event time). Event-triggered DMA (timer/FIFO, hblank, vblank) becomes runnable `EV_X`=5 cycles after the event; the gate fires at any bus access after that (the old exemption for sequential ROM fetches is gone), and `dma_gate` ticks the peripherals mid-instruction when an event is due so the request is seen inside the instruction. Open: trogdor @344125 DMA 71 vs 69, celeste/another-world/key-demo VCOUNT-loop exits (not investigated).
+
+## Reference-fitted constants (not hardware-derived)
+All of these were fitted by comparing against `reference/mesen.wasm` used as a black box (no Mesen source was read). They are the first suspects when a ROM outside the corpus misbehaves.
+
+| Constant / rule | Where | Value | Fitted from |
+|---|---|---|---|
+| IRQ_DELAY (IRQ/halt-wake delay after IE&IF) | `src/bus.rs` | 6 cycles | destoer line-timing ROMs, checked on celeste |
+| PPU_IRQ_EARLY | `src/bus.rs` | 2 cycles | heartwrench, waimanu, goodboy lockstep |
+| EV_X (event-DMA latency) | `src/bus.rs` | 5 cycles | spout, trogdor lockstep |
+| VBLANK_DELAY, START_DELAY, READ_ADJ | `src/bus.rs` | see source | nba-hw timer ROMs |
+| VCOUNT/DISPSTAT read latency (LAT) | `src/ppu.rs` | 0 | five VCOUNT-polling ROMs |
+| ROM-to-non-ROM / non-ROM-to-ROM branch refetch costs | `src/cpu.rs` | 1 / +2 cycles | per-instruction traces |
+| Prefetch model parameters | `src/bus.rs` | 8 halfwords, 1 in flight | bulletgba, xniq, collie traces |
+| mull_carry | `src/cpu.rs` | partial rule | random-operand sweeps (91% UMULL, 87% SMULL) |
+| Key lag | `src/emu.rs` | keys latched at end of `run_frame` | per-frame hashes vs reference |
+| Warmup frames | `src/emu.rs` | 6 | grader burns 6 reference frames before frame 0 |
+| Audio rate and DC blocker | `src/apu.rs` | `32768 << res`, coefficient 0.9962 | reference audio output |
+- **Review fixes (score-neutral, 0.9343)**: `Bus::reset` rebuilds the whole struct (keeps only ROM); AUDIO_CAP 16384 pairs; EEPROM only at 0x0DFFFF00.. for ROMs > 16 MiB; DMA start time/latency are per channel (highest-priority pending channel gates the start); `ppu_early` backdating applies only to the edge raised in the same sync chunk; bus.rs split into bus/{dma,io,prefetch,timers}.rs; native-only helpers moved to src/debug.rs, `trace_mem`/`memlog` compiled out of wasm; `Save::detect` is one pass over the ROM.
