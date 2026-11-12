@@ -994,7 +994,7 @@ harness/grader/src/wasm_candidate.rs:289:            bail!("ROM too large: {} > 
 
 **→ Bash**
 ```
-{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; mkdir -p $S; cd ~/work/Gbe-test/gba-emu; date; CARGO_TARGET_DIR=$S/tgt cargo build --release --lib --target wasm32-unknown-unknown 2>&1 | tail -3; CARGO_TARGET_DIR=$S/tgt cargo test --release 2>&1 | grep -E \"test result|FAILED|panicked|warning: unused\" | head -20; ls -la $S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm", "description": "Build wasm and run tests in scratch target dir", "timeout": 600000}
+{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; mkdir -p $S; cd ~/work/Gbe-test/gba-emu; date; CARGO_TARGET_DIR=$S/tgt cargo build --release --lib --target wasm32-unknown-unknown 2>&1 | tail -3; CARGO_TARGET_DIR=$S/tgt cargo test --release 2>&1 | grep -E \"test result|FAILED|panicked|warning: unused\" | head -20; ls -la $S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm", "description": "Build wasm and run tests in scratch target dir", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1008,7 +1008,7 @@ warning: unused variable: `seq`
 test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  wheel  106793 Nov  9 15:47 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/tgt/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  wheel  106793 Nov  9 15:47 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/tgt/wasm32-unknown-unknown/release/gba_emu.wasm
 ```
 
 **→ Bash**
@@ -1059,18 +1059,18 @@ celeste-demo.txt
 
 **→ Write**
 ```
-{"file_path": "/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs", "content": "// ABI probe: node abi.mjs <wasm> <rom> [frames]\nimport fs from 'fs';\nimport crypto from 'crypto';\nconst [wasmPath, romPath, nf = '120'] = process.argv.slice(2);\nconst N = +nf;\nconst mod = await WebAssembly.compile(fs.readFileSync(wasmPath));\nconsole.log('imports', WebAssembly.Module.imports(mod).map(i => i.module + '.' + i.name));\nconsole.log('exports', WebAssembly.Module.exports(mod).map(e => e.name).join(' '));\nfunction inst() {\n  const imp = {};\n  for (const i of WebAssembly.Module.imports(mod)) { (imp[i.module] ??= {})[i.name] = () => { throw new Error('import called ' + i.name); }; }\n  return new WebAssembly.Instance(mod, imp).exports;\n}\nfunction load(e, rom) {\n  e.emu_init();\n  const p = e.emu_rom_buffer();\n  new Uint8Array(e.memory.buffer, p, rom.length).set(rom);\n  return e.emu_load_rom(rom.length);\n}\nfunction run(e, n, keysAt = () => 0) {\n  const h = crypto.createHash('sha1'); const ah = crypto.createHash('sha1'); let pairs = [];\n  for (let f = 0; f < n; f++) {\n    e.emu_set_keys(keysAt(f)); e.emu_run_frame();\n    h.update(new Uint8Array(e.memory.buffer, e.emu_framebuffer(), 240 * 160 * 4));\n    const k = e.emu_audio_samples(); pairs.push(k);\n    ah.update(new Uint8Array(e.memory.buffer, e.emu_audio_buffer(), k * 4));\n  }\n  return { v: h.digest('hex').slice(0, 12), a: ah.digest('hex').slice(0, 12), pairs
+{"file_path": "/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs", "content": "// ABI probe: node abi.mjs <wasm> <rom> [frames]\nimport fs from 'fs';\nimport crypto from 'crypto';\nconst [wasmPath, romPath, nf = '120'] = process.argv.slice(2);\nconst N = +nf;\nconst mod = await WebAssembly.compile(fs.readFileSync(wasmPath));\nconsole.log('imports', WebAssembly.Module.imports(mod).map(i => i.module + '.' + i.name));\nconsole.log('exports', WebAssembly.Module.exports(mod).map(e => e.name).join(' '));\nfunction inst() {\n  const imp = {};\n  for (const i of WebAssembly.Module.imports(mod)) { (imp[i.module] ??= {})[i.name] = () => { throw new Error('import called ' + i.name); }; }\n  return new WebAssembly.Instance(mod, imp).exports;\n}\nfunction load(e, rom) {\n  e.emu_init();\n  const p = e.emu_rom_buffer();\n  new Uint8Array(e.memory.buffer, p, rom.length).set(rom);\n  return e.emu_load_rom(rom.length);\n}\nfunction run(e, n, keysAt = () => 0) {\n  const h = crypto.createHash('sha1'); const ah = crypto.createHash('sha1'); let pairs = [];\n  for (let f = 0; f < n; f++) {\n    e.emu_set_keys(keysAt(f)); e.emu_run_frame();\n    h.update(new Uint8Array(e.memory.buffer, e.emu_framebuffer(), 240 * 160 * 4));\n    const k = e.emu_audio_samples(); pairs.push(k);\n    ah.update(new Uint8Array(e.memory.buffer, e.emu_audio_buffer(), k * 4));\n  }\n  return { v: h.digest('hex').slice(0, 12), a: ah.digest('hex').slice(0, 12), pairs
 … [truncated 1227 chars]
 ```
 
 **← Write result**
 ```
-File created successfully at: /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs (file state is current in your context — no need to Read it back)
+File created successfully at: /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs (file state is current in your context — no need to Read it back)
 ```
 
 **→ Bash**
 ```
-{"command": "S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms/homebrew; cd $S; for r in celeste-classic goodboy-advance; do echo \"== $r\"; node abi.mjs $W $R/$r.gba 120 2>&1; done", "description": "Run ABI probe on two ROMs", "timeout": 600000}
+{"command": "S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms/homebrew; cd $S; for r in celeste-classic goodboy-advance; do echo \"== $r\"; node abi.mjs $W $R/$r.gba 120 2>&1; done", "description": "Run ABI probe on two ROMs", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1105,7 +1105,7 @@ undrained 30 frames -> pairs 4096 then 0
 
 **→ Bash**
 ```
-{"command": "S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S; sed -i '' \"s|// 32 MiB padded, odd-size|{ const f = inst(); load(f, rom); console.log('orig30', run(f, 30, keys)); }|\" abi.mjs; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms/homebrew; node abi.mjs $W $R/celeste-classic.gba 10 2>&1 | grep -E \"orig30|32MiB|odd\"; ls -la $R | head -20", "description": "Compare 30-frame hash for original vs padded ROMs", "timeout": 600000}
+{"command": "S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S; sed -i '' \"s|// 32 MiB padded, odd-size|{ const f = inst(); load(f, rom); console.log('orig30', run(f, 30, keys)); }|\" abi.mjs; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms/homebrew; node abi.mjs $W $R/celeste-classic.gba 10 2>&1 | grep -E \"orig30|32MiB|odd\"; ls -la $R | head -20", "description": "Compare 30-frame hash for original vs padded ROMs", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1114,30 +1114,30 @@ orig30 { v: '835d77a0726d', a: '76a65e55e6b0', pairs: [ 548, 549 ] }
 32MiB load 1 { v: '835d77a0726d', a: '76a65e55e6b0', pairs: [ 548, 549 ] }
 odd load 1 { v: '835d77a0726d', a: '76a65e55e6b0', pairs: [ 548, 549 ] }
 total 139872
-drwxr-xr-x@ 18 vitaliy  staff       576 Nov  5 18:47 .
-drwxr-xr-x@  4 vitaliy  staff       128 Nov  5 18:47 ..
--rw-r--r--@  1 vitaliy  staff   1710888 Nov  5 18:47 anguna.gba
--rw-r--r--@  1 vitaliy  staff   2010358 Nov  5 18:47 another-world.gba
--rw-r--r--@  1 vitaliy  staff  16565008 Nov  5 18:47 blindjump.gba
--rw-r--r--@  1 vitaliy  staff   8388608 Nov  5 18:47 bulletgba.gba
--rw-r--r--@  1 vitaliy  staff   5418424 Nov  5 18:47 celeste-classic.gba
--rw-r--r--@  1 vitaliy  staff   4276412 Nov  5 18:47 chip-advance.gba
--rw-r--r--@  1 vitaliy  staff   1207868 Nov  5 18:47 collie-defense.gba
--rw-r--r--@  1 vitaliy  staff   2787328 Nov  5 18:47 goodboy-advance.gba
--rw-r--r--@  1 vitaliy  staff   3990892 Nov  5 18:47 heartwrench-advance.gba
--rw-r--r--@  1 vitaliy  staff   1710503 Nov  5 18:47 meteorain.gba
--rw-r--r--@  1 vitaliy  staff   6614656 Nov  5 18:47 piugba.gba
--rw-r--r--@  1 vitaliy  staff    752448 Nov  5 18:47 spout.gba
--rw-r--r--@  1 vitaliy  staff   4854904 Nov  5 18:47 trogdor.gba
--rw-r--r--@  1 vitaliy  staff   7975756 Nov  5 18:47 varooom-3d.gba
--rw-r--r--@  1 vitaliy  staff   1739504 Nov  5 18:47 waimanu.gba
--rw-r--r--@  1 vitaliy  staff   1584436 Nov  5 18:47 xniq.gba
-[This command modified 1 file you've previously read: ../../../../private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs. Call Read before editing.]
+drwxr-xr-x@ 18 USER  staff       576 Nov  5 18:47 .
+drwxr-xr-x@  4 USER  staff       128 Nov  5 18:47 ..
+-rw-r--r--@  1 USER  staff   1710888 Nov  5 18:47 anguna.gba
+-rw-r--r--@  1 USER  staff   2010358 Nov  5 18:47 another-world.gba
+-rw-r--r--@  1 USER  staff  16565008 Nov  5 18:47 blindjump.gba
+-rw-r--r--@  1 USER  staff   8388608 Nov  5 18:47 bulletgba.gba
+-rw-r--r--@  1 USER  staff   5418424 Nov  5 18:47 celeste-classic.gba
+-rw-r--r--@  1 USER  staff   4276412 Nov  5 18:47 chip-advance.gba
+-rw-r--r--@  1 USER  staff   1207868 Nov  5 18:47 collie-defense.gba
+-rw-r--r--@  1 USER  staff   2787328 Nov  5 18:47 goodboy-advance.gba
+-rw-r--r--@  1 USER  staff   3990892 Nov  5 18:47 heartwrench-advance.gba
+-rw-r--r--@  1 USER  staff   1710503 Nov  5 18:47 meteorain.gba
+-rw-r--r--@  1 USER  staff   6614656 Nov  5 18:47 piugba.gba
+-rw-r--r--@  1 USER  staff    752448 Nov  5 18:47 spout.gba
+-rw-r--r--@  1 USER  staff   4854904 Nov  5 18:47 trogdor.gba
+-rw-r--r--@  1 USER  staff   7975756 Nov  5 18:47 varooom-3d.gba
+-rw-r--r--@  1 USER  staff   1739504 Nov  5 18:47 waimanu.gba
+-rw-r--r--@  1 USER  staff   1584436 Nov  5 18:47 xniq.gba
+[This command modified 1 file you've previously read: ../../../../private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs. Call Read before editing.]
 ```
 
 **→ Bash**
 ```
-{"command": "S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms; for r in homebrew/spout homebrew/bulletgba homebrew/piugba homebrew/varooom-3d homebrew/blindjump homebrew/anguna test/mgba-suite; do echo \"== $r $(node abi.mjs $W $R/$r.gba 90 2>&1 | grep -E 'IDENTICAL|DIFFERENT|TRAP|undrained' | awk '{print $NF}' | tr '\\n' ' ')\"; done", "description": "Check reset/reload determinism across ROMs", "timeout": 600000}
+{"command": "S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms; for r in homebrew/spout homebrew/bulletgba homebrew/piugba homebrew/varooom-3d homebrew/blindjump homebrew/anguna test/mgba-suite; do echo \"== $r $(node abi.mjs $W $R/$r.gba 90 2>&1 | grep -E 'IDENTICAL|DIFFERENT|TRAP|undrained' | awk '{print $NF}' | tr '\\n' ' ')\"; done", "description": "Check reset/reload determinism across ROMs", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1153,7 +1153,7 @@ drwxr-xr-x@  4 vitaliy  staff       128 Nov  5 18:47 ..
 
 **→ Bash**
 ```
-{"command": "S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms; node abi.mjs $W $R/homebrew/bulletgba.gba 90 2>&1 | sed -n 3,8p; grep -n \"fn reset\\|fn new\" -A12 ~/work/Gbe-test/gba-emu/src/apu.rs | head -40; grep -n \"fn reset\" -A10 ~/work/Gbe-test/gba-emu/src/ppu.rs", "description": "Inspect bulletgba reset diff and component reset fns", "timeout": 600000}
+{"command": "S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S; W=$S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm; R=~/work/Gbe-test/gba-eval/corpus/roms; node abi.mjs $W $R/homebrew/bulletgba.gba 90 2>&1 | sed -n 3,8p; grep -n \"fn reset\\|fn new\" -A12 ~/work/Gbe-test/gba-emu/src/apu.rs | head -40; grep -n \"fn reset\" -A10 ~/work/Gbe-test/gba-emu/src/ppu.rs", "description": "Inspect bulletgba reset diff and component reset fns", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1244,7 +1244,7 @@ impl Apu {
 
 **→ Bash**
 ```
-{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; rm -rf $S/c1; mkdir -p $S/c1; cd ~/work/Gbe-test/gba-emu; cp -R Cargo.toml src assets $S/c1/; cd $S/c1; perl -0pi -e 's/self\\.set_waitcnt\\(0\\);\\n    \\}/self.after_rom_dma = false; self.set_waitcnt(0);\\n    }/' src/bus.rs; grep -n \"after_rom_dma = false; self.set_waitcnt\" src/bus.rs; CARGO_TARGET_DIR=$S/tgt cargo build --release --lib --target wasm32-unknown-unknown 2>&1 | tail -1; cd $S; node abi.mjs $S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm ~/work/Gbe-test/gba-eval/corpus/roms/homebrew/bulletgba.gba 90 | grep -E \"IDENT|DIFF\"", "description": "Test hypothesis: stale after_rom_dma breaks reset determinism", "timeout": 600000}
+{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; rm -rf $S/c1; mkdir -p $S/c1; cd ~/work/Gbe-test/gba-emu; cp -R Cargo.toml src assets $S/c1/; cd $S/c1; perl -0pi -e 's/self\\.set_waitcnt\\(0\\);\\n    \\}/self.after_rom_dma = false; self.set_waitcnt(0);\\n    }/' src/bus.rs; grep -n \"after_rom_dma = false; self.set_waitcnt\" src/bus.rs; CARGO_TARGET_DIR=$S/tgt cargo build --release --lib --target wasm32-unknown-unknown 2>&1 | tail -1; cd $S; node abi.mjs $S/tgt/wasm32-unknown-unknown/release/gba_emu.wasm ~/work/Gbe-test/gba-eval/corpus/roms/homebrew/bulletgba.gba 90 | grep -E \"IDENT|DIFF\"", "description": "Test hypothesis: stale after_rom_dma breaks reset determinism", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1354,7 +1354,7 @@ src/cpu.rs:1226
 
 **→ Bash**
 ```
-{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd ~/work/Gbe-test/gba-emu; grep -n \"irq_prev\\|pf_buf\\|wasted\" src/cpu.rs src/bus.rs | grep -v \"self.wasted\" | head; head -30 tests/m4.rs; touch -c src/lib.rs 2>/dev/null; CARGO_TARGET_DIR=$S/tgt2 cargo build --release --lib --target wasm32-unknown-unknown 2>&1 | grep -A3 \"^warning\" | grep -E \"^warning|-->\" | head -20", "description": "Check unused fields, m4 test, compiler warnings", "timeout": 600000}
+{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd ~/work/Gbe-test/gba-emu; grep -n \"irq_prev\\|pf_buf\\|wasted\" src/cpu.rs src/bus.rs | grep -v \"self.wasted\" | head; head -30 tests/m4.rs; touch -c src/lib.rs 2>/dev/null; CARGO_TARGET_DIR=$S/tgt2 cargo build --release --lib --target wasm32-unknown-unknown 2>&1 | grep -A3 \"^warning\" | grep -E \"^warning|-->\" | head -20", "description": "Check unused fields, m4 test, compiler warnings", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1472,7 +1472,7 @@ const RMASK: [u16; 24] = [
 
 **→ Bash**
 ```
-{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S/c1; mkdir -p tests; cat > tests/res.rs <<'EOF'\nuse gba_emu::emu::Emu;\n#[test]\nfn res3() {\n    for res in 0..4u32 {\n        let mut m = Emu::new();\n        // ROM: strb r1,[r0] ; b . with r0=0x04000089, r1=res<<6|2  (mov via ldr literal)\n        let code: [u32; 5] = [0xE59F0008, 0xE59F1008, 0xE5C01000, 0xEAFFFFFE, 0x0400_0089];\n        let mut rom = vec![0u8; 0x200];\n        for (i, w) in code.iter().enumerate() { rom[i*4..i*4+4].copy_from_slice(&w.to_le_bytes()); }\n        rom[20..24].copy_from_slice(&((res << 6) | 2).to_le_bytes());\n        m.bus.rom[..rom.len()].copy_from_slice(&rom);\n        assert!(m.load_rom(rom.len()));\n        m.drain_audio();\n        let mut v = vec![];\n        for _ in 0..3 { m.run_frame(); v.push(m.drain_audio()); }\n        println!(\"res={res} pairs/frame={v:?} rate={}\", gba_emu::emu::AUDIO_RATE);\n    }\n}\nEOF\nCARGO_TARGET_DIR=$S/tgt cargo test --release --test res -- --nocapture 2>&1 | grep -E \"res=|panicked|error\"", "description": "Measure audio pairs per frame for each SOUNDBIAS resolution", "timeout": 600000}
+{"command": "export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; cd $S/c1; mkdir -p tests; cat > tests/res.rs <<'EOF'\nuse gba_emu::emu::Emu;\n#[test]\nfn res3() {\n    for res in 0..4u32 {\n        let mut m = Emu::new();\n        // ROM: strb r1,[r0] ; b . with r0=0x04000089, r1=res<<6|2  (mov via ldr literal)\n        let code: [u32; 5] = [0xE59F0008, 0xE59F1008, 0xE5C01000, 0xEAFFFFFE, 0x0400_0089];\n        let mut rom = vec![0u8; 0x200];\n        for (i, w) in code.iter().enumerate() { rom[i*4..i*4+4].copy_from_slice(&w.to_le_bytes()); }\n        rom[20..24].copy_from_slice(&((res << 6) | 2).to_le_bytes());\n        m.bus.rom[..rom.len()].copy_from_slice(&rom);\n        assert!(m.load_rom(rom.len()));\n        m.drain_audio();\n        let mut v = vec![];\n        for _ in 0..3 { m.run_frame(); v.push(m.drain_audio()); }\n        println!(\"res={res} pairs/frame={v:?} rate={}\", gba_emu::emu::AUDIO_RATE);\n    }\n}\nEOF\nCARGO_TARGET_DIR=$S/tgt cargo test --release --test res -- --nocapture 2>&1 | grep -E \"res=|panicked|error\"", "description": "Measure audio pairs per frame for each SOUNDBIAS resolution", "timeout": 600000}
 ```
 
 **← Bash result**
@@ -1562,7 +1562,7 @@ Review timestamps (EET): docs, lib.rs, emu.rs and save.rs read at 15:43; bus.rs 
 - The audio drain works as specified: a call returns the count and empties the buffer, and when the host doesn't drain, the oldest samples are dropped at 4096 pairs.
 - Batched sync, the explicit prefetch model, and the fetch-override guard test are well thought out.
 
-Scratch probe and repro test: `/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs` and `/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/c1/tests/res.rs`.
+Scratch probe and repro test: `/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/abi.mjs` and `/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/c1/tests/res.rs`.
 
 ### Agent report · 2026-11-09 15:51
 <teammate-message teammate_id="team-lead" summary="Send the truncated remainder of the review">

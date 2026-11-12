@@ -1,0 +1,17 @@
+{
+ "agentType": "ppu-agent",
+ "isBuiltIn": false,
+ "description": "PPU scanline renderer",
+ "name": "ppu-agent",
+ "spawnDepth": 0,
+ "requestShape": "background",
+ "requestNonInteractive": true,
+ "model": "opusplan",
+ "pickedEffortModel": "opusplan",
+ "taskKind": "in_process_teammate",
+ "teamName": "session-2cbb11f1",
+ "color": "green",
+ "planModeRequired": false,
+ "spawnedAgentType": "general-purpose",
+ "permissionMode": "auto"
+}

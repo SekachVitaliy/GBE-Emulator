@@ -22,4 +22,4 @@ These were fitted against `reference/mesen.wasm` used as a black box; see the ta
 - Save type is detected only from ROM-embedded SDK strings (SRAM, Flash 64K/128K, EEPROM); ROMs without them get no backup memory model beyond the default.
 - The grader's fuel limits: `corpus/grader.yaml` sets `fuel_load_rom` to 300G (code default 60G); the worst `emu_load_rom` including warmup uses under 1G. Per-frame headroom against 500M is at least 3.4x (tightest: ppu-vram-mirror, varooom-3d).
 - No UI, rewind or link cable. Native examples under `examples/` are developer tools.
-- No Git history exists for this project (by the owner's decision); source snapshots of each new best are in `../.cache/snapshots/`.
+- No Git history exists for this project (by the owner's decision); source snapshots of each new best are in `../docs/snapshots/`.

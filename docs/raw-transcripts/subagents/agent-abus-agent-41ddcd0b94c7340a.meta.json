@@ -1,0 +1,17 @@
+{
+ "agentType": "bus-agent",
+ "isBuiltIn": false,
+ "description": "Bus, timers, DMA, machine loop",
+ "name": "bus-agent",
+ "spawnDepth": 0,
+ "requestShape": "background",
+ "requestNonInteractive": true,
+ "model": "opusplan",
+ "pickedEffortModel": "opusplan",
+ "taskKind": "in_process_teammate",
+ "teamName": "session-2cbb11f1",
+ "color": "purple",
+ "planModeRequired": false,
+ "spawnedAgentType": "general-purpose",
+ "permissionMode": "auto"
+}

@@ -24,7 +24,7 @@ scripts/lockstep.sh rom.gba           # per-instruction (pc, cycles) comparison 
 ## Disclosure
 - The grader's reference `gba-eval/reference/mesen.wasm` was used only as a black-box oracle (running it and comparing traces/frames/cycle counts, via the grader and `scripts/lockstep.sh`), mainly by the cpu and bus agents. No Mesen source code was read or copied.
 - `gba-eval/candidates/gba-core` (a prior baseline emulator) was never read.
-- No git was used in this project; snapshots are tarballs in `.cache/snapshots/`.
+- No git was used in this project; snapshots are tarballs in `docs/snapshots/` (created in `.cache/snapshots/` by `scripts/grade.sh`).
 - `gba-eval/corpus/reference-cache/*.refcache` were git-LFS pointers and git-lfs is unavailable, so they were regenerated in place with `grader --precompute` using `reference/mesen.wasm`. No other file in gba-eval was modified.
 - Tools: rustc 1.99.1, cargo 1.99.1, node v22.23.2, ruflo 3.72.1 (agent memory/coordination only; not a build dependency), python3 for scoring scripts, macOS Darwin 25.5 arm64.
 - Human time spent and model/token usage are not available to the team and are therefore not reported.

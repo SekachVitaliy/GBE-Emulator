@@ -1,0 +1,17 @@
+{
+ "agentType": "apu-agent",
+ "isBuiltIn": false,
+ "description": "APU PSG and direct sound",
+ "name": "apu-agent",
+ "spawnDepth": 0,
+ "requestShape": "background",
+ "requestNonInteractive": true,
+ "model": "opusplan",
+ "pickedEffortModel": "opusplan",
+ "taskKind": "in_process_teammate",
+ "teamName": "session-2cbb11f1",
+ "color": "yellow",
+ "planModeRequired": false,
+ "spawnedAgentType": "general-purpose",
+ "permissionMode": "auto"
+}

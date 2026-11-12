@@ -1,0 +1,17 @@
+{
+ "agentType": "opus-reviewer",
+ "isBuiltIn": false,
+ "description": "Opus review of GBA emulator",
+ "name": "opus-reviewer",
+ "spawnDepth": 0,
+ "requestShape": "background",
+ "requestNonInteractive": true,
+ "model": "opus",
+ "pickedEffortModel": "claude-sonnet-5-5",
+ "taskKind": "in_process_teammate",
+ "teamName": "session-2cbb11f1",
+ "color": "purple",
+ "planModeRequired": false,
+ "spawnedAgentType": "general-purpose",
+ "permissionMode": "auto"
+}

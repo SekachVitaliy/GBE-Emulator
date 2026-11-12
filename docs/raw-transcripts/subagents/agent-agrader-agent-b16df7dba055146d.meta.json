@@ -1,0 +1,17 @@
+{
+ "agentType": "grader-agent",
+ "isBuiltIn": false,
+ "description": "Grader tooling and score loop",
+ "name": "grader-agent",
+ "spawnDepth": 0,
+ "requestShape": "background",
+ "requestNonInteractive": true,
+ "model": "opusplan",
+ "pickedEffortModel": "opusplan",
+ "taskKind": "in_process_teammate",
+ "teamName": "session-2cbb11f1",
+ "color": "orange",
+ "planModeRequired": false,
+ "spawnedAgentType": "general-purpose",
+ "permissionMode": "auto"
+}

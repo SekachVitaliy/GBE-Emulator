@@ -155,7 +155,7 @@ self.frame_done = false;
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cat > /tmp/ls2.sh <<'EOF'\nEOF\nT=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; mkdir -p $T\ncargo build --release --example steps 2>&1 | tail -2\nfor r in homebrew/spout:320000 homebrew/bulletgba:280000; do n=${r%%:*}; c=${r##*:}; b=$(basename $n)\n./target/release/examples/steps ../gba-eval/corpus/roms/$n.gba $c > $T/$b.ours; node scripts/mesteps.mjs ../gba-eval/corpus/roms/$n.gba $c > $T/$b.ref; done\npython3 - <<EOF\nfor b in ['spout','bulletgba']:\n    a=open('$T/'+b+'.ours').read().split('\\n'); r=open('$T/'+b+'.ref').read().split('\\n')\n    d=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\n    print(b,len(d),d[:5])\n    n=d[0]\n    for i in range(n-6,n+4): print(i,a[i],'|',r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cat > /tmp/ls2.sh <<'EOF'\nEOF\nT=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; mkdir -p $T\ncargo build --release --example steps 2>&1 | tail -2\nfor r in homebrew/spout:320000 homebrew/bulletgba:280000; do n=${r%%:*}; c=${r##*:}; b=$(basename $n)\n./target/release/examples/steps ../gba-eval/corpus/roms/$n.gba $c > $T/$b.ours; node scripts/mesteps.mjs ../gba-eval/corpus/roms/$n.gba $c > $T/$b.ref; done\npython3 - <<EOF\nfor b in ['spout','bulletgba']:\n    a=open('$T/'+b+'.ours').read().split('\\n'); r=open('$T/'+b+'.ref').read().split('\\n')\n    d=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\n    print(b,len(d),d[:5])\n    n=d[0]\n    for i in range(n-6,n+4): print(i,a[i],'|',r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -188,7 +188,7 @@ bulletgba 1 [276252]
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -n 310440,310476p $T/spout.ours | paste - <(sed -n 310440,310476p $T/spout.ref) | head -40; DUMPAT=3000000 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 310465 2>&1 >/dev/null | head"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -n 310440,310476p $T/spout.ours | paste - <(sed -n 310440,310476p $T/spout.ref) | head -40; DUMPAT=3000000 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 310465 2>&1 >/dev/null | head"}
 ```
 
 **← Bash result**
@@ -244,7 +244,7 @@ bulletgba 1 [276252]
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nDUMPAT=3000000 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 310465 2>&1 >/dev/null | tail -12; grep -n DUMPAT -r src | head -3"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nDUMPAT=3000000 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 310465 2>&1 >/dev/null | tail -12; grep -n DUMPAT -r src | head -3"}
 ```
 
 **← Bash result**
@@ -358,7 +358,7 @@ d.src = sad & if n == 0 { 0x07FF_FFFF } else { 0x0FFF_FFFF };
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfor b in ['spout']:\n    a=[l.split() for l in open('$T/'+b+'.ours').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref').read().split('\\n') if l]\n    sa=sr=0\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    for i in range(310472,len(a)):\n        sa+=int(a[i][1]); sr+=int(r[i][1])\n        if a[i]!=r[i] or i<310480: print(i,a[i],r[i],sa-sr)\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfor b in ['spout']:\n    a=[l.split() for l in open('$T/'+b+'.ours').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref').read().split('\\n') if l]\n    sa=sr=0\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    for i in range(310472,len(a)):\n        sa+=int(a[i][1]); sr+=int(r[i][1])\n        if a[i]!=r[i] or i<310480: print(i,a[i],r[i],sa-sr)\nEOF"}
 ```
 
 **← Bash result**
@@ -504,7 +504,7 @@ dma3 start cyc=2759816 src=800c61c dst=5000000 cnt=256 ctrl=8000
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 320000 > $T/spout.ours\npython3 - <<EOF\na=open('$T/spout.ours').read().split('\\n'); r=open('$T/spout.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 320000 > $T/spout.ours\npython3 - <<EOF\na=open('$T/spout.ours').read().split('\\n'); r=open('$T/spout.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -560,7 +560,7 @@ dma3 start cyc=2759816 src=800c61c dst=5000000 cnt=256 ctrl=8000
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i 's/if new >> 12 \\& 3 == 0 { self.cycles += 2; self.dma_pending |= 1 << n; self.dma_run_pending(); }/if new >> 12 \\& 3 == 0 { self.dma_pending |= 1 << n; }/' src/bus.rs; sed -n 489p src/bus.rs\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 320000 > $T/spout.ours\npython3 - <<EOF\na=open('$T/spout.ours').read().split('\\n'); r=open('$T/spout.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i 's/if new >> 12 \\& 3 == 0 { self.cycles += 2; self.dma_pending |= 1 << n; self.dma_run_pending(); }/if new >> 12 \\& 3 == 0 { self.dma_pending |= 1 << n; }/' src/bus.rs; sed -n 489p src/bus.rs\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 320000 > $T/spout.ours\npython3 - <<EOF\na=open('$T/spout.ours').read().split('\\n'); r=open('$T/spout.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -589,7 +589,7 @@ The file ~/work/Gbe-test/gba-emu/src/bus.rs has been updated successfully.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 320000 > $T/spout.ours\npython3 - <<EOF\na=open('$T/spout.ours').read().split('\\n'); r=open('$T/spout.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/spout.gba 320000 > $T/spout.ours\npython3 - <<EOF\na=open('$T/spout.ours').read().split('\\n'); r=open('$T/spout.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -605,7 +605,7 @@ The file ~/work/Gbe-test/gba-emu/src/bus.rs has been updated successfully.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"{ self.dma_pending |= 1 << n; }\",\"{ self.dma_pending |= 1 << n; self.dma_ready = self.cycles + 2; }\",1)\ns=s.replace(\"restart: u8,\",\"restart: u8, dma_ready: u64,\",1)\ns=s.replace(\"cur_dma: 0, restart: 0,\",\"cur_dma: 0, restart: 0, dma_ready: 0,\",1)\ns=s.replace(\"if self.dma_pending != 0 && !self.in_dma && !((8..=0xD).contains(&(a >> 24)) && seq) { self.cycles += 2; self.dma_run_pending(); }\",\n\"if self.dma_pending != 0 && !self.in_dma && self.cycles >= self.dma_ready && !((8..=0xD).contains(&(a >> 24)) && seq) { self.cycles += 2; self.dma_run_pending(); }\",1)\nopen(p,'w').write(s)\nEOF\ncat > $T/cmp.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nb=$1; n=$2\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba $n > $T/$b.ours\npython3 - <<PY\na=open('$T/$b.ours').read().split('\\n'); r=open('$T/$b.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nPY\nEOF\nbash $T/cmp.sh spout 320000"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"{ self.dma_pending |= 1 << n; }\",\"{ self.dma_pending |= 1 << n; self.dma_ready = self.cycles + 2; }\",1)\ns=s.replace(\"restart: u8,\",\"restart: u8, dma_ready: u64,\",1)\ns=s.replace(\"cur_dma: 0, restart: 0,\",\"cur_dma: 0, restart: 0, dma_ready: 0,\",1)\ns=s.replace(\"if self.dma_pending != 0 && !self.in_dma && !((8..=0xD).contains(&(a >> 24)) && seq) { self.cycles += 2; self.dma_run_pending(); }\",\n\"if self.dma_pending != 0 && !self.in_dma && self.cycles >= self.dma_ready && !((8..=0xD).contains(&(a >> 24)) && seq) { self.cycles += 2; self.dma_run_pending(); }\",1)\nopen(p,'w').write(s)\nEOF\ncat > $T/cmp.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nb=$1; n=$2\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba $n > $T/$b.ours\npython3 - <<PY\na=open('$T/$b.ours').read().split('\\n'); r=open('$T/$b.ref').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]; print(len(d),d[:8])\nfor i in d[:6]: print(i,a[i],r[i])\nPY\nEOF\nbash $T/cmp.sh spout 320000"}
 ```
 
 **← Bash result**
@@ -621,7 +621,7 @@ The file ~/work/Gbe-test/gba-emu/src/bus.rs has been updated successfully.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i 's/self.cycles >= self.dma_ready \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) { self.cycles += 2;/self.cycles >= self.dma_ready \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) { self.cycles += 1;/' src/bus.rs; grep -c \"cycles += 1; self.dma_run_pending\" src/bus.rs; bash $T/cmp.sh spout 320000"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i 's/self.cycles >= self.dma_ready \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) { self.cycles += 2;/self.cycles >= self.dma_ready \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) { self.cycles += 1;/' src/bus.rs; grep -c \"cycles += 1; self.dma_run_pending\" src/bus.rs; bash $T/cmp.sh spout 320000"}
 ```
 
 **← Bash result**
@@ -650,7 +650,7 @@ The file ~/work/Gbe-test/gba-emu/src/bus.rs has been updated successfully.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nbash $T/cmp.sh spout 320000"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nbash $T/cmp.sh spout 320000"}
 ```
 
 **← Bash result**
@@ -666,7 +666,7 @@ The file ~/work/Gbe-test/gba-emu/src/bus.rs has been updated successfully.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"self.cycles += 1; self.dma_run_pending(); }\",\"self.cycles += self.dma_lat; self.dma_run_pending(); }\",1)\ns=s.replace(\"self.dma_ready = self.cycles + 2; }\",\"self.dma_ready = self.cycles + 2; self.dma_lat = 1; }\",1)\ns=s.replace(\"restart: u8, dma_ready: u64,\",\"restart: u8, dma_ready: u64, dma_lat: u64,\",1)\ns=s.replace(\"restart: 0, dma_ready: 0,\",\"restart: 0, dma_ready: 0, dma_lat: 2,\",1)\ns=s.replace(\"{ self.dma_pending |= 1 << n; }\\n        }\\n    }\\n    fn dma_fifo\",\"{ self.dma_pending |= 1 << n; self.dma_lat = 2; }\\n        }\\n    }\\n    fn dma_fifo\",1)\ns=s.replace(\"self.dma_pending |= 1 << n; self.fifo_mask |= 1 << n; }\",\"self.dma_pending |= 1 << n; self.fifo_mask |= 1 << n; self.dma_lat = 2; }\",1)\nopen(p,'w').write(s)\nEOF\ngrep -c dma_lat src/bus.rs; bash $T/cmp.sh spout 320000"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"self.cycles += 1; self.dma_run_pending(); }\",\"self.cycles += self.dma_lat; self.dma_run_pending(); }\",1)\ns=s.replace(\"self.dma_ready = self.cycles + 2; }\",\"self.dma_ready = self.cycles + 2; self.dma_lat = 1; }\",1)\ns=s.replace(\"restart: u8, dma_ready: u64,\",\"restart: u8, dma_ready: u64, dma_lat: u64,\",1)\ns=s.replace(\"restart: 0, dma_ready: 0,\",\"restart: 0, dma_ready: 0, dma_lat: 2,\",1)\ns=s.replace(\"{ self.dma_pending |= 1 << n; }\\n        }\\n    }\\n    fn dma_fifo\",\"{ self.dma_pending |= 1 << n; self.dma_lat = 2; }\\n        }\\n    }\\n    fn dma_fifo\",1)\ns=s.replace(\"self.dma_pending |= 1 << n; self.fifo_mask |= 1 << n; }\",\"self.dma_pending |= 1 << n; self.fifo_mask |= 1 << n; self.dma_lat = 2; }\",1)\nopen(p,'w').write(s)\nEOF\ngrep -c dma_lat src/bus.rs; bash $T/cmp.sh spout 320000"}
 ```
 
 **← Bash result**
@@ -732,7 +732,7 @@ rom a=800034c sz=2 seq=true cyc=2759757 pf_last=2759757 pf_next=800034c -> 2 pf=
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"restart: u8, dma_ready: u64,\",\"restart: u8, after_rom_dma: bool, dma_ready: u64,\",1)\ns=s.replace(\"restart: 0, dma_ready: 0,\",\"restart: 0, after_rom_dma: false, dma_ready: 0,\",1)\ns=s.replace(\"                    let first = if seq { sw } else { self.rom_n[ws] };\\n\",\"                    let first = if seq { sw } else { self.rom_n[ws] - self.after_rom_dma as u32 };\\n                    self.after_rom_dma = false;\\n\",1)\ns=s.replace(\"        self.in_dma = false;\\n    }\\n}\\n\",\"        self.after_rom_dma = d.src >= 0x0800_0000 && d.src < 0x0E00_0000;\\n        self.in_dma = false;\\n    }\\n}\\n\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n after_rom_dma src/bus.rs | head; bash $T/cmp.sh spout 320000"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"restart: u8, dma_ready: u64,\",\"restart: u8, after_rom_dma: bool, dma_ready: u64,\",1)\ns=s.replace(\"restart: 0, dma_ready: 0,\",\"restart: 0, after_rom_dma: false, dma_ready: 0,\",1)\ns=s.replace(\"                    let first = if seq { sw } else { self.rom_n[ws] };\\n\",\"                    let first = if seq { sw } else { self.rom_n[ws] - self.after_rom_dma as u32 };\\n                    self.after_rom_dma = false;\\n\",1)\ns=s.replace(\"        self.in_dma = false;\\n    }\\n}\\n\",\"        self.after_rom_dma = d.src >= 0x0800_0000 && d.src < 0x0E00_0000;\\n        self.in_dma = false;\\n    }\\n}\\n\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n after_rom_dma src/bus.rs | head; bash $T/cmp.sh spout 320000"}
 ```
 
 **← Bash result**
@@ -753,7 +753,7 @@ rom a=800034c sz=2 seq=true cyc=2759757 pf_last=2759757 pf_next=800034c -> 2 pf=
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nr=[l.split() for l in open('$T/spout.ref').read().split('\\n') if l]\na=[l.split() for l in open('$T/spout.ours').read().split('\\n') if l]\ncs=0; \nprint([ (i,r[i][1]) for i in range(len(r)) if int(r[i][1])>=50 and i>250000][:30])\nprint([ (i,a[i][1]) for i in range(len(a)) if int(a[i][1])>=50 and i>250000][:30])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nr=[l.split() for l in open('$T/spout.ref').read().split('\\n') if l]\na=[l.split() for l in open('$T/spout.ours').read().split('\\n') if l]\ncs=0; \nprint([ (i,r[i][1]) for i in range(len(r)) if int(r[i][1])>=50 and i>250000][:30])\nprint([ (i,a[i][1]) for i in range(len(a)) if int(a[i][1])>=50 and i>250000][:30])\nEOF"}
 ```
 
 **← Bash result**
@@ -774,7 +774,7 @@ rom a=800034c sz=2 seq=true cyc=2759757 pf_last=2759757 pf_next=800034c -> 2 pf=
 <stdin>:5: DeprecationWarning: 'count' is passed as positional argument
 warning: `gba-emu` (lib) generated 2 warnings
     Finished `release` profile [optimized] target(s) in 0.84s
--rwxr-xr-x@ 1 vitaliy  staff  102828 Nov  9 13:25 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  102828 Nov  9 13:25 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
   mgba-carry                   video=1.0000 first_diverge=2 diverging=1/600
   aw-arm-ldr-str               video=1.0000 first_diverge=2 diverging=5/600
 
@@ -831,7 +831,7 @@ overall 0.9121  replay=0.9385(w0.6)  procedural=0.7611(w0.2)  audio=0.9838(w0.2)
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo test --release 2>&1 | grep -E \"test result|FAILED|failed\" | head\nDUMPAT=8005960 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/bulletgba.gba 276251 2>&1 >/dev/null | grep -a -E \"^0|r=\"; python3 - <<EOF\na=open('$T/bulletgba.ours').read().split('\\n'); r=open('$T/bulletgba.ref').read().split('\\n')\nfor i in range(276225,276254): print(i,a[i],'|',r[i])\nEOF\ngrep -n \"PF_MISS\\|waitcnt\" src/bus.rs | head -5"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo test --release 2>&1 | grep -E \"test result|FAILED|failed\" | head\nDUMPAT=8005960 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/bulletgba.gba 276251 2>&1 >/dev/null | grep -a -E \"^0|r=\"; python3 - <<EOF\na=open('$T/bulletgba.ours').read().split('\\n'); r=open('$T/bulletgba.ref').read().split('\\n')\nfor i in range(276225,276254): print(i,a[i],'|',r[i])\nEOF\ngrep -n \"PF_MISS\\|waitcnt\" src/bus.rs | head -5"}
 ```
 
 **← Bash result**
@@ -963,17 +963,17 @@ rom a=800595e sz=2 seq=true cyc=2244893 pf_last=2244897 pf_next=8005994 -> 4 pf=
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor b in spout bulletgba anguna heartwrench-advance piugba waimanu; do (node scripts/mesteps.mjs ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ref4 &) ; done; sleep 40; wc -l $T/*.ref4\ncat > $T/metric.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor b in spout bulletgba anguna heartwrench-advance piugba waimanu; do\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ours4\npython3 - $T/$b.ours4 $T/$b.ref4 $b <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=open(sys.argv[2]).read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\n# count diffs of small magnitude only\nprint(sys.argv[3],len(d),d[:3])\nPY\ndone\nEOF\nbash $T/metric.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor b in spout bulletgba anguna heartwrench-advance piugba waimanu; do (node scripts/mesteps.mjs ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ref4 &) ; done; sleep 40; wc -l $T/*.ref4\ncat > $T/metric.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor b in spout bulletgba anguna heartwrench-advance piugba waimanu; do\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ours4\npython3 - $T/$b.ours4 $T/$b.ref4 $b <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=open(sys.argv[2]).read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\n# count diffs of small magnitude only\nprint(sys.argv[3],len(d),d[:3])\nPY\ndone\nEOF\nbash $T/metric.sh"}
 ```
 
 **← Bash result**
 ```
-400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/anguna.ref4
-  400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/bulletgba.ref4
-  400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/heartwrench-advance.ref4
-  400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/piugba.ref4
-  400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/spout.ref4
-  400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/waimanu.ref4
+400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/anguna.ref4
+  400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/bulletgba.ref4
+  400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/heartwrench-advance.ref4
+  400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/piugba.ref4
+  400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/spout.ref4
+  400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/waimanu.ref4
  2400000 total
 spout 417 [310473, 310699, 310853]
 bulletgba 715 [276252, 282497, 349487]
@@ -985,7 +985,7 @@ waimanu 67436 [242955, 242956, 242957]
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['bulletgba','heartwrench-advance','waimanu']:\n    a=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\n    c=Counter(); \n    for i in range(len(a)):\n        if a[i]!=r[i]:\n            c[(a[i][1],r[i][1])]+=1\n    print(b,c.most_common(12))\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['bulletgba','heartwrench-advance','waimanu']:\n    a=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\n    c=Counter(); \n    for i in range(len(a)):\n        if a[i]!=r[i]:\n            c[(a[i][1],r[i][1])]+=1\n    print(b,c.most_common(12))\nEOF"}
 ```
 
 **← Bash result**
@@ -997,7 +997,7 @@ waimanu [(('1', '1'), 24189), (('7', '1'), 10273), (('1', '7'), 10271), (('2', '
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nn=0\nfor i in range(len(a)):\n    if a[i]!=r[i] and a[i][1]=='7' and r[i][1]=='8':\n        print(i,' '.join(x[0]+':'+x[1] for x in a[i-4:i]),'||',a[i],r[i]); n+=1\n        if n>8: break\nn=0\nfor i in range(len(a)):\n    if a[i]!=r[i] and a[i][1]=='3' and r[i][1]=='5':\n        print(i,' '.join(x[0]+':'+x[1] for x in a[i-4:i]),'||',a[i],r[i]); n+=1\n        if n>6: break\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nn=0\nfor i in range(len(a)):\n    if a[i]!=r[i] and a[i][1]=='7' and r[i][1]=='8':\n        print(i,' '.join(x[0]+':'+x[1] for x in a[i-4:i]),'||',a[i],r[i]); n+=1\n        if n>8: break\nn=0\nfor i in range(len(a)):\n    if a[i]!=r[i] and a[i][1]=='3' and r[i][1]=='5':\n        print(i,' '.join(x[0]+':'+x[1] for x in a[i-4:i]),'||',a[i],r[i]); n+=1\n        if n>6: break\nEOF"}
 ```
 
 **← Bash result**
@@ -1022,7 +1022,7 @@ waimanu [(('1', '1'), 24189), (('7', '1'), 10273), (('1', '7'), 10271), (('2', '
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nDUMPAT=8000400 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/bulletgba.gba 371240 2>&1 >/dev/null | grep -a \"^0\"\nsed -n 371235,371247p $T/bulletgba.ours4 | paste - <(sed -n 371235,371247p $T/bulletgba.ref4)"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nDUMPAT=8000400 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/bulletgba.gba 371240 2>&1 >/dev/null | grep -a \"^0\"\nsed -n 371235,371247p $T/bulletgba.ours4 | paste - <(sed -n 371235,371247p $T/bulletgba.ref4)"}
 ```
 
 **← Bash result**
@@ -1051,7 +1051,7 @@ waimanu [(('1', '1'), 24189), (('7', '1'), 10273), (('1', '7'), 10271), (('2', '
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nDBGC=1 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/bulletgba.gba 371250 2>&1 >/dev/null | grep -a \"^rom\" | tail -24 | cut -c1-110"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nDBGC=1 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/bulletgba.gba 371250 2>&1 >/dev/null | grep -a \"^rom\" | tail -24 | cut -c1-110"}
 ```
 
 **← Bash result**
@@ -1085,7 +1085,7 @@ rom a=800040e
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\nold=\"                        let c = self.rom_n[ws] + (need - 1) * sw;\\n\"\nnew=\"\"\"                        let mut c = self.rom_n[ws] + (need - 1) * sw;\n                        if let Ok(v) = std::env::var(\"PFV\") {\n                            let gap = self.cycles.saturating_sub(self.pf_last);\n                            let full = gap >= PF_CAP * sw as u64;\n                            let ph = gap % sw as u64;\n                            let ex = match v.as_str() { \"A\" => if full { 0 } else { (sw as u64 - ph) % sw as u64 }, \"B\" => if full { 0 } else { 1 }, \"C\" => if full || ph == 0 { 0 } else { 1 }, \"D\" => if ph == 0 && !full {1} else {0}, _ => 0 };\n                            c += ex as u32;\n                        }\n\"\"\"\nassert old in s\ns=s.replace(old,new,1); open(p,'w').write(s)\nEOF\ncat > $T/metric2.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ntot=0\nfor b in spout bulletgba anguna heartwrench-advance piugba; do\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ours4\npython3 - $T/$b.ours4 $T/$b.ref4 $b <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=ope
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\nold=\"                        let c = self.rom_n[ws] + (need - 1) * sw;\\n\"\nnew=\"\"\"                        let mut c = self.rom_n[ws] + (need - 1) * sw;\n                        if let Ok(v) = std::env::var(\"PFV\") {\n                            let gap = self.cycles.saturating_sub(self.pf_last);\n                            let full = gap >= PF_CAP * sw as u64;\n                            let ph = gap % sw as u64;\n                            let ex = match v.as_str() { \"A\" => if full { 0 } else { (sw as u64 - ph) % sw as u64 }, \"B\" => if full { 0 } else { 1 }, \"C\" => if full || ph == 0 { 0 } else { 1 }, \"D\" => if ph == 0 && !full {1} else {0}, _ => 0 };\n                            c += ex as u32;\n                        }\n\"\"\"\nassert old in s\ns=s.replace(old,new,1); open(p,'w').write(s)\nEOF\ncat > $T/metric2.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ntot=0\nfor b in spout bulletgba anguna heartwrench-advance piugba; do\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ours4\npython3 - $T/$b.ours4 $T/$b.ref4 $b <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=ope
 … [truncated 264 chars]
 ```
 
@@ -1100,7 +1100,7 @@ D: spout 417  bulletgba 34084  anguna 3  heartwrench-advance 1406  piugba 0
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace('\"D\" =>','\"E\" => if full {1} else {0}, \"F\" => if gap >= (PF_CAP-1) * sw as u64 {1} else {0}, \"G\" => if gap >= (PF_CAP-2) * sw as u64 {1} else {0}, \"H\" => if gap >= (PF_CAP+1) * sw as u64 {1} else {0}, \"D\" =>',1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor v in E F G H; do echo -n \"$v: \"; PFV=$v bash $T/metric2.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace('\"D\" =>','\"E\" => if full {1} else {0}, \"F\" => if gap >= (PF_CAP-1) * sw as u64 {1} else {0}, \"G\" => if gap >= (PF_CAP-2) * sw as u64 {1} else {0}, \"H\" => if gap >= (PF_CAP+1) * sw as u64 {1} else {0}, \"D\" =>',1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor v in E F G H; do echo -n \"$v: \"; PFV=$v bash $T/metric2.sh; done"}
 ```
 
 **← Bash result**
@@ -1123,7 +1123,7 @@ H: spout 417  bulletgba 715  anguna 3  heartwrench-advance 952  piugba 0
 test result: ok. 11 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  103540 Nov  9 13:33 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  103540 Nov  9 13:33 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9199  best-previous 0.9121  delta +0.0078
 overall 0.9199  audio=0.9838(w0.2)  procedural=0.8000(w0.2)  replay=0.9385(w0.6)
 ```
@@ -1313,7 +1313,7 @@ src/bus.rs:113:        self.pf_next = 0; self.pf_buf = 0; self.pf_last = 0;
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\npython3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\na=\"    #[inline] fn note_pc(&mut self, pc: u32) { self.fetch_pc = pc; }\"\nassert a in s and \"Bus::fetch16\" not in s\ns=s.replace(a,a+\"\\n    #[inline] fn fetch16(&mut self, a: u32, s: bool) -> u32 { Bus::fetch16(self, a, s) }\\n    #[inline] fn fetch32(&mut self, a: u32, s: bool) -> u32 { Bus::fetch32(self, a, s) }\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nT=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor v in 1,1 1,0 0,1 0,0; do echo -n \"$v: \"; PFP=$v bash $T/metric2.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\npython3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\na=\"    #[inline] fn note_pc(&mut self, pc: u32) { self.fetch_pc = pc; }\"\nassert a in s and \"Bus::fetch16\" not in s\ns=s.replace(a,a+\"\\n    #[inline] fn fetch16(&mut self, a: u32, s: bool) -> u32 { Bus::fetch16(self, a, s) }\\n    #[inline] fn fetch32(&mut self, a: u32, s: bool) -> u32 { Bus::fetch32(self, a, s) }\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nT=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor v in 1,1 1,0 0,1 0,0; do echo -n \"$v: \"; PFP=$v bash $T/metric2.sh; done"}
 ```
 
 **← Bash result**
@@ -1326,7 +1326,7 @@ src/bus.rs:113:        self.pf_next = 0; self.pf_buf = 0; self.pf_last = 0;
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,1 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nd=[i for i in range(len(a)) if a[i]!=r[i]]\nprint(d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\nfor i in range(d[0]-6,d[0]+6): print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,1 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nd=[i for i in range(len(a)) if a[i]!=r[i]]\nprint(d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\nfor i in range(d[0]-6,d[0]+6): print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -1362,7 +1362,7 @@ F a=81a4bde sz=2 now=2244751 head=81a4bde cnt=0 fl=true done=2244753 valid=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,0 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nd=[i for i in range(len(a)) if a[i]!=r[i]]\nprint(d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\nfor i in range(d[0]-3,d[0]+14): print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,0 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nd=[i for i in range(len(a)) if a[i]!=r[i]]\nprint(d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\nfor i in range(d[0]-3,d[0]+14): print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -1389,7 +1389,7 @@ F a=81a4bde sz=2 now=2244751 head=81a4bde cnt=0 fl=true done=2244753 valid=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nn=0\nfor i in range(len(a)):\n    if a[i][1]=='8' and r[i][1]=='9':\n        print(i,' '.join(x[0]+':'+x[1] for x in r[i-5:i]),'||',a[i],r[i]); n+=1\n        if n>6: break\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nn=0\nfor i in range(len(a)):\n    if a[i][1]=='8' and r[i][1]=='9':\n        print(i,' '.join(x[0]+':'+x[1] for x in r[i-5:i]),'||',a[i],r[i]); n+=1\n        if n>6: break\nEOF"}
 ```
 
 **← Bash result**
@@ -1405,7 +1405,7 @@ F a=81a4bde sz=2 now=2244751 head=81a4bde cnt=0 fl=true done=2244753 valid=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; python3 - <<'EOF'\nd=open('../gba-eval/corpus/roms/homebrew/bulletgba.gba','rb').read()\nfor a in range(0x1a00,0x1a28,2): print(hex(0x8000000+a), d[a:a+2][::-1].hex(), end=' | ')\nEOF\nT=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\necho; sed -n 282590,282600p $T/bulletgba.ref4 | tr '\\n' ' '; echo; sed -n 282590,282600p $T/bulletgba.ours4| tr '\\n' ' '"}
+{"command": "cd ~/work/Gbe-test/gba-emu; python3 - <<'EOF'\nd=open('../gba-eval/corpus/roms/homebrew/bulletgba.gba','rb').read()\nfor a in range(0x1a00,0x1a28,2): print(hex(0x8000000+a), d[a:a+2][::-1].hex(), end=' | ')\nEOF\nT=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\necho; sed -n 282590,282600p $T/bulletgba.ref4 | tr '\\n' ' '; echo; sed -n 282590,282600p $T/bulletgba.ours4| tr '\\n' ' '"}
 ```
 
 **← Bash result**
@@ -1417,7 +1417,7 @@ F a=81a4bde sz=2 now=2244751 head=81a4bde cnt=0 fl=true done=2244753 valid=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor v in 1,0; do PFP=$v bash $T/metric2.sh; done; python3 - <<EOF\nfrom collections import Counter\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nd=[i for i in range(len(a)) if a[i]!=r[i]]\nprint(d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor v in 1,0; do PFP=$v bash $T/metric2.sh; done; python3 - <<EOF\nfrom collections import Counter\nb='bulletgba'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nd=[i for i in range(len(a)) if a[i]!=r[i]]\nprint(d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\nEOF"}
 ```
 
 **← Bash result**
@@ -1484,7 +1484,7 @@ F a=8001a14 sz=2 now=2261458 head=8001a14 cnt=0 fl=true done=2261461 valid=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i '' 's|self.pf_done = self.cycles + c as u64 + self.rom_n\\[ws\\] as u64; }|self.pf_done = self.cycles + c as u64 + self.rom_n[ws] as u64 + pf_param(2) as u64; }|' src/bus.rs\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor v in 0,0,1 0,0,2; do echo -n \"$v \"; PFP=$v bash $T/metric2.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i '' 's|self.pf_done = self.cycles + c as u64 + self.rom_n\\[ws\\] as u64; }|self.pf_done = self.cycles + c as u64 + self.rom_n[ws] as u64 + pf_param(2) as u64; }|' src/bus.rs\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor v in 0,0,1 0,0,2; do echo -n \"$v \"; PFP=$v bash $T/metric2.sh; done"}
 ```
 
 **← Bash result**
@@ -1495,7 +1495,7 @@ F a=8001a14 sz=2 now=2261458 head=8001a14 cnt=0 fl=true done=2261461 valid=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,0,1 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nfor b in ['bulletgba','heartwrench-advance']:\n    a=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    print(b,d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\n    n=0\n    for i in d:\n      if (a[i][1],r[i][1]) in [('7','8'),('3','5'),('1','0'),('7','9')]:\n        print(i,' '.join(x[0]+':'+x[1] for x in r[i-4:i]),'||',a[i],r[i]); n+=1\n        if n>5: break\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,0,1 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nfor b in ['bulletgba','heartwrench-advance']:\n    a=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    print(b,d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(8))\n    n=0\n    for i in d:\n      if (a[i][1],r[i][1]) in [('7','8'),('3','5'),('1','0'),('7','9')]:\n        print(i,' '.join(x[0]+':'+x[1] for x in r[i-4:i]),'||',a[i],r[i]); n+=1\n        if n>5: break\nEOF"}
 ```
 
 **← Bash result**
@@ -1518,7 +1518,7 @@ heartwrench-advance [263646, 263647, 263648, 263649, 263650] [(('7', '9'), 307),
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor v in 0,1,1; do echo -n \"$v \"; PFP=$v bash $T/metric2.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor v in 0,1,1; do echo -n \"$v \"; PFP=$v bash $T/metric2.sh; done"}
 ```
 
 **← Bash result**
@@ -1549,7 +1549,7 @@ MISS a=8003394 now=2261137 cnt=1 done=2261138 rem=1 fl=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"let wait = if self.pf_flight && pf_param(1) != 0 { self.pf_done.saturating_sub(now) } else { 0 };\",\"let rem = self.pf_done.saturating_sub(now); let wait = if self.pf_flight && (pf_param(1) == 1 || (pf_param(1) == 2 && rem < sw as u64)) { rem } else { 0 };\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor v in 0,2,1; do echo -n \"$v \"; PFP=$v bash $T/metric2.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"let wait = if self.pf_flight && pf_param(1) != 0 { self.pf_done.saturating_sub(now) } else { 0 };\",\"let rem = self.pf_done.saturating_sub(now); let wait = if self.pf_flight && (pf_param(1) == 1 || (pf_param(1) == 2 && rem < sw as u64)) { rem } else { 0 };\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor v in 0,2,1; do echo -n \"$v \"; PFP=$v bash $T/metric2.sh; done"}
 ```
 
 **← Bash result**
@@ -1559,7 +1559,7 @@ MISS a=8003394 now=2261137 cnt=1 done=2261138 rem=1 fl=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,2,1 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nfor b in ['bulletgba','heartwrench-advance']:\n    a=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    print(b,d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(10))\n    seen=set()\n    for i in d:\n      k=(a[i][1],r[i][1])\n      if k in seen or Counter((a[j][1],r[j][1]) for j in d)[k]<20: continue\n      seen.add(k)\n      print(i,' '.join(x[0]+':'+x[1] for x in r[i-4:i]),'||',a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nPFP=0,2,1 bash $T/metric2.sh >/dev/null; python3 - <<EOF\nfrom collections import Counter\nfor b in ['bulletgba','heartwrench-advance']:\n    a=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    print(b,d[:5], Counter((a[i][1],r[i][1]) for i in d).most_common(10))\n    seen=set()\n    for i in d:\n      k=(a[i][1],r[i][1])\n      if k in seen or Counter((a[j][1],r[j][1]) for j in d)[k]<20: continue\n      seen.add(k)\n      print(i,' '.join(x[0]+':'+x[1] for x in r[i-4:i]),'||',a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -1585,7 +1585,7 @@ heartwrench-advance [263646, 263647, 263648, 263649, 263650] [(('7', '9'), 306),
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='heartwrench-advance'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nfor i in range(263636,263660): print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='heartwrench-advance'\na=[l.split() for l in open('$T/'+b+'.ours4').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref4').read().split('\\n') if l]\nfor i in range(263636,263660): print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -1618,7 +1618,7 @@ heartwrench-advance [263646, 263647, 263648, 263649, 263650] [(('7', '9'), 306),
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\npython3 - <<'EOF'\nimport re\np='src/bus.rs'; s=open(p).read()\ns=re.sub(r'\\n[^\\n]*std::env::var\\(\"DBGP\"\\)[^\\n]*','',s)\ns=re.sub(r'fn pf_param\\(i: usize\\).*?\\n}\\n','',s,flags=re.S)\ns=s.replace(\"pf_param(0) != 0\",\"PF_DATA_WAIT\").replace(\"pf_param(1) == 1 || (pf_param(1) == 2 && rem < sw as u64)\",\"rem < sw as u64\").replace(\"pf_param(1) != 0\",\"false\").replace(\" + pf_param(2) as u64\",\" + PF_DATA_RESTART\")\ns=s.replace(\"const NWAIT:\",\"// prefetch fit (bulletgba/heartwrench lockstep): a branch waits for an in-flight halfword fetch only if it already started;\\n// a data read from ROM restarts the producer N+1 cycles after the access ends\\nconst PF_DATA_WAIT: bool = false;\\nconst PF_DATA_RESTART: u64 = 1;\\nconst NWAIT:\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n \"pf_param\\|env::var\" src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^(error|warning: unused)\" -A8; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; bash $T/metric2.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\npython3 - <<'EOF'\nimport re\np='src/bus.rs'; s=open(p).read()\ns=re.sub(r'\\n[^\\n]*std::env::var\\(\"DBGP\"\\)[^\\n]*','',s)\ns=re.sub(r'fn pf_param\\(i: usize\\).*?\\n}\\n','',s,flags=re.S)\ns=s.replace(\"pf_param(0) != 0\",\"PF_DATA_WAIT\").replace(\"pf_param(1) == 1 || (pf_param(1) == 2 && rem < sw as u64)\",\"rem < sw as u64\").replace(\"pf_param(1) != 0\",\"false\").replace(\" + pf_param(2) as u64\",\" + PF_DATA_RESTART\")\ns=s.replace(\"const NWAIT:\",\"// prefetch fit (bulletgba/heartwrench lockstep): a branch waits for an in-flight halfword fetch only if it already started;\\n// a data read from ROM restarts the producer N+1 cycles after the access ends\\nconst PF_DATA_WAIT: bool = false;\\nconst PF_DATA_RESTART: u64 = 1;\\nconst NWAIT:\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n \"pf_param\\|env::var\" src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^(error|warning: unused)\" -A8; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; bash $T/metric2.sh"}
 ```
 
 **← Bash result**
@@ -1636,7 +1636,7 @@ spout 417  bulletgba 457  anguna 3  heartwrench-advance 996  piugba 0
 test result: ok. 11 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  107809 Nov  9 13:41 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  107809 Nov  9 13:41 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9164  best-previous 0.9199  delta -0.0035
 overall 0.9164  replay=0.9359(w0.6)  procedural=0.8000(w0.2)  audio=0.9740(w0.2)
 [replay/gameplay] subsystem score 0.9359
@@ -1649,7 +1649,7 @@ overall 0.9164  replay=0.9359(w0.6)  procedural=0.8000(w0.2)  audio=0.9740(w0.2)
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncat > $T/drift.py <<'EOF'\nimport sys\na=[int(l.split()[1]) for l in open(sys.argv[1]) if l.strip()]; r=[int(l.split()[1]) for l in open(sys.argv[2]) if l.strip()]\npa=[l.split()[0] for l in open(sys.argv[1]) if l.strip()]; pr=[l.split()[0] for l in open(sys.argv[2]) if l.strip()]\nsa=sr=0; out=[]\nfirst=next((i for i in range(len(pa)) if pa[i]!=pr[i]),None)\nfor i in range(len(a)):\n    sa+=a[i]; sr+=r[i]\n    if i%40000==39999: out.append(sa-sr)\nprint('pc-diverge',first,'drift/40k',out)\nEOF\npython3 $T/drift.py $T/heartwrench-advance.ours4 $T/heartwrench-advance.ref4\ncp src/bus.rs /tmp/bus.rs.v2\n# compare to old model\ncp src/bus.rs /tmp/bus_new.rs"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncat > $T/drift.py <<'EOF'\nimport sys\na=[int(l.split()[1]) for l in open(sys.argv[1]) if l.strip()]; r=[int(l.split()[1]) for l in open(sys.argv[2]) if l.strip()]\npa=[l.split()[0] for l in open(sys.argv[1]) if l.strip()]; pr=[l.split()[0] for l in open(sys.argv[2]) if l.strip()]\nsa=sr=0; out=[]\nfirst=next((i for i in range(len(pa)) if pa[i]!=pr[i]),None)\nfor i in range(len(a)):\n    sa+=a[i]; sr+=r[i]\n    if i%40000==39999: out.append(sa-sr)\nprint('pc-diverge',first,'drift/40k',out)\nEOF\npython3 $T/drift.py $T/heartwrench-advance.ours4 $T/heartwrench-advance.ref4\ncp src/bus.rs /tmp/bus.rs.v2\n# compare to old model\ncp src/bus.rs /tmp/bus_new.rs"}
 ```
 
 **← Bash result**
@@ -1659,7 +1659,7 @@ pc-diverge 263646 drift/40k [0, 0, 0, 0, 0, 0, 0, 0, -1300, -1188]
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n# old model: v1 bus.rs + cpu hook harmless\ncp /tmp/bus.rs.good src/bus.rs 2>/dev/null; grep -c pf_fetch src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A6\nfor b in heartwrench-advance bulletgba spout; do ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.old4; python3 $T/drift.py $T/$b.old4 $T/$b.ref4; python3 $T/drift.py $T/$b.ours4 $T/$b.ref4; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n# old model: v1 bus.rs + cpu hook harmless\ncp /tmp/bus.rs.good src/bus.rs 2>/dev/null; grep -c pf_fetch src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A6\nfor b in heartwrench-advance bulletgba spout; do ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.old4; python3 $T/drift.py $T/$b.old4 $T/$b.ref4; python3 $T/drift.py $T/$b.ours4 $T/$b.ref4; done"}
 ```
 
 **← Bash result**
@@ -1680,7 +1680,7 @@ pc-diverge 372004 drift/40k [0, 0, 0, 0, 0, 0, 0, -7, -19, 2]
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  103534 Nov  9 13:43 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  103534 Nov  9 13:43 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9199  best-previous 0.9199  delta +0.0000
 overall 0.9199  audio=0.9838(w0.2)  procedural=0.8000(w0.2)  replay=0.9385(w0.6)
   spout-gameplay               video=0.4668 audio=0.5822 first_diverge=338 diverging=3096/4475
@@ -1689,7 +1689,7 @@ overall 0.9199  audio=0.9838(w0.2)  procedural=0.8000(w0.2)  replay=0.9385(w0.6)
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncat > $T/hw.py <<'EOF'\nimport sys\na=[l.split() for l in open(sys.argv[1]) if l.strip()]; r=[l.split() for l in open(sys.argv[2]) if l.strip()]\noff=3\nm1=sum(1 for i in range(263646) if a[i]!=r[i])\nm2=sum(1 for i in range(263650,len(a)-off) if a[i]!=r[i+off])\nprint('pre',m1,'post(off3)',m2, 'pcmis', sum(1 for i in range(263650,len(a)-off) if a[i][0]!=r[i+off][0]))\nEOF\npython3 $T/hw.py $T/heartwrench-advance.old4 $T/heartwrench-advance.ref4; python3 $T/hw.py $T/heartwrench-advance.ours4 $T/heartwrench-advance.ref4"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncat > $T/hw.py <<'EOF'\nimport sys\na=[l.split() for l in open(sys.argv[1]) if l.strip()]; r=[l.split() for l in open(sys.argv[2]) if l.strip()]\noff=3\nm1=sum(1 for i in range(263646) if a[i]!=r[i])\nm2=sum(1 for i in range(263650,len(a)-off) if a[i]!=r[i+off])\nprint('pre',m1,'post(off3)',m2, 'pcmis', sum(1 for i in range(263650,len(a)-off) if a[i][0]!=r[i+off][0]))\nEOF\npython3 $T/hw.py $T/heartwrench-advance.old4 $T/heartwrench-advance.ref4; python3 $T/hw.py $T/heartwrench-advance.ours4 $T/heartwrench-advance.ref4"}
 ```
 
 **← Bash result**
@@ -1700,7 +1700,7 @@ pre 0 post(off3) 8999 pcmis 8838
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_new.rs src/bus.rs\nfor r in 0 2; do sed -i '' \"s/const PF_DATA_RESTART: u64 = [0-9];/const PF_DATA_RESTART: u64 = $r;/\" src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A6; echo -n \"restart=$r \"; bash $T/metric2.sh; done\nsed -i '' \"s/const PF_DATA_RESTART: u64 = [0-9];/const PF_DATA_RESTART: u64 = 1;/\" src/bus.rs"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_new.rs src/bus.rs\nfor r in 0 2; do sed -i '' \"s/const PF_DATA_RESTART: u64 = [0-9];/const PF_DATA_RESTART: u64 = $r;/\" src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A6; echo -n \"restart=$r \"; bash $T/metric2.sh; done\nsed -i '' \"s/const PF_DATA_RESTART: u64 = [0-9];/const PF_DATA_RESTART: u64 = 1;/\" src/bus.rs"}
 ```
 
 **← Bash result**
@@ -1711,7 +1711,7 @@ restart=2 spout 417  bulletgba 25430  anguna 3  heartwrench-advance 5234  piugba
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nL=\"another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d waimanu xniq\"\nfor b in $L; do (node scripts/mesteps.mjs ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ref5 &); done; sleep 60; wc -l $T/*.ref5 | tail -3\ncp /tmp/bus.rs.good /tmp/bus_old.rs\ncat > $T/m3.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A6\nfor b in another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d xniq; do\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.o5\npython3 - $T/$b.o5 $T/$b.ref5 $b <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=open(sys.argv[2]).read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\nprint(sys.argv[3],len(d),d[:1],end='; ')\nPY\ndone; echo\nEOF\ncp /tmp/bus_old.rs src/bus.rs; echo OLD; bash $T/m3.sh; cp /tmp/bus_new.rs src/bus.rs; echo NEW; bash $T/m3.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nL=\"another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d waimanu xniq\"\nfor b in $L; do (node scripts/mesteps.mjs ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ref5 &); done; sleep 60; wc -l $T/*.ref5 | tail -3\ncp /tmp/bus.rs.good /tmp/bus_old.rs\ncat > $T/m3.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A6\nfor b in another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d xniq; do\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.o5\npython3 - $T/$b.o5 $T/$b.ref5 $b <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=open(sys.argv[2]).read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\nprint(sys.argv[3],len(d),d[:1],end='; ')\nPY\ndone; echo\nEOF\ncp /tmp/bus_old.rs src/bus.rs; echo OLD; bash $T/m3.sh; cp /tmp/bus_new.rs src/bus.rs; echo NEW; bash $T/m3.sh"}
 ```
 
 **← Bash result**
@@ -1731,26 +1731,26 @@ Error: ENOENT: no such file or directory, open '../gba-eval/corpus/roms/homebrew
 }
 
 Node.js v22.23.2
-       0 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d waimanu xniq.ref5
+       0 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d waimanu xniq.ref5
 OLD
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/another-world.ref5'
+FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/another-world.ref5'
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/blindjump.ref5'
+FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/blindjump.ref5'
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/celeste-classic.ref5'
+FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/celeste-classic.ref5'
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/chip-advance.ref5'
+FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/chip-advance.ref5'
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/collie-defense.ref5'
+FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/collie-defense.ref5'
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/goodboy-advance.ref5'
+FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/goodboy-advance.ref5'
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
 FileNotFoundError
@@ -1762,14 +1762,14 @@ Shell quoting bug (the list was one word, zsh). Redo with a loop over an array.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor b in another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d xniq; do (node scripts/mesteps.mjs ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ref5 &); done; sleep 75; wc -l $T/*.ref5 | tail -4\ncp /tmp/bus_old.rs src/bus.rs; echo OLD; bash $T/m3.sh; cp /tmp/bus_new.rs src/bus.rs; echo NEW; bash $T/m3.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor b in another-world blindjump celeste-classic chip-advance collie-defense goodboy-advance meteorain trogdor varooom-3d xniq; do (node scripts/mesteps.mjs ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.ref5 &); done; sleep 75; wc -l $T/*.ref5 | tail -4\ncp /tmp/bus_old.rs src/bus.rs; echo OLD; bash $T/m3.sh; cp /tmp/bus_new.rs src/bus.rs; echo NEW; bash $T/m3.sh"}
 ```
 
 **← Bash result**
 ```
-400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/trogdor.ref5
-  400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/varooom-3d.ref5
-  400000 /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/xniq.ref5
+400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/trogdor.ref5
+  400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/varooom-3d.ref5
+  400000 /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/xniq.ref5
  4000000 total
 OLD
 another-world 48514 [241721]; blindjump 0 []; celeste-classic 4616 [270723]; chip-advance 144726 [246874]; collie-defense 195 [357740]; goodboy-advance 550 [230468]; meteorain 0 []; trogdor 6190 [264707]; varooom-3d 4983 [256607]; xniq 7820 [231730]; 
@@ -1779,7 +1779,7 @@ another-world 48514 [241721]; blindjump 0 []; celeste-classic 4616 [270723]; chi
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['xniq','varooom-3d','collie-defense']:\n    a=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    c=Counter((a[i][1],r[i][1]) for i in d)\n    print(b,d[:3],c.most_common(6))\n    k=c.most_common(1)[0][0]; n=0\n    for i in d:\n        if (a[i][1],r[i][1])==k:\n            print(i,' '.join(x[0]+':'+x[1] for x in r[i-5:i]),'||',a[i],r[i]); n+=1\n            if n>3: break\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['xniq','varooom-3d','collie-defense']:\n    a=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    c=Counter((a[i][1],r[i][1]) for i in d)\n    print(b,d[:3],c.most_common(6))\n    k=c.most_common(1)[0][0]; n=0\n    for i in d:\n        if (a[i][1],r[i][1])==k:\n            print(i,' '.join(x[0]+':'+x[1] for x in r[i-5:i]),'||',a[i],r[i]); n+=1\n            if n>3: break\nEOF"}
 ```
 
 **← Bash result**
@@ -1803,7 +1803,7 @@ collie-defense [357740, 357741, 357742] [(('2', '1'), 670), (('5', '4'), 211), (
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='varooom-3d'\na=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\nfor i in range(256576,256590): print(i,a[i],r[i])\nb='xniq'\na=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\nfor i in range(231722,231738): print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nb='varooom-3d'\na=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\nfor i in range(256576,256590): print(i,a[i],r[i])\nb='xniq'\na=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\nfor i in range(231722,231738): print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -1842,7 +1842,7 @@ collie-defense [357740, 357741, 357742] [(('2', '1'), 670), (('5', '4'), 211), (
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp src/bus.rs /tmp/bus_new.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"        self.pf_advance(now);\\n        let need = sz / 2;\",\"        self.pf_advance(now);\\n        eprintln!(\\\"F a={:x} sz={} now={} head={:x} cnt={} fl={} done={}\\\", a, sz, now, self.pf_head, self.pf_cnt, self.pf_flight, self.pf_done);\\n        let need = sz / 2;\",1)\ns=s.replace(\"                    self.pf_ws = ws;\\n\",\"                    eprintln!(\\\"D a={:x} sz={} now={} cnt={} fl={} done={} c={} seq={}\\\", a, sz, self.cycles, self.pf_cnt, self.pf_flight, self.pf_done, c, seq);\\n                    self.pf_ws = ws;\\n\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/varooom-3d.gba 256584 2>&1 >/dev/null | grep -a -E \"^(F|D)\" | tail -9\npython3 - <<'EOF'\nd=open('~/work/Gbe-test/gba-eval/corpus/roms/homebrew/varooom-3d.gba','rb').read()\nfor a in range(0x2ed60,0x2ed74,2): print(hex(a+0x8000000), d[a+1:a+2].hex()+d[a:a+1].hex(), end=' | ')\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp src/bus.rs /tmp/bus_new.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"        self.pf_advance(now);\\n        let need = sz / 2;\",\"        self.pf_advance(now);\\n        eprintln!(\\\"F a={:x} sz={} now={} head={:x} cnt={} fl={} done={}\\\", a, sz, now, self.pf_head, self.pf_cnt, self.pf_flight, self.pf_done);\\n        let need = sz / 2;\",1)\ns=s.replace(\"                    self.pf_ws = ws;\\n\",\"                    eprintln!(\\\"D a={:x} sz={} now={} cnt={} fl={} done={} c={} seq={}\\\", a, sz, self.cycles, self.pf_cnt, self.pf_flight, self.pf_done, c, seq);\\n                    self.pf_ws = ws;\\n\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/varooom-3d.gba 256584 2>&1 >/dev/null | grep -a -E \"^(F|D)\" | tail -9\npython3 - <<'EOF'\nd=open('~/work/Gbe-test/gba-eval/corpus/roms/homebrew/varooom-3d.gba','rb').read()\nfor a in range(0x2ed60,0x2ed74,2): print(hex(a+0x8000000), d[a+1:a+2].hex()+d[a:a+1].hex(), end=' | ')\nEOF"}
 ```
 
 **← Bash result**
@@ -1879,7 +1879,7 @@ D a=802ed6c sz=2 now=2180501 cnt=0 fl=false done=0 c=2 seq=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\na=\"    #[inline] fn note_pc(&mut self, pc: u32) { self.fetch_pc = pc; }\"\nassert a in s and \"Bus::fetch16\" not in s\ns=s.replace(a,a+\"\\n    #[inline] fn fetch16(&mut self, a: u32, s: bool) -> u32 { Bus::fetch16(self, a, s) }\\n    #[inline] fn fetch32(&mut self, a: u32, s: bool) -> u32 { Bus::fetch32(self, a, s) }\",1)\nopen(p,'w').write(s)\nEOF\ncp /tmp/bus_new.rs src/bus.rs; echo NEW; bash $T/m3.sh; bash $T/metric2.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\na=\"    #[inline] fn note_pc(&mut self, pc: u32) { self.fetch_pc = pc; }\"\nassert a in s and \"Bus::fetch16\" not in s\ns=s.replace(a,a+\"\\n    #[inline] fn fetch16(&mut self, a: u32, s: bool) -> u32 { Bus::fetch16(self, a, s) }\\n    #[inline] fn fetch32(&mut self, a: u32, s: bool) -> u32 { Bus::fetch32(self, a, s) }\",1)\nopen(p,'w').write(s)\nEOF\ncp /tmp/bus_new.rs src/bus.rs; echo NEW; bash $T/m3.sh; bash $T/metric2.sh"}
 ```
 
 **← Bash result**
@@ -1891,7 +1891,7 @@ spout 417  bulletgba 457  anguna 3  heartwrench-advance 996  piugba 0
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['celeste-classic','another-world']:\n    a=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    print(b,d[:3],Counter((a[i][1],r[i][1]) for i in d).most_common(5))\n    for i in range(d[0]-5,d[0]+3): print(i,a[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['celeste-classic','another-world']:\n    a=[l.split() for l in open('$T/'+b+'.o5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\n    d=[i for i in range(len(a)) if a[i]!=r[i]]\n    print(b,d[:3],Counter((a[i][1],r[i][1]) for i in d).most_common(5))\n    for i in range(d[0]-5,d[0]+3): print(i,a[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -1924,7 +1924,7 @@ another-world [241721, 241722, 241723] [(('3', '3'), 18903), (('11', '3'), 11763
 
 **← Bash result**
 ```
-Command did not complete within its 600s timeout and was moved to the background (ID: bho5dp3ew). Output is being written to: /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/tasks/bho5dp3ew.output. You will be notified when it completes. It is running now: do not start a second copy while it runs. If it is no longer needed, stop it with TaskStop. No output had been read from it when it was moved. A program that buffers its output, or a pipe into one such as tail, can keep the output file empty until the command finishes. To check interim output, use Read on that file path.
+Command did not complete within its 600s timeout and was moved to the background (ID: bho5dp3ew). Output is being written to: /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/tasks/bho5dp3ew.output. You will be notified when it completes. It is running now: do not start a second copy while it runs. If it is no longer needed, stop it with TaskStop. No output had been read from it when it was moved. A program that buffers its output, or a pipe into one such as tail, can keep the output file empty until the command finishes. To check interim output, use Read on that file path.
 Session cwd remains ~/work/Gbe-test/gba-emu; directory changes made by the backgrounded command do not apply to subsequent commands.
 ```
 
@@ -2006,7 +2006,7 @@ IO 4000006 @1970029
 
 **← Bash result**
 ```
-Command did not complete within its 600s timeout and was moved to the background (ID: br56gwiwh). Output is being written to: /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/tasks/br56gwiwh.output. You will be notified when it completes. It is running now: do not start a second copy while it runs. If it is no longer needed, stop it with TaskStop. No output had been read from it when it was moved. A program that buffers its output, or a pipe into one such as tail, can keep the output file empty until the command finishes. To check interim output, use Read on that file path.
+Command did not complete within its 600s timeout and was moved to the background (ID: br56gwiwh). Output is being written to: /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/tasks/br56gwiwh.output. You will be notified when it completes. It is running now: do not start a second copy while it runs. If it is no longer needed, stop it with TaskStop. No output had been read from it when it was moved. A program that buffers its output, or a pipe into one such as tail, can keep the output file empty until the command finishes. To check interim output, use Read on that file path.
 Session cwd remains ~/work/Gbe-test/gba-emu; directory changes made by the backgrounded command do not apply to subsequent commands.
 ```
 
@@ -2071,7 +2071,7 @@ IO 4000006 @1970029	IO 4000006 @1970029
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/celeste-classic.gba 400000 > /tmp/c_new.txt 2>/dev/null\npython3 - <<EOF\na=open('/tmp/c_new.txt').read().split('\\n'); r=open('$T/celeste-classic.ref5').read().split('\\n')\nd=[i for i in range(len(a)) if a[i]!=r[i]]; print(len(d),d[:3])\nEOF\nsed -i 's/^//' /dev/null; grep -c \"TR\" src/bus.rs"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/celeste-classic.gba 400000 > /tmp/c_new.txt 2>/dev/null\npython3 - <<EOF\na=open('/tmp/c_new.txt').read().split('\\n'); r=open('$T/celeste-classic.ref5').read().split('\\n')\nd=[i for i in range(len(a)) if a[i]!=r[i]]; print(len(d),d[:3])\nEOF\nsed -i 's/^//' /dev/null; grep -c \"TR\" src/bus.rs"}
 ```
 
 **← Bash result**
@@ -2084,7 +2084,7 @@ sed: 1: "/dev/null
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_old.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"    fn rd(&mut self, a: u32, sz: u32) -> u32 {\",\"    pub fn fetch16(&mut self, a: u32, seq: bool) -> u32 { self.read16(a, seq) }\\n    pub fn fetch32(&mut self, a: u32, seq: bool) -> u32 { self.read32(a, seq) }\\n    fn rd(&mut self, a: u32, sz: u32) -> u32 {\",1)\nopen(p,'w').write(s)\nEOF\ncp src/bus.rs /tmp/bus_old_h.rs\nbash $T/m3.sh; bash $T/metric2.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_old.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"    fn rd(&mut self, a: u32, sz: u32) -> u32 {\",\"    pub fn fetch16(&mut self, a: u32, seq: bool) -> u32 { self.read16(a, seq) }\\n    pub fn fetch32(&mut self, a: u32, seq: bool) -> u32 { self.read32(a, seq) }\\n    fn rd(&mut self, a: u32, sz: u32) -> u32 {\",1)\nopen(p,'w').write(s)\nEOF\ncp src/bus.rs /tmp/bus_old_h.rs\nbash $T/m3.sh; bash $T/metric2.sh"}
 ```
 
 **← Bash result**
@@ -2095,7 +2095,7 @@ spout 417  bulletgba 715  anguna 3  heartwrench-advance 950  piugba 0
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor b in xniq collie-defense; do ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.old5; done\ncp /tmp/bus_new.rs src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor b in xniq collie-defense; do ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.new5; done\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['xniq','collie-defense']:\n    o=[l.split() for l in open('$T/'+b+'.old5').read().split('\\n') if l]; n=[l.split() for l in open('$T/'+b+'.new5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\n    d=[i for i in range(len(n)) if n[i]!=r[i] and o[i]==r[i]]\n    print(b,len(d),Counter((n[i][1],r[i][1]) for i in d).most_common(6))\n    k=0\n    for i in d[:4]: print(i,' '.join(x[0]+':'+x[1] for x in r[i-4:i]),'||',n[i],r[i])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nfor b in xniq collie-defense; do ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.old5; done\ncp /tmp/bus_new.rs src/bus.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor b in xniq collie-defense; do ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$b.gba 400000 > $T/$b.new5; done\npython3 - <<EOF\nfrom collections import Counter\nfor b in ['xniq','collie-defense']:\n    o=[l.split() for l in open('$T/'+b+'.old5').read().split('\\n') if l]; n=[l.split() for l in open('$T/'+b+'.new5').read().split('\\n') if l]; r=[l.split() for l in open('$T/'+b+'.ref5').read().split('\\n') if l]\n    d=[i for i in range(len(n)) if n[i]!=r[i] and o[i]==r[i]]\n    print(b,len(d),Counter((n[i][1],r[i][1]) for i in d).most_common(6))\n    k=0\n    for i in d[:4]: print(i,' '.join(x[0]+':'+x[1] for x in r[i-4:i]),'||',n[i],r[i])\nEOF"}
 ```
 
 **← Bash result**
@@ -2136,7 +2136,7 @@ F a=8006a6e sz=2 now=1894842 head=8006a6e cnt=7 fl=true done=1894843
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nTR=1 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/xniq.gba 231736 2>&1 >/dev/null | grep -a -E \"^(F|D)\" | tail -9; sed -n 231729,231736p $T/xniq.ref5 | tr '\\n' ' '; echo; sed -n 231729,231736p $T/xniq.new5 | tr '\\n' ' '; echo;  sed -n 231729,231736p $T/xniq.old5 | tr '\\n' ' '"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nTR=1 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/xniq.gba 231736 2>&1 >/dev/null | grep -a -E \"^(F|D)\" | tail -9; sed -n 231729,231736p $T/xniq.ref5 | tr '\\n' ' '; echo; sed -n 231729,231736p $T/xniq.new5 | tr '\\n' ' '; echo;  sed -n 231729,231736p $T/xniq.old5 | tr '\\n' ' '"}
 ```
 
 **← Bash result**
@@ -2157,7 +2157,7 @@ F a=8006a74 sz=2 now=1894859 head=8006a74 cnt=5 fl=true done=1894863
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_new.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\nold=\"if self.pf_valid { self.pf_flight = true;\"\nassert old in s\ns=s.replace(old,\"if self.pf_valid && (sz != 4 || !pf_flush()) { self.pf_flight = true;\",1)\ns=s.replace(\"const NWAIT:\",\"fn pf_flush() -> bool { std::env::var(\\\"FL\\\").is_ok() }\\nconst NWAIT:\",1)\ns=s.replace(\"                    self.pf_ws = ws;\\n\",\"                    if sz == 4 && pf_flush() { self.pf_valid = false; self.pf_cnt = 0; self.pf_flight = false; }\\n                    self.pf_ws = ws;\\n\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor f in 0 1; do echo FL=$f; if [ $f = 1 ]; then export FL=1; fi; bash $T/metric2.sh; bash $T/m3.sh; done; unset FL"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_new.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\nold=\"if self.pf_valid { self.pf_flight = true;\"\nassert old in s\ns=s.replace(old,\"if self.pf_valid && (sz != 4 || !pf_flush()) { self.pf_flight = true;\",1)\ns=s.replace(\"const NWAIT:\",\"fn pf_flush() -> bool { std::env::var(\\\"FL\\\").is_ok() }\\nconst NWAIT:\",1)\ns=s.replace(\"                    self.pf_ws = ws;\\n\",\"                    if sz == 4 && pf_flush() { self.pf_valid = false; self.pf_cnt = 0; self.pf_flight = false; }\\n                    self.pf_ws = ws;\\n\",1)\nopen(p,'w').write(s)\nEOF\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A8\nfor f in 0 1; do echo FL=$f; if [ $f = 1 ]; then export FL=1; fi; bash $T/metric2.sh; bash $T/m3.sh; done; unset FL"}
 ```
 
 **← Bash result**
@@ -2172,7 +2172,7 @@ another-world 71880 [241721]; blindjump 0 []; celeste-classic 80435 [242562]; ch
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i '' 's/sz == 4 \\&\\& pf_flush()/sz >= FLSZ \\&\\& pf_flush()/; s/(sz != 4 || !pf_flush())/(sz < FLSZ || !pf_flush())/' src/bus.rs\nfor z in 2; do sed -i '' \"s/^fn pf_flush/const FLSZ: u32 = $z;\\nfn pf_flush/\" src/bus.rs; export FL=1; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A8; echo FLSZ=$z; bash $T/metric2.sh; bash $T/m3.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i '' 's/sz == 4 \\&\\& pf_flush()/sz >= FLSZ \\&\\& pf_flush()/; s/(sz != 4 || !pf_flush())/(sz < FLSZ || !pf_flush())/' src/bus.rs\nfor z in 2; do sed -i '' \"s/^fn pf_flush/const FLSZ: u32 = $z;\\nfn pf_flush/\" src/bus.rs; export FL=1; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A8; echo FLSZ=$z; bash $T/metric2.sh; bash $T/m3.sh; done"}
 ```
 
 **← Bash result**
@@ -2195,7 +2195,7 @@ another-world 71880 [241721]; blindjump 0 []; celeste-classic 80435 [242562]; ch
 test result: ok. 11 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  107778 Nov  9 14:14 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  107778 Nov  9 14:14 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9272  best-previous 0.9199  delta +0.0073
 overall 0.9272  audio=0.9967(w0.2)  procedural=0.8000(w0.2)  replay=0.9464(w0.6)
   spout-gameplay               video=0.4668 audio=0.5822 first_diverge=338 diverging=3096/4475
@@ -2243,7 +2243,7 @@ The explicit prefetch model is in. Overall is 0.9272 against a baseline of 0.919
 
 ### Agent report · 2026-11-09 14:16
 <teammate-message teammate_id="team-lead" summary="Perf: batch sync_to; fuel headroom is thin">
-Perf finding from ppu-agent-r3: per-frame fuel headroom (500M limit) is thin: varooom-3d worst frame 261M (1.9x), ppu-vram-mirror 238M (2.1x), piugba 2.6x, spout 2.7x. A frame that runs out of fuel traps, so a spike costs a frame. Profile of spout: Bus::sync_to ~35% (it does ppu_pos % 1232 and next_timer_event(), a 4-timer loop, on every memory access), Cpu::step 20%, Ppu::tick 10%, peek32 and cost ~8% each. After your prefetch work (keep that first), please batch sync_to: compute the next event time once (line boundary, timer overflow, DMA, APU event) and only sync when cycles passes it, avoid % on the hot path, and keep peek32/cost cheap; also drop any debug-only logging (trace_mem/MEMLOG) from the hot path via cfg. Must remain cycle-exact: verify with grade.sh (score must not change) and cargo test, then report the new worst-frame fuel on varooom-3d (ppu-agent-r3 has a fuel-measuring runner in the scratchpad: /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel).
+Perf finding from ppu-agent-r3: per-frame fuel headroom (500M limit) is thin: varooom-3d worst frame 261M (1.9x), ppu-vram-mirror 238M (2.1x), piugba 2.6x, spout 2.7x. A frame that runs out of fuel traps, so a spike costs a frame. Profile of spout: Bus::sync_to ~35% (it does ppu_pos % 1232 and next_timer_event(), a 4-timer loop, on every memory access), Cpu::step 20%, Ppu::tick 10%, peek32 and cost ~8% each. After your prefetch work (keep that first), please batch sync_to: compute the next event time once (line boundary, timer overflow, DMA, APU event) and only sync when cycles passes it, avoid % on the hot path, and keep peek32/cost cheap; also drop any debug-only logging (trace_mem/MEMLOG) from the hot path via cfg. Must remain cycle-exact: verify with grade.sh (score must not change) and cargo test, then report the new worst-frame fuel on varooom-3d (ppu-agent-r3 has a fuel-measuring runner in the scratchpad: /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel).
 </teammate-message>
 
 <teammate-message teammate_id="team-lead" summary="Halt-wake behaviour needs bus/emu change">
@@ -2349,7 +2349,7 @@ self.r[14] = lr;
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  107795 Nov  9 14:17 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  107795 Nov  9 14:17 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9272  best-previous 0.9272  delta +0.0000
 overall 0.9272  procedural=0.8000(w0.2)  replay=0.9464(w0.6)  audio=0.9967(w0.2)
 [procedural/halt_irq] subsystem score 1.0000
@@ -2425,7 +2425,7 @@ first diff at instr 276234 ours 28c 3 ref 20 6
 test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  109183 Nov  9 14:22 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109183 Nov  9 14:22 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9272  best-previous 0.9272  delta +0.0000
 overall 0.9272  replay=0.9464(w0.6)  audio=0.9967(w0.2)  procedural=0.8000(w0.2)
 [procedural/halt_irq] subsystem score 1.0000
@@ -2552,7 +2552,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  109559 Nov  9 14:25 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109559 Nov  9 14:25 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.8990  best-previous 0.9272  delta -0.0282
 overall 0.8990  replay=0.9438(w0.6)  audio=0.9838(w0.2)  procedural=0.6800(w0.2)
 [procedural/cpu] subsystem score 1.0000
@@ -2651,7 +2651,7 @@ src/lib.rs:87:        if m.bus.halted() { m.bus.halt_skip(1); } else { m.cpu.ste
 test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  109575 Nov  9 14:28 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109575 Nov  9 14:28 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9230  best-previous 0.9272  delta -0.0042
 overall 0.9230  procedural=0.8000(w0.2)  replay=0.9438(w0.6)  audio=0.9838(w0.2)
 [procedural/cpu] subsystem score 1.0000
@@ -2723,7 +2723,7 @@ overall 0.9230  procedural=0.8000(w0.2)  replay=0.9438(w0.6)  audio=0.9838(w0.2)
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  109573 Nov  9 14:30 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109573 Nov  9 14:30 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.8991  best-previous 0.9272  delta -0.0281
 overall 0.8991  procedural=0.6800(w0.2)  replay=0.9438(w0.6)  audio=0.9839(w0.2)
   piugba-gameplay              video=0.9703 audio=0.7982 first_diverge=11 diverging=946/1937
@@ -2737,7 +2737,7 @@ overall 0.8991  procedural=0.6800(w0.2)  replay=0.9438(w0.6)  audio=0.9839(w0.2)
 **← Bash result**
 ```
 482:        let mut d = (max.min(256) as u32).min(self.next_timer_event()).max(1);
--rwxr-xr-x@ 1 vitaliy  staff  109556 Nov  9 14:32 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109556 Nov  9 14:32 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9230  best-previous 0.9272  delta -0.0042
 overall 0.9230  audio=0.9838(w0.2)  replay=0.9438(w0.6)  procedural=0.8000(w0.2)
   spout-gameplay               video=0.4668 audio=0.5822 first_diverge=338 diverging=3096/4475
@@ -2790,7 +2790,7 @@ overall 0.9230  audio=0.9838(w0.2)  replay=0.9438(w0.6)  procedural=0.8000(w0.2)
 test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.01s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  109593 Nov  9 14:34 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109593 Nov  9 14:34 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9230  best-previous 0.9272  delta -0.0042
 overall 0.9230  replay=0.9438(w0.6)  procedural=0.8000(w0.2)  audio=0.9838(w0.2)
   spout-gameplay               video=0.4668 audio=0.5822 first_diverge=338 diverging=3096/4475
@@ -2865,7 +2865,7 @@ overall 0.9230  replay=0.9438(w0.6)  procedural=0.8000(w0.2)  audio=0.9838(w0.2)
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  109340 Nov  9 14:37 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109340 Nov  9 14:37 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9272  best-previous 0.9272  delta +0.0000
 overall 0.9272  procedural=0.8000(w0.2)  replay=0.9464(w0.6)  audio=0.9967(w0.2)
   piugba-gameplay              video=0.9995 audio=0.9737 first_diverge=11 diverging=356/1937
@@ -2895,7 +2895,7 @@ overall 0.9272  procedural=0.8000(w0.2)  replay=0.9464(w0.6)  audio=0.9967(w0.2)
 **← Bash result**
 ```
 4
--rwxr-xr-x@ 1 vitaliy  staff  109578 Nov  9 14:39 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109578 Nov  9 14:39 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9231  best-previous 0.9272  delta -0.0041
 overall 0.9231  procedural=0.8000(w0.2)  replay=0.9438(w0.6)  audio=0.9841(w0.2)
   spout-gameplay               video=0.4668 audio=0.5822 first_diverge=338 diverging=3096/4475
@@ -2907,7 +2907,7 @@ overall 0.9231  procedural=0.8000(w0.2)  replay=0.9438(w0.6)  audio=0.9841(w0.2)
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A5; ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/piugba.gba 3000000 > $T/pg_new.txt\ncp src/bus.rs /tmp/bus_perf3.rs; sed -i '' 's/self.next_ev = self.synced + self.next_chunk() as u64; }/self.next_ev = 0; }/' src/bus.rs\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A5; ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/piugba.gba 3000000 > $T/pg_old.txt; cp /tmp/bus_perf3.rs src/bus.rs\npython3 - <<EOF\na=open('$T/pg_new.txt').read().split('\\n'); b=open('$T/pg_old.txt').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,b)) if x!=y]; print(len(d),d[:3])\ni=d[0]\nfor j in range(i-5,i+4): print(j,a[j],b[j])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A5; ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/piugba.gba 3000000 > $T/pg_new.txt\ncp src/bus.rs /tmp/bus_perf3.rs; sed -i '' 's/self.next_ev = self.synced + self.next_chunk() as u64; }/self.next_ev = 0; }/' src/bus.rs\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A5; ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/piugba.gba 3000000 > $T/pg_old.txt; cp /tmp/bus_perf3.rs src/bus.rs\npython3 - <<EOF\na=open('$T/pg_new.txt').read().split('\\n'); b=open('$T/pg_old.txt').read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,b)) if x!=y]; print(len(d),d[:3])\ni=d[0]\nfor j in range(i-5,i+4): print(j,a[j],b[j])\nEOF"}
 ```
 
 **← Bash result**
@@ -3079,7 +3079,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 --
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
--rwxr-xr-x@ 1 vitaliy  staff  109196 Nov  9 14:43 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109196 Nov  9 14:43 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.0216  best-previous 0.9272  delta -0.9056
 overall 0.0216  replay=0.0091(w0.6)  audio=0.0809(w0.2)  procedural=0.0000(w0.2)
   celeste-gameplay             video=0.0003 audio=0.0016 first_diverge=2 diverging=7437/7439
@@ -3129,7 +3129,7 @@ let (m, v) = (mask as u16, (v & mask) as u16);
 test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  109599 Nov  9 14:44 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109599 Nov  9 14:44 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9272  best-previous 0.9272  delta +0.0000
 overall 0.9272  procedural=0.8000(w0.2)  replay=0.9464(w0.6)  audio=0.9967(w0.2)
   spout-gameplay               video=0.4668 audio=0.5822 first_diverge=338 diverging=3096/4475
@@ -3141,7 +3141,7 @@ overall 0.9272  procedural=0.8000(w0.2)  replay=0.9464(w0.6)  audio=0.9967(w0.2)
 
 **→ Bash**
 ```
-{"command": "cd /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; ls fuel* 2>/dev/null | head; ls | head -30"}
+{"command": "cd /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; ls fuel* 2>/dev/null | head; ls | head -30"}
 ```
 
 **← Bash result**
@@ -3184,7 +3184,7 @@ heartwrench-advance.ref4
 
 **→ Bash**
 ```
-{"command": "cd /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel; ls; ls src; head -30 src/main.rs"}
+{"command": "cd /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel; ls; ls src; head -30 src/main.rs"}
 ```
 
 **← Bash result**
@@ -3228,7 +3228,7 @@ fn main()->anyhow::Result<()>{
 
 **→ Bash**
 ```
-{"command": "cd /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel; ls target/release/ | head -5; B=~/work/Gbe-test/gba-emu; ls $B/../gba-eval | head; (./target/release/fuel $B/target/wasm32-unknown-unknown/release/gba_emu.wasm $B/../gba-eval/corpus 2>&1 | tail -30) "}
+{"command": "cd /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel; ls target/release/ | head -5; B=~/work/Gbe-test/gba-emu; ls $B/../gba-eval | head; (./target/release/fuel $B/target/wasm32-unknown-unknown/release/gba_emu.wasm $B/../gba-eval/corpus 2>&1 | tail -30) "}
 ```
 
 **← Bash result**
@@ -3295,7 +3295,7 @@ Order: (1) first. grade.sh before/after, cargo test green; best 0.9272. Report i
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A5\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/heartwrench-advance.gba 303000 > $T/hw.n\npython3 - <<EOF\na=open('$T/hw.n').read().split('\\n'); r=open('$T/heartwrench-advance.ref4').read().split('\\n')\nd=[i for i in range(300000) if a[i]!=r[i]]; print(d[:5])\ni=d[0]\nfor j in range(i-8,i+4): print(j,a[j],'|',r[j])\nEOF\ngrep -n \"VCOUNT_ADJ\\|READ_ADJ\\|IRQ_DELAY\" src/bus.rs | head"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A5\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/heartwrench-advance.gba 303000 > $T/hw.n\npython3 - <<EOF\na=open('$T/hw.n').read().split('\\n'); r=open('$T/heartwrench-advance.ref4').read().split('\\n')\nd=[i for i in range(300000) if a[i]!=r[i]]; print(d[:5])\ni=d[0]\nfor j in range(i-8,i+4): print(j,a[j],'|',r[j])\nEOF\ngrep -n \"VCOUNT_ADJ\\|READ_ADJ\\|IRQ_DELAY\" src/bus.rs | head"}
 ```
 
 **← Bash result**
@@ -3316,7 +3316,7 @@ IndexError: list index out of range
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/heartwrench-advance.gba 400000 > $T/hw.n\npython3 - <<EOF\na=open('$T/hw.n').read().split('\\n'); r=open('$T/heartwrench-advance.ref4').read().split('\\n')\nd=[i for i in range(400000) if a[i]!=r[i]]; print(d[:5])\ni=d[0]\nfor j in range(i-8,i+4): print(j,a[j],'|',r[j])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/heartwrench-advance.gba 400000 > $T/hw.n\npython3 - <<EOF\na=open('$T/hw.n').read().split('\\n'); r=open('$T/heartwrench-advance.ref4').read().split('\\n')\nd=[i for i in range(400000) if a[i]!=r[i]]; print(d[:5])\ni=d[0]\nfor j in range(i-8,i+4): print(j,a[j],'|',r[j])\nEOF"}
 ```
 
 **← Bash result**
@@ -3338,7 +3338,7 @@ IndexError: list index out of range
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncat > $T/m4.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A6\nfor b in heartwrench-advance:ref4 waimanu:ref4 celeste-classic:ref5 another-world:ref5 trogdor:ref5 varooom-3d:ref5 xniq:ref5 collie-defense:ref5 goodboy-advance:ref5 spout:ref4 bulletgba:ref4 piugba:ref4; do n=${b%%:*}; e=${b##*:}\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$n.gba 400000 > $T/$n.m4\npython3 - $T/$n.m4 $T/$n.$e $n <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=open(sys.argv[2]).read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\nprint(sys.argv[3],len(d),d[:1],end='; ')\nPY\ndone; echo\nEOF\nbash $T/m4.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncat > $T/m4.sh <<'EOF'\ncd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\nT=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncargo build --release --example steps 2>&1 | grep -E \"^error\" -A6\nfor b in heartwrench-advance:ref4 waimanu:ref4 celeste-classic:ref5 another-world:ref5 trogdor:ref5 varooom-3d:ref5 xniq:ref5 collie-defense:ref5 goodboy-advance:ref5 spout:ref4 bulletgba:ref4 piugba:ref4; do n=${b%%:*}; e=${b##*:}\n./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/$n.gba 400000 > $T/$n.m4\npython3 - $T/$n.m4 $T/$n.$e $n <<PY\nimport sys\na=open(sys.argv[1]).read().split('\\n'); r=open(sys.argv[2]).read().split('\\n')\nd=[i for i,(x,y) in enumerate(zip(a,r)) if x!=y]\nprint(sys.argv[3],len(d),d[:1],end='; ')\nPY\ndone; echo\nEOF\nbash $T/m4.sh"}
 ```
 
 **← Bash result**
@@ -3351,7 +3351,7 @@ Now try the PPU IRQ early-stamp.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp src/bus.rs /tmp/bus_pre_irq.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"    fn upd_cond(&mut self, t: u64) {\\n        let c = self.ie & self.iflag & 0x3FFF != 0;\\n        if !c { self.cond_since = u64::MAX } else if self.cond_since == u64::MAX { self.cond_since = t; }\",\n\"    fn upd_cond(&mut self, t: u64) {\\n        let c = self.ie & self.iflag & 0x3FFF != 0;\\n        if !c { self.cond_since = u64::MAX } else if self.cond_since == u64::MAX { self.cond_since = t.saturating_sub(std::mem::take(&mut self.ppu_early)); }\",1)\ns=s.replace(\"next_ev: u64, mark: u64, eq: u64,\",\"next_ev: u64, mark: u64, eq: u64, ppu_early: u64,\",1)\ns=s.replace(\"next_ev: 0, mark: 0, eq: 0,\",\"next_ev: 0, mark: 0, eq: 0, ppu_early: 0,\",1)\ns=s.replace(\"        self.iflag |= ev.irq & 7;\",\"        if ev.irq & 7 != 0 { self.ppu_early = PPU_IRQ_EARLY; }\\n        self.iflag |= ev.irq & 7;\",1)\ns=s.replace(\"const NWAIT:\",\"const PPU_IRQ_EARLY: u64 = 2;\\nconst NWAIT:\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n \"fn upd_cond\" -A3 src/bus.rs | head -5\nfor k in 1 2 3; do sed -i '' \"s/const PPU_IRQ_EARLY: u64 = [0-9];/const PPU_IRQ_EARLY: u64 = $k;/\" src/bus.rs; echo K=$k; bash $T/m4.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp src/bus.rs /tmp/bus_pre_irq.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"    fn upd_cond(&mut self, t: u64) {\\n        let c = self.ie & self.iflag & 0x3FFF != 0;\\n        if !c { self.cond_since = u64::MAX } else if self.cond_since == u64::MAX { self.cond_since = t; }\",\n\"    fn upd_cond(&mut self, t: u64) {\\n        let c = self.ie & self.iflag & 0x3FFF != 0;\\n        if !c { self.cond_since = u64::MAX } else if self.cond_since == u64::MAX { self.cond_since = t.saturating_sub(std::mem::take(&mut self.ppu_early)); }\",1)\ns=s.replace(\"next_ev: u64, mark: u64, eq: u64,\",\"next_ev: u64, mark: u64, eq: u64, ppu_early: u64,\",1)\ns=s.replace(\"next_ev: 0, mark: 0, eq: 0,\",\"next_ev: 0, mark: 0, eq: 0, ppu_early: 0,\",1)\ns=s.replace(\"        self.iflag |= ev.irq & 7;\",\"        if ev.irq & 7 != 0 { self.ppu_early = PPU_IRQ_EARLY; }\\n        self.iflag |= ev.irq & 7;\",1)\ns=s.replace(\"const NWAIT:\",\"const PPU_IRQ_EARLY: u64 = 2;\\nconst NWAIT:\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n \"fn upd_cond\" -A3 src/bus.rs | head -5\nfor k in 1 2 3; do sed -i '' \"s/const PPU_IRQ_EARLY: u64 = [0-9];/const PPU_IRQ_EARLY: u64 = $k;/\" src/bus.rs; echo K=$k; bash $T/m4.sh; done"}
 ```
 
 **← Bash result**
@@ -3378,7 +3378,7 @@ heartwrench-advance 706 [342930]; waimanu 4040 [271356]; celeste-classic 4616 [2
 test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.01s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  109813 Nov  9 14:54 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109813 Nov  9 14:54 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9272  best-previous 0.9272  delta +0.0000
 overall 0.9272  replay=0.9464(w0.6)  procedural=0.8000(w0.2)  audio=0.9967(w0.2)
   spout-gameplay               video=0.4668 audio=0.5822 first_diverge=338 diverging=3096/4475
@@ -3390,7 +3390,7 @@ overall 0.9272  replay=0.9464(w0.6)  procedural=0.8000(w0.2)  audio=0.9967(w0.2)
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nbash $T/m4.sh >/dev/null; python3 - <<EOF\nfor n,e in [('heartwrench-advance','ref4'),('waimanu','ref4'),('goodboy-advance','ref5'),('trogdor','ref5')]:\n    a=open('$T/'+n+'.m4').read().split('\\n'); r=open('$T/'+n+'.'+e).read().split('\\n')\n    i=next(i for i,(x,y) in enumerate(zip(a,r)) if x!=y); print(n,i)\n    for j in range(i-4,i+4): print(' ',j,a[j],'|',r[j])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nbash $T/m4.sh >/dev/null; python3 - <<EOF\nfor n,e in [('heartwrench-advance','ref4'),('waimanu','ref4'),('goodboy-advance','ref5'),('trogdor','ref5')]:\n    a=open('$T/'+n+'.m4').read().split('\\n'); r=open('$T/'+n+'.'+e).read().split('\\n')\n    i=next(i for i,(x,y) in enumerate(zip(a,r)) if x!=y); print(n,i)\n    for j in range(i-4,i+4): print(' ',j,a[j],'|',r[j])\nEOF"}
 ```
 
 **← Bash result**
@@ -3465,7 +3465,7 @@ IL cyc=2728901 cond=2728891 ie=1 if=1
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_irq_k2.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"self.dma_pending |= 1 << n; self.dma_lat = 2; }\\n        }\\n    }\\n    fn dma_fifo\",\"self.dma_pending |= 1 << n; self.dma_lat = 2; self.dma_ready = self.synced + EV_X; }\\n        }\\n    }\\n    fn dma_fifo\",1)\ns=s.replace(\"self.fifo_mask |= 1 << n; self.dma_lat = 2; }\",\"self.fifo_mask |= 1 << n; self.dma_lat = 2; self.dma_ready = self.synced + EV_X; }\",1)\ns=s.replace(\"const NWAIT:\",\"const EV_X: u64 = 0;\\nconst NWAIT:\",1)\nopen(p,'w').write(s)\nEOF\ngrep -c EV_X src/bus.rs\nfor k in 0 2 4 6; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_irq_k2.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"self.dma_pending |= 1 << n; self.dma_lat = 2; }\\n        }\\n    }\\n    fn dma_fifo\",\"self.dma_pending |= 1 << n; self.dma_lat = 2; self.dma_ready = self.synced + EV_X; }\\n        }\\n    }\\n    fn dma_fifo\",1)\ns=s.replace(\"self.fifo_mask |= 1 << n; self.dma_lat = 2; }\",\"self.fifo_mask |= 1 << n; self.dma_lat = 2; self.dma_ready = self.synced + EV_X; }\",1)\ns=s.replace(\"const NWAIT:\",\"const EV_X: u64 = 0;\\nconst NWAIT:\",1)\nopen(p,'w').write(s)\nEOF\ngrep -c EV_X src/bus.rs\nfor k in 0 2 4 6; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
 ```
 
 **← Bash result**
@@ -3518,7 +3518,7 @@ GATE cyc=2730032 ready=2730031 a=30079fc seq=false pend=6 mark=2730032
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; TR=1 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/waimanu.gba 271360 2>&1 >/dev/null | grep -a GATE | tail -3; for n in 271354 271355 271356 271357; do :; done; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; sed -n 271353,271360p $T/waimanu.m4 | tr '\\n' ' '"}
+{"command": "cd ~/work/Gbe-test/gba-emu; TR=1 ./target/release/examples/steps ../gba-eval/corpus/roms/homebrew/waimanu.gba 271360 2>&1 >/dev/null | grep -a GATE | tail -3; for n in 271354 271355 271356 271357; do :; done; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad; sed -n 271353,271360p $T/waimanu.m4 | tr '\\n' ' '"}
 ```
 
 **← Bash result**
@@ -3529,7 +3529,7 @@ GATE cyc=2168414 ready=2168404 a=3007ea8 seq=false pend=6 mark=2168414
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_x.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"        if self.wake_pen { self.wake_pen = false; self.cycles += 2; }\\n\",\"        if self.wake_pen { self.wake_pen = false; self.cycles += 2; }\\n        if self.cycles >= self.next_ev && self.next_ev != 0 { self.sync_to(self.cycles); self.next_ev = self.synced + self.next_chunk() as u64; }\\n\",1)\nopen(p,'w').write(s)\nEOF\nfor k in 0 4; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_x.rs src/bus.rs\npython3 - <<'EOF'\np='src/bus.rs'; s=open(p).read()\ns=s.replace(\"        if self.wake_pen { self.wake_pen = false; self.cycles += 2; }\\n\",\"        if self.wake_pen { self.wake_pen = false; self.cycles += 2; }\\n        if self.cycles >= self.next_ev && self.next_ev != 0 { self.sync_to(self.cycles); self.next_ev = self.synced + self.next_chunk() as u64; }\\n\",1)\nopen(p,'w').write(s)\nEOF\nfor k in 0 4; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
 ```
 
 **← Bash result**
@@ -3542,7 +3542,7 @@ heartwrench-advance 706 [342930]; waimanu 4040 [271356]; celeste-classic 4616 [2
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp src/bus.rs /tmp/bus_x2.rs\nsed -i '' 's/ \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) {/ {/' src/bus.rs; grep -c \"dma_ready && {\" src/bus.rs\nfor k in 0 4; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp src/bus.rs /tmp/bus_x2.rs\nsed -i '' 's/ \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) {/ {/' src/bus.rs; grep -c \"dma_ready && {\" src/bus.rs\nfor k in 0 4; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
 ```
 
 **← Bash result**
@@ -3556,7 +3556,7 @@ heartwrench-advance 706 [342930]; waimanu 4038 [271666]; celeste-classic 4540 [2
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfor n,e in [('trogdor','ref5'),('spout','ref4')]:\n    a=open('$T/'+n+'.m4').read().split('\\n'); r=open('$T/'+n+'.'+e).read().split('\\n')\n    i=next(i for i,(x,y) in enumerate(zip(a,r)) if x!=y); print(n,i)\n    for j in range(i-3,i+5): print(' ',j,a[j],'|',r[j])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\npython3 - <<EOF\nfor n,e in [('trogdor','ref5'),('spout','ref4')]:\n    a=open('$T/'+n+'.m4').read().split('\\n'); r=open('$T/'+n+'.'+e).read().split('\\n')\n    i=next(i for i,(x,y) in enumerate(zip(a,r)) if x!=y); print(n,i)\n    for j in range(i-3,i+5): print(' ',j,a[j],'|',r[j])\nEOF"}
 ```
 
 **← Bash result**
@@ -3602,7 +3602,7 @@ ACC cyc=2168443 ready=2168408 a=40000a0 seq=true
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_x2.rs src/bus.rs\nsed -i '' 's/ \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) {/ {/' src/bus.rs\nfor k in 5 6 8 10; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\ncp /tmp/bus_x2.rs src/bus.rs\nsed -i '' 's/ \\&\\& !((8..=0xD).contains(\\&(a >> 24)) \\&\\& seq) {/ {/' src/bus.rs\nfor k in 5 6 8 10; do sed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = $k;/\" src/bus.rs; echo X=$k; bash $T/m4.sh; done"}
 ```
 
 **← Bash result**
@@ -3619,7 +3619,7 @@ heartwrench-advance 708 [342930]; waimanu 4041 [271356]; celeste-classic 4540 [2
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = 5;/\" src/bus.rs\ngrep -n \"self.dma_lat = 2\" src/bus.rs | cut -c1-60\nfor l in 0 1; do sed -i '' \"s/self.dma_lat = [0-9]; self.dma_ready = self.synced/self.dma_lat = $l; self.dma_ready = self.synced/g\" src/bus.rs; echo LAT=$l; bash $T/m4.sh; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\nsed -i '' \"s/const EV_X: u64 = [0-9]*;/const EV_X: u64 = 5;/\" src/bus.rs\ngrep -n \"self.dma_lat = 2\" src/bus.rs | cut -c1-60\nfor l in 0 1; do sed -i '' \"s/self.dma_lat = [0-9]; self.dma_ready = self.synced/self.dma_lat = $l; self.dma_ready = self.synced/g\" src/bus.rs; echo LAT=$l; bash $T/m4.sh; done"}
 ```
 
 **← Bash result**
@@ -3647,7 +3647,7 @@ heartwrench-advance 707 [342930]; waimanu 4040 [271356]; celeste-classic 4616 [2
 test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  106793 Nov  9 15:00 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  106793 Nov  9 15:00 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9343  best-previous 0.9272  delta +0.0071
 overall 0.9343  replay=0.9583(w0.6)  audio=0.9967(w0.2)  procedural=0.8000(w0.2)
   spout-gameplay               video=0.5971 audio=0.5645 first_diverge=338 diverging=2485/4475
@@ -3953,7 +3953,7 @@ src/emu.rs:89:        (std::mem::take(&mut self.audio_len) / 2) as i32
 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 7 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.31s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  107306 Nov  9 15:55 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  107306 Nov  9 15:55 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9343  best-previous 0.9343  delta +0.0000
 overall 0.9343  procedural=0.8000(w0.2)  replay=0.9583(w0.6)  audio=0.9967(w0.2)
 ```
@@ -4367,12 +4367,12 @@ Now grade, then group 3.
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./scripts/build.sh 2>&1|tail -1; ./scripts/grade.sh 2>&1 | grep -E \"^overall\"; bash $T/m4.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; T=/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad\n./scripts/build.sh 2>&1|tail -1; ./scripts/grade.sh 2>&1 | grep -E \"^overall\"; bash $T/m4.sh"}
 ```
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  109330 Nov  9 16:00 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109330 Nov  9 16:00 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9343  best-previous 0.9343  delta +0.0000
 overall 0.9343  audio=0.9967(w0.2)  procedural=0.8000(w0.2)  replay=0.9583(w0.6)
 heartwrench-advance 706 [342930]; waimanu 4039 [271666]; celeste-classic 4540 [270723]; another-world 21684 [241721]; trogdor 626 [344125]; varooom-3d 3414 [256607]; xniq 8603 [231730]; collie-defense 164 [357740]; goodboy-advance 472 [271063]; spout 339 [310473]; bulletgba 434 [276252]; piugba 0 [];
@@ -4380,7 +4380,7 @@ heartwrench-advance 706 [342930]; waimanu 4039 [271666]; celeste-classic 4540 [2
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\ngrep -n \"self.upd_cond(self.synced);\" src/bus.rs\nsed -i '' 's/self.upd_cond(self.synced);/self.upd_cond(self.synced); self.ppu_early = 0; \\/\\/ backdating applies only to an edge raised by a PPU flag in this chunk/' src/bus.rs\ncargo test --release 2>&1 | grep -E \"test result|FAILED|^error\"; ./scripts/build.sh 2>&1|tail -1; ./scripts/grade.sh 2>&1 | grep -E \"^overall\"; bash /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/m4.sh"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH\ngrep -n \"self.upd_cond(self.synced);\" src/bus.rs\nsed -i '' 's/self.upd_cond(self.synced);/self.upd_cond(self.synced); self.ppu_early = 0; \\/\\/ backdating applies only to an edge raised by a PPU flag in this chunk/' src/bus.rs\ncargo test --release 2>&1 | grep -E \"test result|FAILED|^error\"; ./scripts/build.sh 2>&1|tail -1; ./scripts/grade.sh 2>&1 | grep -E \"^overall\"; bash /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/m4.sh"}
 ```
 
 **← Bash result**
@@ -4389,7 +4389,7 @@ heartwrench-advance 706 [342930]; waimanu 4039 [271666]; celeste-classic 4540 [2
 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 test result: ok. 7 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.33s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  109326 Nov  9 16:03 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109326 Nov  9 16:03 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9343  best-previous 0.9343  delta +0.0000
 overall 0.9343  procedural=0.8000(w0.2)  replay=0.9583(w0.6)  audio=0.9967(w0.2)
 heartwrench-advance 706 [342930]; waimanu 4039 [271666]; celeste-classic 4540 [270723]; another-world 21684 [241721]; trogdor 626 [344125]; varooom-3d 3414 [256607]; xniq 8603 [231730]; collie-defense 164 [357740]; goodboy-advance 472 [271063]; spout 339 [310473]; bulletgba 434 [276252]; piugba 0 [];
@@ -4464,7 +4464,7 @@ test result: ok. 7 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; fini
 --
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
--rwxr-xr-x@ 1 vitaliy  staff  109690 Nov  9 16:08 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  109690 Nov  9 16:08 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 overall 0.9343  best-previous 0.9343  delta +0.0000
 overall 0.9343  procedural=0.8000(w0.2)  audio=0.9967(w0.2)  replay=0.9583(w0.6)
 ```

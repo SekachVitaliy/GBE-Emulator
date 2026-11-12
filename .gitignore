@@ -13,3 +13,9 @@ gba-emu/results/*/
 .env
 .env.*
 .DS_Store
+# local ruflo/Claude Code runtime state
+.claude-flow/harness-active-policy.json
+.claude-flow/policy/
+.claude/.proven-config-version
+.claude/proven-config.json
+.claude-flow/

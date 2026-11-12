@@ -15,17 +15,17 @@
 ```
 ~/work/Gbe-test
 total 24
-drwxr-xr-x@ 11 vitaliy  staff   352 Nov  5 18:53 .
-drwxr-xr-x  25 vitaliy  staff   800 Nov  5 18:46 ..
-drwxr-xr-x@  3 vitaliy  staff    96 Nov  5 18:52 .claude
-drwx------@  4 vitaliy  staff   128 Nov  5 18:53 .claude-flow
-drwxr-xr-x@  9 vitaliy  staff   288 Nov  6 13:43 .idea
-drwxr-xr-x@  7 vitaliy  staff   224 Nov  5 18:46 .venv
-drwxr-xr-x@ 22 vitaliy  staff   704 Nov  5 18:52 gba-eval
-drwxr-xr-x@  3 vitaliy  staff    96 Nov  5 18:49 graft
--rw-r--r--@  1 vitaliy  staff   245 Nov  5 18:46 poetry.lock
--rw-r--r--@  1 vitaliy  staff   309 Nov  5 18:46 pyproject.toml
--rw-r--r--@  1 vitaliy  staff  2817 Nov  5 18:48 task.md
+drwxr-xr-x@ 11 USER  staff   352 Nov  5 18:53 .
+drwxr-xr-x  25 USER  staff   800 Nov  5 18:46 ..
+drwxr-xr-x@  3 USER  staff    96 Nov  5 18:52 .claude
+drwx------@  4 USER  staff   128 Nov  5 18:53 .claude-flow
+drwxr-xr-x@  9 USER  staff   288 Nov  6 13:43 .idea
+drwxr-xr-x@  7 USER  staff   224 Nov  5 18:46 .venv
+drwxr-xr-x@ 22 USER  staff   704 Nov  5 18:52 gba-eval
+drwxr-xr-x@  3 USER  staff    96 Nov  5 18:49 graft
+-rw-r--r--@  1 USER  staff   245 Nov  5 18:46 poetry.lock
+-rw-r--r--@  1 USER  staff   309 Nov  5 18:46 pyproject.toml
+-rw-r--r--@  1 USER  staff  2817 Nov  5 18:48 task.md
 ---
 ruflo not found
 /opt/homebrew/opt/node@22/bin/npx
@@ -1068,9 +1068,9 @@ version https://git-lfs.github.com/spec/v1
 oid sha256:2a5c06390294324c3c0b96f04bfac41e60bc67367c0b9ca33cb60fca646f6aa9
 s
 total 1464
-drwxr-xr-x@ 10 vitaliy  staff     320 Nov  5 18:47 .
-drwxr-xr-x@  4 vitaliy  staff     128 Nov  5 18:47 ..
--rw-r--r--@  1 vitaliy  staff   16936 Nov  5 18:47 armwrestler.gba
+drwxr-xr-x@ 10 USER  staff     320 Nov  5 18:47 .
+drwxr-xr-x@  4 USER  staff     128 Nov  5 18:47 ..
+-rw-r--r--@  1 USER  staff   16936 Nov  5 18:47 armwrestler.gba
 aw-arm-alu.txt
 aw-arm-ldm-stm.txt
 aw-arm-ldr-str.txt
@@ -1121,17 +1121,17 @@ rustup not found
 /opt/homebrew/bin/cargo
 rustc 1.99.1 (58cf8f9c3 2026-10-13) (Homebrew)
 (eval):1: command not found: rustup
--rwxr-xr-x@ 1 vitaliy  staff   103327 Nov  5 18:47 gba-eval/candidates/gba-core/gba_core_shim.wasm
--rwxr-xr-x@ 1 vitaliy  staff  1134994 Nov  5 18:47 gba-eval/reference/mesen.wasm
+-rwxr-xr-x@ 1 USER  staff   103327 Nov  5 18:47 gba-eval/candidates/gba-core/gba_core_shim.wasm
+-rwxr-xr-x@ 1 USER  staff  1134994 Nov  5 18:47 gba-eval/reference/mesen.wasm
 asm�G`````````````
 gba-eval/corpus/roms/test/fuzzarm.gba
 gba-eval/corpus/roms/test/mgba-suite.gba
 gba-eval/corpus/roms/test/armwrestler.gba
--rw-r--r--@ 1 vitaliy  staff   1710888 Nov  5 18:47 gba-eval/corpus/roms/homebrew/anguna.gba
--rw-r--r--@ 1 vitaliy  staff   2010358 Nov  5 18:47 gba-eval/corpus/roms/homebrew/another-world.gba
--rw-r--r--@ 1 vitaliy  staff  16565008 Nov  5 18:47 gba-eval/corpus/roms/homebrew/blindjump.gba
--rw-r--r--@ 1 vitaliy  staff   8388608 Nov  5 18:47 gba-eval/corpus/roms/homebrew/bulletgba.gba
--rw-r--r--@ 1 vitaliy  staff   5418424 Nov  5 18:47 gba-eval/corpus/roms/homebrew/celeste-classic.gba
+-rw-r--r--@ 1 USER  staff   1710888 Nov  5 18:47 gba-eval/corpus/roms/homebrew/anguna.gba
+-rw-r--r--@ 1 USER  staff   2010358 Nov  5 18:47 gba-eval/corpus/roms/homebrew/another-world.gba
+-rw-r--r--@ 1 USER  staff  16565008 Nov  5 18:47 gba-eval/corpus/roms/homebrew/blindjump.gba
+-rw-r--r--@ 1 USER  staff   8388608 Nov  5 18:47 gba-eval/corpus/roms/homebrew/bulletgba.gba
+-rw-r--r--@ 1 USER  staff   5418424 Nov  5 18:47 gba-eval/corpus/roms/homebrew/celeste-classic.gba
 ```
 
 ### Assistant · 2026-11-06 13:53
@@ -1231,7 +1231,7 @@ src
 ```
 Compiling gba-emu v0.1.0 (~/work/Gbe-test/gba-emu)
     Finished `release` profile [optimized] target(s) in 0.67s
--rwxr-xr-x@ 1 vitaliy  staff  21391 Nov  6 13:54 target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  21391 Nov  6 13:54 target/wasm32-unknown-unknown/release/gba_emu.wasm
 16
 emu_audio_buffer
 emu_audio_rate
@@ -1537,7 +1537,7 @@ grader-agent закончил и свободен. Просьб ко мне в �
 ### Agent report · 2026-11-06 15:04
 Another Claude session sent a message:
 <teammate-message teammate_id="cpu-agent" color="blue">
-{"type":"idle_notification","from":"cpu-agent","timestamp":"2026-11-06T13:04:17.227Z","result":"The ARM7TDMI core in `src/cpu.rs` is implemented and builds for wasm32. One graded test, `mgba-multiply-long`, still fails (52/72 on the in-ROM result screen). The crate compiles; the only warning is in `apu.rs`.\n\n**What's implemented**\n- ARM and THUMB: all ARM data-processing shifter/carry rules, MUL/MLA and long multiplies with early-termination cycles, LDR/STR/LDRH/LDRSB/LDRSH with the misaligned-rotate quirks, LDM/STM empty-list/base-in-list/S-bit/user-bank quirks, SWP, B/BL/BX, MRS/MSR, SWI, undefined, and THUMB formats 1-19.\n- Modes USR/FIQ/IRQ/SVC/ABT/UND/SYS with banked registers and SPSRs; TSTP/TEQP/CMPP/CMNP restore CPSR from SPSR.\n- IRQ entry when `bus.irq_line()` and CPSR.I is clear, a real 2-stage pipeline (PC reads as instruction + 8 in ARM and + 4 in THUMB), and cycles through the bus S/N/I API. The BIOS stub runs as ARM from 0, with no HLE.\n- Core speed is about 213 MIPS on a flat-memory benchmark, so the CPU is not the bottleneck; PPU/APU dominate frame time.\n\n**Test evidence**\n- Final-frame comparison against reference frames (same replay keys):\n\n  | Test | Result |\n  |---|---|\n  | armwrestler, all 6 graded replays | 0 differing pixels |\n  | mgba-shifter, mgba-carry | 0 differing pixels |\n  | mgba-dma | 18 pixels differ |\n  | mgba-io-read | 2031 pixels differ (bus/PPU) |\n  | mgba-multiply-long | ~200 pixels differ (the gap below) |\n\n  jsmolka arm, thumb, memory and unsafe all print \"All tests passed\". fuzzarm ends with \"End of testing\" and no failures. jsmolka bios fails test 001, which is BIOS-stub behaviour I did not look into.\n- Per-instruction (pc, cycles) traces against `reference/mesen.wasm` (a black-box oracle driven from node) match with 0 mismatches over 30k steps on 12 homebrew ROMs, and over 3k–20k steps on jsmolka arm, armwrestler and mgba-suite. Traces diverge at PPU or IRQ phase after about 200k steps, which is the bus/emu side (below), and a few VRAM-store cycles differ by 1 (bus VRAM contention, below).\n- To get cycle-exactness I made the opcode fetch happen after an instruction's own bus cycles, so the wasted-fetch-first and N+S refill timing match the reference. After any non-ROM access I call `bus.idle(0)` so the next ROM fetch counts as non-sequential. Say if you'd rather the bus handle that itself.\n- The test harness is `cpu::tests::run_rom` inside `cpu.rs`. It takes `ROM=`, `FRAMES=`, `OUT=`, `REPLAY=` or `KEYSEQ=`, and `TRACE=`/`TRACE2=` for traces. Run it with `cargo test --release --lib run_rom -- --ignored --nocapture`.\n\n**Known gap**\n- The UMULL/SMULL(S) carry flag does not match hardware. Mesen sets C deterministically after the long multiplies and I leave it unchanged. I used the Mesen oracle to gather about 6000 samples and found a carry-save, Booth-style carry pattern, but could not reproduce it exactly (about 225 of 242 single-cycle samples fit). If you want it, the next step is to run more oracle sweeps.\n- The non-long MUL/MLA carry is untested against the reference.\n\n**For the bus and emu owners** (also stored in shared memory as `cpu-status`)\n- CPU stores to VRAM during active display cost +1 cycle in the reference (for example `STRH` to `0x06000000`); the bus has no such stall.\n- Mesen enters the ROM at 21 cycles; mine enters at 35, which skews PPU/IRQ phase. Adjust the start phase.\n- BG2PA/BG2PD reset to 0 here, so jsmolka's text is invisible. They need to reset to 0x100. My test harness works around this.\n- `tests/m4.rs`, which I did not write, currently breaks `cargo test` unless `--lib` is used.\n\n**Files**\n- `~/work/Gbe-test/gba-emu/src/cpu.rs`\n- Scratch helper scripts are in `/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad`."}
+{"type":"idle_notification","from":"cpu-agent","timestamp":"2026-11-06T13:04:17.227Z","result":"The ARM7TDMI core in `src/cpu.rs` is implemented and builds for wasm32. One graded test, `mgba-multiply-long`, still fails (52/72 on the in-ROM result screen). The crate compiles; the only warning is in `apu.rs`.\n\n**What's implemented**\n- ARM and THUMB: all ARM data-processing shifter/carry rules, MUL/MLA and long multiplies with early-termination cycles, LDR/STR/LDRH/LDRSB/LDRSH with the misaligned-rotate quirks, LDM/STM empty-list/base-in-list/S-bit/user-bank quirks, SWP, B/BL/BX, MRS/MSR, SWI, undefined, and THUMB formats 1-19.\n- Modes USR/FIQ/IRQ/SVC/ABT/UND/SYS with banked registers and SPSRs; TSTP/TEQP/CMPP/CMNP restore CPSR from SPSR.\n- IRQ entry when `bus.irq_line()` and CPSR.I is clear, a real 2-stage pipeline (PC reads as instruction + 8 in ARM and + 4 in THUMB), and cycles through the bus S/N/I API. The BIOS stub runs as ARM from 0, with no HLE.\n- Core speed is about 213 MIPS on a flat-memory benchmark, so the CPU is not the bottleneck; PPU/APU dominate frame time.\n\n**Test evidence**\n- Final-frame comparison against reference frames (same replay keys):\n\n  | Test | Result |\n  |---|---|\n  | armwrestler, all 6 graded replays | 0 differing pixels |\n  | mgba-shifter, mgba-carry | 0 differing pixels |\n  | mgba-dma | 18 pixels differ |\n  | mgba-io-read | 2031 pixels differ (bus/PPU) |\n  | mgba-multiply-long | ~200 pixels differ (the gap below) |\n\n  jsmolka arm, thumb, memory and unsafe all print \"All tests passed\". fuzzarm ends with \"End of testing\" and no failures. jsmolka bios fails test 001, which is BIOS-stub behaviour I did not look into.\n- Per-instruction (pc, cycles) traces against `reference/mesen.wasm` (a black-box oracle driven from node) match with 0 mismatches over 30k steps on 12 homebrew ROMs, and over 3k–20k steps on jsmolka arm, armwrestler and mgba-suite. Traces diverge at PPU or IRQ phase after about 200k steps, which is the bus/emu side (below), and a few VRAM-store cycles differ by 1 (bus VRAM contention, below).\n- To get cycle-exactness I made the opcode fetch happen after an instruction's own bus cycles, so the wasted-fetch-first and N+S refill timing match the reference. After any non-ROM access I call `bus.idle(0)` so the next ROM fetch counts as non-sequential. Say if you'd rather the bus handle that itself.\n- The test harness is `cpu::tests::run_rom` inside `cpu.rs`. It takes `ROM=`, `FRAMES=`, `OUT=`, `REPLAY=` or `KEYSEQ=`, and `TRACE=`/`TRACE2=` for traces. Run it with `cargo test --release --lib run_rom -- --ignored --nocapture`.\n\n**Known gap**\n- The UMULL/SMULL(S) carry flag does not match hardware. Mesen sets C deterministically after the long multiplies and I leave it unchanged. I used the Mesen oracle to gather about 6000 samples and found a carry-save, Booth-style carry pattern, but could not reproduce it exactly (about 225 of 242 single-cycle samples fit). If you want it, the next step is to run more oracle sweeps.\n- The non-long MUL/MLA carry is untested against the reference.\n\n**For the bus and emu owners** (also stored in shared memory as `cpu-status`)\n- CPU stores to VRAM during active display cost +1 cycle in the reference (for example `STRH` to `0x06000000`); the bus has no such stall.\n- Mesen enters the ROM at 21 cycles; mine enters at 35, which skews PPU/IRQ phase. Adjust the start phase.\n- BG2PA/BG2PD reset to 0 here, so jsmolka's text is invisible. They need to reset to 0x100. My test harness works around this.\n- `tests/m4.rs`, which I did not write, currently breaks `cargo test` unless `--lib` is used.\n\n**Files**\n- `~/work/Gbe-test/gba-emu/src/cpu.rs`\n- Scratch helper scripts are in `/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad`."}
 </teammate-message>
 
 **→ Bash**
@@ -1549,7 +1549,7 @@ Another Claude session sent a message:
 ```
 warning: `gba-emu` (lib) generated 1 warning
     Finished `release` profile [optimized] target(s) in 2.33s
--rwxr-xr-x@ 1 vitaliy  staff  101523 Nov  6 15:04 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  101523 Nov  6 15:04 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
   aw-thumb-alu                 video=1.0000 first_diverge=0 diverging=26/400
   aw-thumb-ldr-str             video=1.0000 first_diverge=0 diverging=30/500
 
@@ -1884,9 +1884,9 @@ results: ~/work/Gbe-test/gba-emu/results/20261106T154542
 **← Bash result**
 ```
 total 80
-drwxr-xr-x@ 3 vitaliy  staff     96 Nov  6 15:47 .
-drwxr-xr-x@ 4 vitaliy  staff    128 Nov  6 15:47 ..
--rw-r--r--@ 1 vitaliy  staff  39703 Nov  6 15:47 score-0.643-src.tgz
+drwxr-xr-x@ 3 USER  staff     96 Nov  6 15:47 .
+drwxr-xr-x@ 4 USER  staff    128 Nov  6 15:47 ..
+-rw-r--r--@ 1 USER  staff  39703 Nov  6 15:47 score-0.643-src.tgz
 t01:completed t02:completed t03:completed t04:completed t05:completed t06:completed t07:completed t08:pending t09:pending t10:pending t11:pending t12:pending t13:pending t14:pending
 [OK] Data stored successfully
 Autopilot: ✓ ENABLED
@@ -3160,7 +3160,7 @@ bus-agent-r3 нашёл две причины в DMA на `spout` и подня�
 ### Agent report · 2026-11-09 13:41
 Another Claude session sent a message:
 <teammate-message teammate_id="ppu-agent-r3" color="yellow">
-{"type":"idle_notification","from":"ppu-agent-r3","timestamp":"2026-11-09T11:41:26.259Z","idleReason":"available","result":"Headroom is fine on load and startup. It is thin on per-frame fuel for six replays and the ppu-vram-mirror testcase, and the optimization I kept saves only about 5%.\n\n- **How fuel is metered:** the grader runs wasmtime 27 with `consume_fuel`. It resets fuel to `fuel_per_frame` (500M) before every `emu_run_frame`; `set_keys` and the audio calls get no refuel. `emu_init` and `emu_load_rom` each get `fuel_load_rom` (300G from `corpus/grader.yaml`; the code default is 60G). The 6 warmup frames run inside `emu_load_rom`. A frame that runs out of fuel traps and leaves the previous framebuffer, so one spike costs only that frame.\n- **Load and startup:** `emu_init` costs 0.3M fuel and about 1.5 ms. `emu_load_rom` including the warmup costs 208M to 1012M fuel (bulletgba 1012M, varooom 975M), which is at least 297x under the 300G cap. The 32 MiB ROM buffer costs nothing noticeable, and the wasm is 103 KB.\n- **Per-frame headroom (500M ÷ worst frame):**\n\n  | Testcase | Worst frame | Headroom | Notes |\n  |---|---|---|---|\n  | varooom-3d | 261M at frame 336 | 1.9x | median frame 126M |\n  | ppu-vram-mirror | 238M at frame 33 | 2.1x | median frame 125M |\n  | piugba | 190M at frame 643 | 2.6x | |\n  | spout | 188M at frame 1724 | 2.7x | median frame 155M, the highest of the replays |\n  | heartwrench | 174M | 2.9x | |\n  | collie-defense | 165M | 3.0x | |\n  | timer-reload | 140M | 3.6x | |\n  | tonc-snd1 | 124M at frame 0 | 4.0x | |\n  | bulletgba | 149M | 3.4x | |\n  | waimanu | 158M | 3.2x | |\n  | All others | 33M to 102M | 4.9x to 15x | |\n\n- **Profile of spout (native sampling):** `Bus::sync_to` takes about 35% (it calls the PPU/APU/timer ticks every few cycles and does `%` on every call), `Cpu::step` 20%, `Ppu::tick` 10%, `peek32` and `cost` about 8% each. The PPU line renderers barely show up.\n- **Change in `apu.rs` (the only edit):** `Apu::tick` now banks cycles and applies them only at the next channel, frame-sequencer or sample-window event, or before any register write, FIFO pop or drain. The APU was 18% of spout's native run time and 10% of heartwrench's. In wasm the same change saves about 5% fuel (spout worst frame 201M to 188M, varooom 279M to 261M). The score is unchanged at 0.9121 overall, and `cargo test --release` is green.\n- **For the lead (cpu.rs, bus.rs):**\n  - **cpu.rs 402-455:** the IRQ entry path calls `std::env::var` (`WAKE`, `IRQD`, `VAR`, `AGEDBG`) on every interrupt. Native this dominates varooom (`getenv` took 1101 of about 1550 samples), and in wasm it is dead cost plus code size. Remove those calls and hardcode the defaults.\n  - **bus.rs `sync_to`:** it does `ppu_pos % 1232` and `next_timer_event()` (a 4-timer loop) on every memory access. Batching that, for example computing the next event once and syncing only when `cycles` passes it, is the main lever for per-frame fuel.\n- **Procedural PPU-related cases:** ppu-vram-mirror (halt_irq) scores 1.0000 (3 of 1200 frames diverge, first at frame 0). Every procedural subsystem except cpu and comprehensive is 1.0; the procedural total is 0.7611.\n- **Wall time:** a frame costs 0.25 ms to 0.55 ms natively; I did not measure wasm wall time.\n\nThe fuel-measuring runner is a scratch project at `/private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel`. The APU edit is in `~/work/Gbe-test/gba-emu/src/apu.rs`."}
+{"type":"idle_notification","from":"ppu-agent-r3","timestamp":"2026-11-09T11:41:26.259Z","idleReason":"available","result":"Headroom is fine on load and startup. It is thin on per-frame fuel for six replays and the ppu-vram-mirror testcase, and the optimization I kept saves only about 5%.\n\n- **How fuel is metered:** the grader runs wasmtime 27 with `consume_fuel`. It resets fuel to `fuel_per_frame` (500M) before every `emu_run_frame`; `set_keys` and the audio calls get no refuel. `emu_init` and `emu_load_rom` each get `fuel_load_rom` (300G from `corpus/grader.yaml`; the code default is 60G). The 6 warmup frames run inside `emu_load_rom`. A frame that runs out of fuel traps and leaves the previous framebuffer, so one spike costs only that frame.\n- **Load and startup:** `emu_init` costs 0.3M fuel and about 1.5 ms. `emu_load_rom` including the warmup costs 208M to 1012M fuel (bulletgba 1012M, varooom 975M), which is at least 297x under the 300G cap. The 32 MiB ROM buffer costs nothing noticeable, and the wasm is 103 KB.\n- **Per-frame headroom (500M ÷ worst frame):**\n\n  | Testcase | Worst frame | Headroom | Notes |\n  |---|---|---|---|\n  | varooom-3d | 261M at frame 336 | 1.9x | median frame 126M |\n  | ppu-vram-mirror | 238M at frame 33 | 2.1x | median frame 125M |\n  | piugba | 190M at frame 643 | 2.6x | |\n  | spout | 188M at frame 1724 | 2.7x | median frame 155M, the highest of the replays |\n  | heartwrench | 174M | 2.9x | |\n  | collie-defense | 165M | 3.0x | |\n  | timer-reload | 140M | 3.6x | |\n  | tonc-snd1 | 124M at frame 0 | 4.0x | |\n  | bulletgba | 149M | 3.4x | |\n  | waimanu | 158M | 3.2x | |\n  | All others | 33M to 102M | 4.9x to 15x | |\n\n- **Profile of spout (native sampling):** `Bus::sync_to` takes about 35% (it calls the PPU/APU/timer ticks every few cycles and does `%` on every call), `Cpu::step` 20%, `Ppu::tick` 10%, `peek32` and `cost` about 8% each. The PPU line renderers barely show up.\n- **Change in `apu.rs` (the only edit):** `Apu::tick` now banks cycles and applies them only at the next channel, frame-sequencer or sample-window event, or before any register write, FIFO pop or drain. The APU was 18% of spout's native run time and 10% of heartwrench's. In wasm the same change saves about 5% fuel (spout worst frame 201M to 188M, varooom 279M to 261M). The score is unchanged at 0.9121 overall, and `cargo test --release` is green.\n- **For the lead (cpu.rs, bus.rs):**\n  - **cpu.rs 402-455:** the IRQ entry path calls `std::env::var` (`WAKE`, `IRQD`, `VAR`, `AGEDBG`) on every interrupt. Native this dominates varooom (`getenv` took 1101 of about 1550 samples), and in wasm it is dead cost plus code size. Remove those calls and hardcode the defaults.\n  - **bus.rs `sync_to`:** it does `ppu_pos % 1232` and `next_timer_event()` (a 4-timer loop) on every memory access. Batching that, for example computing the next event once and syncing only when `cycles` passes it, is the main lever for per-frame fuel.\n- **Procedural PPU-related cases:** ppu-vram-mirror (halt_irq) scores 1.0000 (3 of 1200 frames diverge, first at frame 0). Every procedural subsystem except cpu and comprehensive is 1.0; the procedural total is 0.7611.\n- **Wall time:** a frame costs 0.25 ms to 0.55 ms natively; I did not measure wasm wall time.\n\nThe fuel-measuring runner is a scratch project at `/private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel`. The APU edit is in `~/work/Gbe-test/gba-emu/src/apu.rs`."}
 </teammate-message>
 
 ### Assistant · 2026-11-09 13:41
@@ -3173,7 +3173,7 @@ Another Claude session sent a message:
 
 **→ SendMessage**
 ```
-{"to": "bus-agent-r3", "summary": "Perf: batch sync_to; fuel headroom is thin", "message": "Perf finding from ppu-agent-r3: per-frame fuel headroom (500M limit) is thin: varooom-3d worst frame 261M (1.9x), ppu-vram-mirror 238M (2.1x), piugba 2.6x, spout 2.7x. A frame that runs out of fuel traps, so a spike costs a frame. Profile of spout: Bus::sync_to ~35% (it does ppu_pos % 1232 and next_timer_event(), a 4-timer loop, on every memory access), Cpu::step 20%, Ppu::tick 10%, peek32 and cost ~8% each. After your prefetch work (keep that first), please batch sync_to: compute the next event time once (line boundary, timer overflow, DMA, APU event) and only sync when cycles passes it, avoid % on the hot path, and keep peek32/cost cheap; also drop any debug-only logging (trace_mem/MEMLOG) from the hot path via cfg. Must remain cycle-exact: verify with grade.sh (score must not change) and cargo test, then report the new worst-frame fuel on varooom-3d (ppu-agent-r3 has a fuel-measuring runner in the scratchpad: /private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel).", "type": "message", "recipient": "bus-agent-r3", "recipient_kind": "name", "content": "Perf finding from ppu-agent-r3: per-frame fuel he…"}
+{"to": "bus-agent-r3", "summary": "Perf: batch sync_to; fuel headroom is thin", "message": "Perf finding from ppu-agent-r3: per-frame fuel headroom (500M limit) is thin: varooom-3d worst frame 261M (1.9x), ppu-vram-mirror 238M (2.1x), piugba 2.6x, spout 2.7x. A frame that runs out of fuel traps, so a spike costs a frame. Profile of spout: Bus::sync_to ~35% (it does ppu_pos % 1232 and next_timer_event(), a 4-timer loop, on every memory access), Cpu::step 20%, Ppu::tick 10%, peek32 and cost ~8% each. After your prefetch work (keep that first), please batch sync_to: compute the next event time once (line boundary, timer overflow, DMA, APU event) and only sync when cycles passes it, avoid % on the hot path, and keep peek32/cost cheap; also drop any debug-only logging (trace_mem/MEMLOG) from the hot path via cfg. Must remain cycle-exact: verify with grade.sh (score must not change) and cargo test, then report the new worst-frame fuel on varooom-3d (ppu-agent-r3 has a fuel-measuring runner in the scratchpad: /private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/fuel).", "type": "message", "recipient": "bus-agent-r3", "recipient_kind": "name", "content": "Perf finding from ppu-agent-r3: per-frame fuel he…"}
 ```
 
 **← SendMessage result**
@@ -4144,9 +4144,9 @@ Autopilot disabled
 Worker daemon was not running
 b562f499f92c79dcd7adf5e2f7722fcab9d96853fb151259dc55db7ed2253520  gba-emu/dist/gba_emu.wasm
 total 216
-drwxr-xr-x@  3 vitaliy  staff      96 Nov  9 16:36 .
-drwxr-xr-x@ 20 vitaliy  staff     640 Nov  9 16:36 ..
--rwxr-xr-x@  1 vitaliy  staff  109690 Nov  9 16:36 gba_emu.wasm
+drwxr-xr-x@  3 USER  staff      96 Nov  9 16:36 .
+drwxr-xr-x@ 20 USER  staff     640 Nov  9 16:36 ..
+-rwxr-xr-x@  1 USER  staff  109690 Nov  9 16:36 gba_emu.wasm
 - 2026-11-09T14:13:48Z gba_emu.wasm sha=b562f499 procedural=0.8000 replay=0.9583 audio=0.9967 overall=0.9343 dir=~/work/Gbe-test/gba-emu/results/20261109T161348
 654M	gba-emu/results
 411M	.cache
@@ -4181,7 +4181,7 @@ https://github.com/SekachVitaliy/GBE-Emulator.git створив репо, да�
 
 **→ Bash**
 ```
-{"command": "ls -a gba-emu | head -40; echo ---; du -sh gba-emu/* gba-emu/.[a-z]* 2>/dev/null | sort -rh | head -12; echo --- transcripts; ls ~/.claude/projects/ | grep -i gbe; ls -la ~/.claude/projects/-Users-vitaliy-work-Gbe-test 2>/dev/null | head; git --version; git config --global user.name; git config --global user.email; gh auth status 2>&1 | head -3", "description": "Inventory project, transcripts and git/gh setup"}
+{"command": "ls -a gba-emu | head -40; echo ---; du -sh gba-emu/* gba-emu/.[a-z]* 2>/dev/null | sort -rh | head -12; echo --- transcripts; ls ~/.claude/projects/ | grep -i gbe; ls -la ~/.claude/projects/-Users-USER-work-Gbe-test 2>/dev/null | head; git --version; git config --global user.name; git config --global user.email; gh auth status 2>&1 | head -3", "description": "Inventory project, transcripts and git/gh setup"}
 ```
 
 **← Bash result**
@@ -4209,18 +4209,18 @@ tests
 ---
 (eval):1: no matches found: gba-emu/.[a-z]*
 --- transcripts
--Users-vitaliy-work-Gbe-test
--Users-vitaliy-work-Gbe-test-gba-emu
+-Users-USER-work-Gbe-test
+-Users-USER-work-Gbe-test-gba-emu
 total 12232
-drwx------@ 11 vitaliy  staff      352 Nov  9 13:15 .
-drwxr-xr-x@ 60 vitaliy  staff     1920 Nov  6 20:19 ..
--rw-------@  1 vitaliy  staff    42165 Nov  9 13:15 1ba36f2f-9bff-4007-9311-fcdc67da0ae3.jsonl
-drwxr-xr-x@  4 vitaliy  staff      128 Nov  6 14:58 2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9
--rw-------@  1 vitaliy  staff  3827851 Nov  9 16:38 2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9.jsonl
--rw-------@  1 vitaliy  staff    35159 Nov  6 13:45 2dca3228-832b-4779-a2b3-8529977cf208.jsonl
--rw-------@  1 vitaliy  staff   882033 Nov  5 20:09 30102db9-f474-4623-b3fb-724eaac35b3e.jsonl
--rw-------@  1 vitaliy  staff   445526 Nov  5 18:55 3496fff3-85fe-4ba2-a615-7bc50e645a42.jsonl
--rw-------@  1 vitaliy  staff    37668 Nov  5 18:49 73c7cb45-6d89-495c-ab42-3c5309c5e009.jsonl
+drwx------@ 11 USER  staff      352 Nov  9 13:15 .
+drwxr-xr-x@ 60 USER  staff     1920 Nov  6 20:19 ..
+-rw-------@  1 USER  staff    42165 Nov  9 13:15 1ba36f2f-9bff-4007-9311-fcdc67da0ae3.jsonl
+drwxr-xr-x@  4 USER  staff      128 Nov  6 14:58 2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9
+-rw-------@  1 USER  staff  3827851 Nov  9 16:38 2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9.jsonl
+-rw-------@  1 USER  staff    35159 Nov  6 13:45 2dca3228-832b-4779-a2b3-8529977cf208.jsonl
+-rw-------@  1 USER  staff   882033 Nov  5 20:09 30102db9-f474-4623-b3fb-724eaac35b3e.jsonl
+-rw-------@  1 USER  staff   445526 Nov  5 18:55 3496fff3-85fe-4ba2-a615-7bc50e645a42.jsonl
+-rw-------@  1 USER  staff    37668 Nov  5 18:49 73c7cb45-6d89-495c-ab42-3c5309c5e009.jsonl
 git version 2.50.1 (Apple Git-155)
 SekachVitaliy
 <email>
@@ -4231,7 +4231,7 @@ github.com
 
 **→ Bash**
 ```
-{"command": "cd ~/.claude/projects && python3 - <<'EOF'\nimport json,glob,os,datetime as dt,collections\nroots=[p for p in glob.glob('-Users-vitaliy-work-Gbe-test*')]\nfiles=[]\nfor r in roots:\n    files+=glob.glob(r+'/*.jsonl')+glob.glob(r+'/*/subagents/*.jsonl')+glob.glob(r+'/*/*.jsonl')\nfiles=sorted(set(files))\ndef ts(s): return dt.datetime.fromisoformat(s.replace('Z','+00:00'))\ntot=collections.Counter(); bymodel=collections.defaultdict(collections.Counter); per=[]\nallts=[]\nseen=set()\nfor f in files:\n    c=collections.Counter(); t=[]; n=0\n    for line in open(f,errors='ignore'):\n        try:o=json.loads(line)\n        except: continue\n        if 'timestamp' in o:\n            try:t.append(ts(o['timestamp']))\n            except:pass\n        m=o.get('message') if isinstance(o.get('message'),dict) else None\n        if m and m.get('usage') and o.get('type')=='assistant':\n            mid=(m.get('id'),o.get('requestId'))\n            if mid in seen and mid[0]: continue\n            seen.add(mid)\n            u=m['usage']\n            for k in ('input_tokens','output_tokens','cache_creation_input_tokens','cache_read_input_tokens'):\n                c[k]+=u.get(k,0) or 0\n            bymodel[m.get('model','?')]['out']+=u.get('output_tokens',0) or 0\n            bymodel[m.get('model','?')]['in']+=(u.get('input_tokens',0) or 0)\n            bymodel[m.get('model','?')]['cache_w']+=(u.get('cache_creation_input_tokens',0) or 0)\n            bymodel[m.get('model','?')]['c
+{"command": "cd ~/.claude/projects && python3 - <<'EOF'\nimport json,glob,os,datetime as dt,collections\nroots=[p for p in glob.glob('-Users-USER-work-Gbe-test*')]\nfiles=[]\nfor r in roots:\n    files+=glob.glob(r+'/*.jsonl')+glob.glob(r+'/*/subagents/*.jsonl')+glob.glob(r+'/*/*.jsonl')\nfiles=sorted(set(files))\ndef ts(s): return dt.datetime.fromisoformat(s.replace('Z','+00:00'))\ntot=collections.Counter(); bymodel=collections.defaultdict(collections.Counter); per=[]\nallts=[]\nseen=set()\nfor f in files:\n    c=collections.Counter(); t=[]; n=0\n    for line in open(f,errors='ignore'):\n        try:o=json.loads(line)\n        except: continue\n        if 'timestamp' in o:\n            try:t.append(ts(o['timestamp']))\n            except:pass\n        m=o.get('message') if isinstance(o.get('message'),dict) else None\n        if m and m.get('usage') and o.get('type')=='assistant':\n            mid=(m.get('id'),o.get('requestId'))\n            if mid in seen and mid[0]: continue\n            seen.add(mid)\n            u=m['usage']\n            for k in ('input_tokens','output_tokens','cache_creation_input_tokens','cache_read_input_tokens'):\n                c[k]+=u.get(k,0) or 0\n            bymodel[m.get('model','?')]['out']+=u.get('output_tokens',0) or 0\n            bymodel[m.get('model','?')]['in']+=(u.get('input_tokens',0) or 0)\n            bymodel[m.get('model','?')]['cache_w']+=(u.get('cache_creation_input_tokens',0) or 0)\n            bymodel[m.get('model','?')]['c
 … [truncated 936 chars]
 ```
 
@@ -4423,7 +4423,7 @@ publish/GBE-Emulator/.claude-flow/data/scores.md:13:- 2026-11-06T17:26:39Z gba_
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/publish/GBE-Emulator && \\\nsed -i '' 's|dir=~/work/Gbe-test/|dir=|g' .claude-flow/data/scores.md && \\\nsed -i '' 's|^ROOT=~/work/Gbe-test|ROOT=\"$(cd \"$(dirname \"${BASH_SOURCE[0]:-$0}\")/../..\" \\&\\& pwd)\"|' gba-emu/scripts/env.sh && \\\nsed -i '' \"s|const A = '~/work/Gbe-test/';|const A = new URL('../../', import.meta.url).pathname;|\" gba-emu/scripts/divs.mjs gba-emu/scripts/iw.mjs && \\\nsed -i '' \"s|'~/work/Gbe-test/gba-emu/target/|new URL('../target/|; s|gba_emu.wasm')|gba_emu.wasm', import.meta.url)|\" gba-emu/scripts/candframe.mjs && \\\nsed -i '' \"s|'~/work/Gbe-test/gba-eval/reference/mesen.wasm'|new URL('../../gba-eval/reference/mesen.wasm', import.meta.url).pathname|\" gba-emu/scripts/mesteps.mjs gba-emu/scripts/rhash.mjs gba-emu/scripts/refframe.mjs && \\\nsed -i '' 's|~/work/Gbe-test|<repo root>|g' gba-emu/GRADING.md && \\\necho \"--- remaining refs\"; grep -rIn \"/Users/\\|private/tmp\\|claude-501\\|vitaliy\" . --exclude=package-lock.json | cut -c1-170 | head; echo \"--- node syntax check\"; for f in gba-emu/scripts/*.mjs; do node --check \"$f\" 2>&1 | head -2; done; bash -n gba-emu/scripts/env.sh && echo env.sh ok; sed -n 1,6p gba-emu/scripts/env.sh; sed -n 3p gba-emu/scripts/candframe.mjs | cut -c1-200", "description": "Make paths relative in publish copy and re-scan"}
+{"command": "cd ~/work/Gbe-test/publish/GBE-Emulator && \\\nsed -i '' 's|dir=~/work/Gbe-test/|dir=|g' .claude-flow/data/scores.md && \\\nsed -i '' 's|^ROOT=~/work/Gbe-test|ROOT=\"$(cd \"$(dirname \"${BASH_SOURCE[0]:-$0}\")/../..\" \\&\\& pwd)\"|' gba-emu/scripts/env.sh && \\\nsed -i '' \"s|const A = '~/work/Gbe-test/';|const A = new URL('../../', import.meta.url).pathname;|\" gba-emu/scripts/divs.mjs gba-emu/scripts/iw.mjs && \\\nsed -i '' \"s|'~/work/Gbe-test/gba-emu/target/|new URL('../target/|; s|gba_emu.wasm')|gba_emu.wasm', import.meta.url)|\" gba-emu/scripts/candframe.mjs && \\\nsed -i '' \"s|'~/work/Gbe-test/gba-eval/reference/mesen.wasm'|new URL('../../gba-eval/reference/mesen.wasm', import.meta.url).pathname|\" gba-emu/scripts/mesteps.mjs gba-emu/scripts/rhash.mjs gba-emu/scripts/refframe.mjs && \\\nsed -i '' 's|~/work/Gbe-test|<repo root>|g' gba-emu/GRADING.md && \\\necho \"--- remaining refs\"; grep -rIn \"/Users/\\|private/tmp\\|claude-501\\|USER\" . --exclude=package-lock.json | cut -c1-170 | head; echo \"--- node syntax check\"; for f in gba-emu/scripts/*.mjs; do node --check \"$f\" 2>&1 | head -2; done; bash -n gba-emu/scripts/env.sh && echo env.sh ok; sed -n 1,6p gba-emu/scripts/env.sh; sed -n 3p gba-emu/scripts/candframe.mjs | cut -c1-200", "description": "Make paths relative in publish copy and re-scan"}
 ```
 
 **← Bash result**
@@ -4451,7 +4451,7 @@ const m = await WebAssembly.compile(fs.readFileSync(new URL('../target/wasm32-un
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/publish/GBE-Emulator/gba-emu && \\\nsed -i '' \"s|import.meta.url));|import.meta.url)));|\" scripts/candframe.mjs && \\\nsed -i '' \"s|/private/tmp/claude-501/f/iw_ref.bin|/tmp/iw_ref.bin|\" scripts/iw.mjs && \\\nsed -i '' 's|T=/private/tmp/claude-501/f;|T=/tmp/gba-emu-cmp;|' scripts/cmpframe.sh && \\\nsed -i '' 's|~/work/Gbe-test/||g' results/final/grader.log && \\\nfor f in scripts/*.mjs; do node --check \"$f\" 2>&1 | head -3; done; bash -n scripts/cmpframe.sh && echo \"sh ok\"; cd .. && echo \"--- remaining personal/abs refs\"; grep -rIn \"/Users/\\|private/tmp\\|claude-501\\|vitaliy\\|gmail\" . --exclude=package-lock.json | cut -c1-150 | head; echo \"--- secret patterns\"; grep -rInE \"(sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|BEGIN (RSA|OPENSSH|PRIVATE)|api[_-]?key\\s*[:=]|password\\s*[:=]|secret\\s*[:=]|token\\s*[:=]\\s*['\\\"][A-Za-z0-9])\" . --exclude=package-lock.json | cut -c1-150 | head; echo \"--- results/final contents\"; ls gba-emu/results/final | head -5; ls gba-emu/results/final | wc -l; echo \"--- env/ignore files\"; find . -name '.env*' -o -name '*.pem' -o -name '*.key' | head", "description": "Fix syntax and run secret and personal-data scans"}
+{"command": "cd ~/work/Gbe-test/publish/GBE-Emulator/gba-emu && \\\nsed -i '' \"s|import.meta.url));|import.meta.url)));|\" scripts/candframe.mjs && \\\nsed -i '' \"s|/private/tmp/claude-501/f/iw_ref.bin|/tmp/iw_ref.bin|\" scripts/iw.mjs && \\\nsed -i '' 's|T=/private/tmp/claude-501/f;|T=/tmp/gba-emu-cmp;|' scripts/cmpframe.sh && \\\nsed -i '' 's|~/work/Gbe-test/||g' results/final/grader.log && \\\nfor f in scripts/*.mjs; do node --check \"$f\" 2>&1 | head -3; done; bash -n scripts/cmpframe.sh && echo \"sh ok\"; cd .. && echo \"--- remaining personal/abs refs\"; grep -rIn \"/Users/\\|private/tmp\\|claude-501\\|USER\\|gmail\" . --exclude=package-lock.json | cut -c1-150 | head; echo \"--- secret patterns\"; grep -rInE \"(sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|BEGIN (RSA|OPENSSH|PRIVATE)|api[_-]?key\\s*[:=]|password\\s*[:=]|secret\\s*[:=]|token\\s*[:=]\\s*['\\\"][A-Za-z0-9])\" . --exclude=package-lock.json | cut -c1-150 | head; echo \"--- results/final contents\"; ls gba-emu/results/final | head -5; ls gba-emu/results/final | wc -l; echo \"--- env/ignore files\"; find . -name '.env*' -o -name '*.pem' -o -name '*.key' | head", "description": "Fix syntax and run secret and personal-data scans"}
 ```
 
 **← Bash result**
@@ -4579,7 +4579,7 @@ dfc148bf90f930e15b19699b19388932e4e3a3d4	refs/heads/main
 
 **→ Bash**
 ```
-{"command": "cd ~/.claude/projects && python3 - <<'EOF'\nimport json,glob,datetime as dt\nfiles=[f for r in glob.glob('-Users-vitaliy-work-Gbe-test*') for f in glob.glob(r+'/*.jsonl')]\nev=[]\nfor f in files:\n    for line in open(f,errors='ignore'):\n        try:o=json.loads(line)\n        except: continue\n        if o.get('type')!='user' or o.get('isSidechain') or 'timestamp' not in o: continue\n        m=o.get('message',{})\n        c=m.get('content')\n        txt=c if isinstance(c,str) else ''.join(b.get('text','') for b in c if isinstance(b,dict) and b.get('type')=='text') if isinstance(c,list) else ''\n        if not txt.strip(): continue\n        if any(k in txt[:200] for k in ('<system-reminder','teammate-message','agent-message','Another Claude session','tool_result')): continue\n        ev.append((dt.datetime.fromisoformat(o['timestamp'].replace('Z','+00:00')).astimezone(),len(txt)))\nev.sort()\nprint(\"human prompts:\",len(ev))\ndays={}\nfor t,l in ev: days.setdefault(t.strftime('%m-%d'),[]).append(t)\nfor d,v in days.items(): print(d,len(v),v[0].strftime('%H:%M'),v[-1].strftime('%H:%M'))\n# human-active proxy: gaps<=15min between human prompts, plus 2 min per prompt\nact=dt.timedelta()\nfor (a,_),(b,_) in zip(ev,ev[1:]):\n    if b-a<=dt.timedelta(minutes=15): act+=b-a\nprint(\"proxy (gaps<=15m between human prompts):\",act, \" + 1 min/prompt ->\", act+dt.timedelta(minutes=len(ev)))\nprint(\"avg chars/prompt\",sum(l for _,l in ev)//max(1,len(ev)))\nEOF", "descript
+{"command": "cd ~/.claude/projects && python3 - <<'EOF'\nimport json,glob,datetime as dt\nfiles=[f for r in glob.glob('-Users-USER-work-Gbe-test*') for f in glob.glob(r+'/*.jsonl')]\nev=[]\nfor f in files:\n    for line in open(f,errors='ignore'):\n        try:o=json.loads(line)\n        except: continue\n        if o.get('type')!='user' or o.get('isSidechain') or 'timestamp' not in o: continue\n        m=o.get('message',{})\n        c=m.get('content')\n        txt=c if isinstance(c,str) else ''.join(b.get('text','') for b in c if isinstance(b,dict) and b.get('type')=='text') if isinstance(c,list) else ''\n        if not txt.strip(): continue\n        if any(k in txt[:200] for k in ('<system-reminder','teammate-message','agent-message','Another Claude session','tool_result')): continue\n        ev.append((dt.datetime.fromisoformat(o['timestamp'].replace('Z','+00:00')).astimezone(),len(txt)))\nev.sort()\nprint(\"human prompts:\",len(ev))\ndays={}\nfor t,l in ev: days.setdefault(t.strftime('%m-%d'),[]).append(t)\nfor d,v in days.items(): print(d,len(v),v[0].strftime('%H:%M'),v[-1].strftime('%H:%M'))\n# human-active proxy: gaps<=15min between human prompts, plus 2 min per prompt\nact=dt.timedelta()\nfor (a,_),(b,_) in zip(ev,ev[1:]):\n    if b-a<=dt.timedelta(minutes=15): act+=b-a\nprint(\"proxy (gaps<=15m between human prompts):\",act, \" + 1 min/prompt ->\", act+dt.timedelta(minutes=len(ev)))\nprint(\"avg chars/prompt\",sum(l for _,l in ev)//max(1,len(ev)))\nEOF", "descript
 … [truncated 69 chars]
 ```
 

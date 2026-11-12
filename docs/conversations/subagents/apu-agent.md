@@ -607,7 +607,7 @@ else:
 20261106T154542
 20261106T192634
     Finished `release` profile [optimized] target(s) in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  100806 Nov  6 15:42 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  100806 Nov  6 15:42 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 ║  replay       0.7200 ██████████████░░░░░░
 ║  audio        0.4476 █████████░░░░░░░░░░░
 ╚══════════════════════════════════════════════════════════╝
@@ -662,10 +662,10 @@ spout-gameplay.cand.png
 spout-gameplay.cand.wav
 spout-gameplay.json
 total 487536
-drwxr-xr-x@ 107 vitaliy  staff      3424 Nov  6 19:30 .
-drwxr-xr-x@  16 vitaliy  staff       512 Nov  6 19:26 ..
--rw-r--r--@   1 vitaliy  staff      4604 Nov  6 19:27 aw-arm-alu.cand.png
--rw-r--r--@   1 vitaliy  staff      8154 Nov  6 19:27 aw-arm-alu.json
+drwxr-xr-x@ 107 USER  staff      3424 Nov  6 19:30 .
+drwxr-xr-x@  16 USER  staff       512 Nov  6 19:26 ..
+-rw-r--r--@   1 USER  staff      4604 Nov  6 19:27 aw-arm-alu.cand.png
+-rw-r--r--@   1 USER  staff      8154 Nov  6 19:27 aw-arm-alu.json
 ```
 
 **→ Bash**

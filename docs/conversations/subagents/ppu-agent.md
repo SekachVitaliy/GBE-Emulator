@@ -319,7 +319,7 @@ for (sc, sub), L in sorted(g.items()):
 ```
 warning: `gba-emu` (lib) generated 1 warning
     Finished `release` profile [optimized] target(s) in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  100806 Nov  6 15:42 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  100806 Nov  6 15:42 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 ║  procedural   0.6061 ████████████░░░░░░░░
 ║  replay       0.7200 ██████████████░░░░░░
 ║  audio        0.4476 █████████░░░░░░░░░░░
@@ -1540,7 +1540,7 @@ frame 307 diff 48 rows 96 105
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  wheel  100308 Nov  6 19:35 target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  wheel  100308 Nov  6 19:35 target/wasm32-unknown-unknown/release/gba_emu.wasm
     Finished `release` profile [optimized] target(s) in 0.87s
 ```
 

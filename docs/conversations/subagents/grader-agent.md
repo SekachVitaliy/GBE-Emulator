@@ -393,10 +393,10 @@ precompute: 27 written, 0 skipped, 0 errors
 $G --precompute corpus/ 2>&1  781.65s user 3.77s system 494% cpu 2:38.70 total
 tail -15  0.00s user 0.00s system 0% cpu 2:38.70 total
 total 465496
-drwxr-xr-x@ 53 vitaliy  staff      1696 Nov  5 18:47 .
-drwxr-xr-x@  9 vitaliy  staff       288 Nov  5 18:47 ..
--rw-r--r--@  1 vitaliy  staff   1031171 Nov  6 13:57 aw-arm-alu.refcache
--rw-r--r--@  1 vitaliy  staff    287150 Nov  6 13:57 aw-arm-ldm-stm.refcache
+drwxr-xr-x@ 53 USER  staff      1696 Nov  5 18:47 .
+drwxr-xr-x@  9 USER  staff       288 Nov  5 18:47 ..
+-rw-r--r--@  1 USER  staff   1031171 Nov  6 13:57 aw-arm-alu.refcache
+-rw-r--r--@  1 USER  staff    287150 Nov  6 13:57 aw-arm-ldm-stm.refcache
 227M	corpus/reference-cache
 ```
 
@@ -407,7 +407,7 @@ drwxr-xr-x@  9 vitaliy  staff       288 Nov  5 18:47 ..
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  21391 Nov  6 13:58 target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  21391 Nov  6 13:58 target/wasm32-unknown-unknown/release/gba_emu.wasm
 config: reference=reference/mesen.wasm
 Error: reading reference wasm "reference/mesen.wasm"
 
@@ -825,7 +825,7 @@ save.rs
 **← Bash result**
 ```
 total 32
--rw-r--r--@ 1 vitaliy  staff  16384 Nov  6 13:54 bios.bin
+-rw-r--r--@ 1 USER  staff  16384 Nov  6 13:54 bios.bin
 src/bus.rs:8:static BIOS: &[u8] = include_bytes!("../assets/bios.bin");
 src/bus.rs:33:    /// protected (return `bios_latch`) when it is >= 0x4000.
 src/bus.rs:37:    bios_latch: u32,

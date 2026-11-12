@@ -1,6 +1,6 @@
 # Conversation export (cleaned)
 
-Exported from the local Claude Code transcripts of this project and cleaned: hook/system noise, skill and tool listings, thinking blocks and bookkeeping records removed; home paths and e-mail addresses redacted; tool results truncated to a few thousand characters; the account's unrelated session list omitted. Agent prompts are kept in full.
+Exported from the local Claude Code transcripts of this project and cleaned: hook/system noise, skill and tool listings, thinking blocks and bookkeeping records removed; home paths and e-mail addresses redacted; tool results truncated to a few thousand characters; the account's unrelated session list omitted. Agent prompts are kept in full. The untruncated, redacted raw transcripts are in `../raw-transcripts/`.
 
 | File | Messages (human / assistant) | Tool calls |
 |---|---|---|

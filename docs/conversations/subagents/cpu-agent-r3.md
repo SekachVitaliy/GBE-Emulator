@@ -255,7 +255,7 @@ impl Cpu {
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; ls ../gba-eval ../gba-eval/corpus | head -30; ls ../gba-eval/corpus/roms/* | grep -i mul; which arm-none-eabi-as; grep -n \"run_rom\" src/cpu.rs | head; ls /tmp/claude-501/-Users-vitaliy-work-Gbe-test/*/scratchpad 2>/dev/null | head"}
+{"command": "cd ~/work/Gbe-test/gba-emu; ls ../gba-eval ../gba-eval/corpus | head -30; ls ../gba-eval/corpus/roms/* | grep -i mul; which arm-none-eabi-as; grep -n \"run_rom\" src/cpu.rs | head; ls /tmp/claude-501/-Users-USER-work-Gbe-test/*/scratchpad 2>/dev/null | head"}
 ```
 
 **← Bash result**
@@ -288,13 +288,13 @@ testcases.json
 arm-none-eabi-as not found
 1147:    /// ROM runner: ROM=path FRAMES=n OUT=file.ppm cargo test --release run_rom -- --ignored --nocapture
 1150:    fn run_rom() {
-/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad:
+/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad:
 bulletgba.ours
 bulletgba.ref
 spout.ours
 spout.ref
 
-/tmp/claude-501/-Users-vitaliy-work-Gbe-test/45b8639c-3b8d-4dcb-a92e-2a31b0ead1a2/scratchpad:
+/tmp/claude-501/-Users-USER-work-Gbe-test/45b8639c-3b8d-4dcb-a92e-2a31b0ead1a2/scratchpad:
 ```
 
 **→ Bash**
@@ -389,7 +389,7 @@ tonc
 
 **→ Bash**
 ```
-{"command": "mkdir -p /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cd $_ && cat > gen.mjs <<'EOF'\nimport fs from 'fs';\n// usage: node gen.mjs <out.gba> <opword hex with Rd/Rn/Rs/Rm = r4,r5,r2,r1> <pairs.json>  ; extra: accumulators via r4,r5 preset from pairs [a,b,lo,hi]\nconst [,, out, opHex, pairsFile] = process.argv;\nconst pairs = JSON.parse(fs.readFileSync(pairsFile));\nconst w=[]; const at=()=>w.length*4;\nconst emit=x=>w.push(x>>>0);\nemit(0xEA00002E); // b 0xC0 : at 0 -> target 0xC0 : offset=(0xC0-8)/4=0x2E\nwhile(w.length<0xC0/4) emit(0);\nconst S=at();\nconst litPtr=S+4*14, litCnt=litPtr+4; // placeholders computed below\n// code\nemit(0xE59F9000|0); const iPtr=w.length-1;      // ldr r9,[pc,#..]\nemit(0xE59F7000|0); const iCnt=w.length-1;      // ldr r7,[pc,#..]\nemit(0xE3A08403);                                // mov r8,#0x03000000\nconst loop=at();\nemit(0xE4991004); emit(0xE4992004);              // ldr r1/r2 post\nemit(0xE4994004); emit(0xE4995004);              // ldr r4(lo)/r5(hi) post (acc)\nemit(0xE4993004);                                // ldr r3 (cpsr flags preset word)\nemit(0xE128F003);                                // msr cpsr_f, r3\nemit(parseInt(opHex,16));                        // the multiply\nemit(0xE10F6000);                                // mrs r6,cpsr\nemit(0xE4886004);                                // str r6,[r8],#4\nemit(0xE4884004);                                // str r4\nemit(0x
+{"command": "mkdir -p /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cd $_ && cat > gen.mjs <<'EOF'\nimport fs from 'fs';\n// usage: node gen.mjs <out.gba> <opword hex with Rd/Rn/Rs/Rm = r4,r5,r2,r1> <pairs.json>  ; extra: accumulators via r4,r5 preset from pairs [a,b,lo,hi]\nconst [,, out, opHex, pairsFile] = process.argv;\nconst pairs = JSON.parse(fs.readFileSync(pairsFile));\nconst w=[]; const at=()=>w.length*4;\nconst emit=x=>w.push(x>>>0);\nemit(0xEA00002E); // b 0xC0 : at 0 -> target 0xC0 : offset=(0xC0-8)/4=0x2E\nwhile(w.length<0xC0/4) emit(0);\nconst S=at();\nconst litPtr=S+4*14, litCnt=litPtr+4; // placeholders computed below\n// code\nemit(0xE59F9000|0); const iPtr=w.length-1;      // ldr r9,[pc,#..]\nemit(0xE59F7000|0); const iCnt=w.length-1;      // ldr r7,[pc,#..]\nemit(0xE3A08403);                                // mov r8,#0x03000000\nconst loop=at();\nemit(0xE4991004); emit(0xE4992004);              // ldr r1/r2 post\nemit(0xE4994004); emit(0xE4995004);              // ldr r4(lo)/r5(hi) post (acc)\nemit(0xE4993004);                                // ldr r3 (cpsr flags preset word)\nemit(0xE128F003);                                // msr cpsr_f, r3\nemit(parseInt(opHex,16));                        // the multiply\nemit(0xE10F6000);                                // mrs r6,cpsr\nemit(0xE4886004);                                // str r6,[r8],#4\nemit(0xE4884004);                                // str r4\nemit(0x
 … [truncated 1378 chars]
 ```
 
@@ -400,7 +400,7 @@ peek number 0
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && echo '[[3,5,0,0,0],[4294967295,4294967295,0,0,0]]' > p0.json && node gen.mjs t0.gba E0954291 p0.json && cat > run.mjs <<'EOF'\nimport fs from 'fs';\nconst m = await WebAssembly.compile(fs.readFileSync('~/work/Gbe-test/gba-eval/reference/mesen.wasm')); const env = {}; for (const i of WebAssembly.Module.imports(m)) { env[i.module] ??= {}; env[i.module][i.name] = () => 0; } const x=(await WebAssembly.instantiate(m, env)).exports;\nconst romb = fs.readFileSync(process.argv[2]); const n=+process.argv[3];\nx.emu_init(); new Uint8Array(x.memory.buffer, x.emu_rom_buffer(), romb.length).set(romb); x.emu_load_rom(romb.length);\nfor(let i=0;i<n*16+2000;i++) x.mesen_exec_one();\nconst g=a=>x.mesen_peek_iwram(a);\nconst r=[]; for(let i=0;i<n;i++){ const w=k=>(g(i*12+k*4)>>>0); r.push([w(0),w(1),w(2)]); }\nconsole.log(JSON.stringify(r));\nEOF\nnode run.mjs t0.gba 2; node -e \"\nconst fs=require('fs');\" "}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && echo '[[3,5,0,0,0],[4294967295,4294967295,0,0,0]]' > p0.json && node gen.mjs t0.gba E0954291 p0.json && cat > run.mjs <<'EOF'\nimport fs from 'fs';\nconst m = await WebAssembly.compile(fs.readFileSync('~/work/Gbe-test/gba-eval/reference/mesen.wasm')); const env = {}; for (const i of WebAssembly.Module.imports(m)) { env[i.module] ??= {}; env[i.module][i.name] = () => 0; } const x=(await WebAssembly.instantiate(m, env)).exports;\nconst romb = fs.readFileSync(process.argv[2]); const n=+process.argv[3];\nx.emu_init(); new Uint8Array(x.memory.buffer, x.emu_rom_buffer(), romb.length).set(romb); x.emu_load_rom(romb.length);\nfor(let i=0;i<n*16+2000;i++) x.mesen_exec_one();\nconst g=a=>x.mesen_peek_iwram(a);\nconst r=[]; for(let i=0;i<n;i++){ const w=k=>(g(i*12+k*4)>>>0); r.push([w(0),w(1),w(2)]); }\nconsole.log(JSON.stringify(r));\nEOF\nnode run.mjs t0.gba 2; node -e \"\nconst fs=require('fs');\" "}
 ```
 
 **← Bash result**
@@ -413,9 +413,9 @@ RangeError [ERR_OUT_OF_RANGE]: The value of "value" is out of range. It must be 
     at checkInt (node:internal/buffer:74:11)
     at writeU_Int32LE (node:internal/buffer:694:3)
     at Buffer.writeUInt32LE (node:internal/buffer:707:10)
-    at file:///private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/gen.mjs:32:58
+    at file:///private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/gen.mjs:32:58
     at Array.forEach (<anonymous>)
-    at file:///private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/gen.mjs:32:39
+    at file:///private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/gen.mjs:32:39
     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
@@ -430,7 +430,7 @@ node:fs:560
 Error: ENOENT: no such file or directory, open 't0.gba'
     at Object.openSync (node:fs:560:18)
     at Object.readFileSync (node:fs:444:35)
-    at file:///private/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/run.mjs:4:17 {
+    at file:///private/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/run.mjs:4:17 {
   errno: -2,
   code: 'ENOENT',
   syscall: 'open',
@@ -445,7 +445,7 @@ Fix: the literal-load patches aren't `>>>0`'d.
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && sed -i 's/writeUInt32LE(x,i\\*4)/writeUInt32LE(x>>>0,i*4)/' gen.mjs && node gen.mjs t0.gba E0954291 p0.json && node run.mjs t0.gba 2"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && sed -i 's/writeUInt32LE(x,i\\*4)/writeUInt32LE(x>>>0,i*4)/' gen.mjs && node gen.mjs t0.gba E0954291 p0.json && node run.mjs t0.gba 2"}
 ```
 
 **← Bash result**
@@ -457,7 +457,7 @@ sed: 1: "gen.mjs
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && sed -i '' 's/writeUInt32LE(x,i\\*4)/writeUInt32LE(x>>>0,i*4)/' gen.mjs && node gen.mjs t0.gba E0954291 p0.json && node run.mjs t0.gba 2"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && sed -i '' 's/writeUInt32LE(x,i\\*4)/writeUInt32LE(x>>>0,i*4)/' gen.mjs && node gen.mjs t0.gba E0954291 p0.json && node run.mjs t0.gba 2"}
 ```
 
 **← Bash result**
@@ -467,7 +467,7 @@ peek number 31
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > run.mjs <<'EOF'\nimport fs from 'fs';\nconst m = await WebAssembly.compile(fs.readFileSync('~/work/Gbe-test/gba-eval/reference/mesen.wasm')); const env = {}; for (const i of WebAssembly.Module.imports(m)) { env[i.module] ??= {}; env[i.module][i.name] = () => 0; } const x=(await WebAssembly.instantiate(m, env)).exports;\nconst romb = fs.readFileSync(process.argv[2]); const n=+process.argv[3];\nx.emu_init(); new Uint8Array(x.memory.buffer, x.emu_rom_buffer(), romb.length).set(romb); x.emu_load_rom(romb.length);\nfor(let i=0;i<n*16+2000;i++) x.mesen_exec_one();\nconst b=a=>x.mesen_peek_iwram(a)&255;\nconst w=a=>(b(a)|b(a+1)<<8|b(a+2)<<16|b(a+3)<<24)>>>0;\nconst r=[]; for(let i=0;i<n;i++) r.push([w(i*12),w(i*12+4),w(i*12+8)]);\nconsole.log(JSON.stringify(r));\nEOF\nnode run.mjs t0.gba 2"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > run.mjs <<'EOF'\nimport fs from 'fs';\nconst m = await WebAssembly.compile(fs.readFileSync('~/work/Gbe-test/gba-eval/reference/mesen.wasm')); const env = {}; for (const i of WebAssembly.Module.imports(m)) { env[i.module] ??= {}; env[i.module][i.name] = () => 0; } const x=(await WebAssembly.instantiate(m, env)).exports;\nconst romb = fs.readFileSync(process.argv[2]); const n=+process.argv[3];\nx.emu_init(); new Uint8Array(x.memory.buffer, x.emu_rom_buffer(), romb.length).set(romb); x.emu_load_rom(romb.length);\nfor(let i=0;i<n*16+2000;i++) x.mesen_exec_one();\nconst b=a=>x.mesen_peek_iwram(a)&255;\nconst w=a=>(b(a)|b(a+1)<<8|b(a+2)<<16|b(a+3)<<24)>>>0;\nconst r=[]; for(let i=0;i<n;i++) r.push([w(i*12),w(i*12+4),w(i*12+8)]);\nconsole.log(JSON.stringify(r));\nEOF\nnode run.mjs t0.gba 2"}
 ```
 
 **← Bash result**
@@ -477,7 +477,7 @@ peek number 31
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > mk.py <<'EOF'\nimport random, json, subprocess, sys\nrandom.seed(int(sys.argv[3]) if len(sys.argv)>3 else 1)\nkind=sys.argv[1]  # opword hex\nout=sys.argv[2]\ndef rv():\n    t=random.random()\n    if t<0.3: return random.getrandbits(32)\n    if t<0.5: return random.getrandbits(random.choice([8,16,24]))\n    if t<0.6: return (-random.getrandbits(random.choice([8,16,24])))&0xffffffff\n    if t<0.8: return random.getrandbits(32)&random.getrandbits(32)&random.getrandbits(32)\n    return random.getrandbits(32)|random.getrandbits(32)\nN=int(sys.argv[4]) if len(sys.argv)>4 else 2000\nacc = len(sys.argv)>5\npairs=[[rv(),rv(),rv() if acc else 0,rv() if acc else 0, random.choice([0,0x20000000])] for _ in range(N)]\njson.dump(pairs,open(out+'.pairs','w'))\nsubprocess.run(['node','gen.mjs',out+'.gba',kind,out+'.pairs'],check=True)\nr=json.loads(subprocess.check_output(['node','run.mjs',out+'.gba',str(N)]))\njson.dump([p+x for p,x in zip(pairs,r)],open(out+'.json','w'))\nEOF\npython3 mk.py E0954291 umull 1 2000 && python3 mk.py E0D54291 smull 2 2000 && python3 -c \"\nimport json\nfor f in ['umull','smull']:\n    d=json.load(open(f+'.json'))\n    ok=sum(1 for a,b,_,_,fl,cp,lo,hi in d if (lo|hi<<32)==((a*b)&(2**64-1) if f=='umull' else ((a-(a>>31<<32))*(b-(b>>31<<32)))&(2**64-1)))\n    print(f,ok,len(d), sum((cp>>29)&1 for *_,cp,lo,hi in d))\n\""}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > mk.py <<'EOF'\nimport random, json, subprocess, sys\nrandom.seed(int(sys.argv[3]) if len(sys.argv)>3 else 1)\nkind=sys.argv[1]  # opword hex\nout=sys.argv[2]\ndef rv():\n    t=random.random()\n    if t<0.3: return random.getrandbits(32)\n    if t<0.5: return random.getrandbits(random.choice([8,16,24]))\n    if t<0.6: return (-random.getrandbits(random.choice([8,16,24])))&0xffffffff\n    if t<0.8: return random.getrandbits(32)&random.getrandbits(32)&random.getrandbits(32)\n    return random.getrandbits(32)|random.getrandbits(32)\nN=int(sys.argv[4]) if len(sys.argv)>4 else 2000\nacc = len(sys.argv)>5\npairs=[[rv(),rv(),rv() if acc else 0,rv() if acc else 0, random.choice([0,0x20000000])] for _ in range(N)]\njson.dump(pairs,open(out+'.pairs','w'))\nsubprocess.run(['node','gen.mjs',out+'.gba',kind,out+'.pairs'],check=True)\nr=json.loads(subprocess.check_output(['node','run.mjs',out+'.gba',str(N)]))\njson.dump([p+x for p,x in zip(pairs,r)],open(out+'.json','w'))\nEOF\npython3 mk.py E0954291 umull 1 2000 && python3 mk.py E0D54291 smull 2 2000 && python3 -c \"\nimport json\nfor f in ['umull','smull']:\n    d=json.load(open(f+'.json'))\n    ok=sum(1 for a,b,_,_,fl,cp,lo,hi in d if (lo|hi<<32)==((a*b)&(2**64-1) if f=='umull' else ((a-(a>>31<<32))*(b-(b>>31<<32)))&(2**64-1)))\n    print(f,ok,len(d), sum((cp>>29)&1 for *_,cp,lo,hi in d))\n\""}
 ```
 
 **← Bash result**
@@ -566,7 +566,7 @@ fs.writeFileSync(process.argv[5], out);
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml; R=../gba-eval/corpus; node scripts/refframe.mjs $R/roms/test/mgba-suite.gba $R/replays/mgba-multiply-long.txt 600 $S/ref.ppm; cargo build --release --example run 2>&1 | tail -1; target/release/examples/run $R/roms/test/mgba-suite.gba 600 $S/our.ppm $R/replays/mgba-multiply-long.txt | tail -2; python3 -c \"\nfrom PIL import Image\nfor n in ['ref','our']: Image.open('$S/'+n+'.ppm').resize((720,480),0).save('$S/'+n+'.png')\" 2>&1 | tail -1"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; S=/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml; R=../gba-eval/corpus; node scripts/refframe.mjs $R/roms/test/mgba-suite.gba $R/replays/mgba-multiply-long.txt 600 $S/ref.ppm; cargo build --release --example run 2>&1 | tail -1; target/release/examples/run $R/roms/test/mgba-suite.gba 600 $S/our.ppm $R/replays/mgba-multiply-long.txt | tail -2; python3 -c \"\nfrom PIL import Image\nfor n in ['ref','our']: Image.open('$S/'+n+'.ppm').resize((720,480),0).save('$S/'+n+'.png')\" 2>&1 | tail -1"}
 ```
 
 **← Bash result**
@@ -579,17 +579,17 @@ ModuleNotFoundError: No module named 'PIL'
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml; for n in ref our; do sips -s format png $n.ppm --out $n.png >/dev/null 2>&1; done; ls *.png"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml; for n in ref our; do sips -s format png $n.ppm --out $n.png >/dev/null 2>&1; done; ls *.png"}
 ```
 
 **→ Read**
 ```
-{"file_path": "/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/ref.png"}
+{"file_path": "/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/ref.png"}
 ```
 
 **→ Read**
 ```
-{"file_path": "/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/our.png"}
+{"file_path": "/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml/our.png"}
 ```
 
 **← Bash result**
@@ -610,7 +610,7 @@ ref.png
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > mkb.py <<'EOF'\nimport random, json, subprocess, sys\n# fixed list of b values, random a, both flag presets\nop=sys.argv[1]; out=sys.argv[2]; bs=[int(x,0) for x in sys.argv[3].split(',')]; per=int(sys.argv[4])\nrandom.seed(7)\npairs=[]\nfor b in bs:\n    for _ in range(per):\n        t=random.random()\n        a=random.getrandbits(32) if t<0.6 else (random.getrandbits(32)&random.getrandbits(32) if t<0.8 else random.getrandbits(32)|random.getrandbits(32))\n        pairs.append([a,b,0,0,0])\nres=[]\nfor i in range(0,len(pairs),2000):\n    ch=pairs[i:i+2000]\n    json.dump(ch,open(out+'.pairs','w'))\n    subprocess.run(['node','gen.mjs',out+'.gba',op,out+'.pairs'],check=True)\n    r=json.loads(subprocess.check_output(['node','run.mjs',out+'.gba',str(len(ch))]))\n    res+= [p+x for p,x in zip(ch,r)]\njson.dump(res,open(out+'.json','w'))\nEOF\npython3 mkb.py E0954291 bu 1,2,4,8,0x10,0x20,0x40,0x80,0x100,0x7f,0xff,0x1ff,0xffff,0x10000,0x1000000,0x80000000,0xffffffff,0xffffff00,0xfffffff0,0xffffffc0,0xffffff80 300 && python3 mkb.py E0D54291 bs 1,2,4,8,0x10,0x20,0x40,0x80,0x100,0x7f,0xff,0x1ff,0xffff,0x10000,0x1000000,0x80000000,0xffffffff,0xffffff00,0xfffffff0,0xffffffc0,0xffffff80 300 && ls"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > mkb.py <<'EOF'\nimport random, json, subprocess, sys\n# fixed list of b values, random a, both flag presets\nop=sys.argv[1]; out=sys.argv[2]; bs=[int(x,0) for x in sys.argv[3].split(',')]; per=int(sys.argv[4])\nrandom.seed(7)\npairs=[]\nfor b in bs:\n    for _ in range(per):\n        t=random.random()\n        a=random.getrandbits(32) if t<0.6 else (random.getrandbits(32)&random.getrandbits(32) if t<0.8 else random.getrandbits(32)|random.getrandbits(32))\n        pairs.append([a,b,0,0,0])\nres=[]\nfor i in range(0,len(pairs),2000):\n    ch=pairs[i:i+2000]\n    json.dump(ch,open(out+'.pairs','w'))\n    subprocess.run(['node','gen.mjs',out+'.gba',op,out+'.pairs'],check=True)\n    r=json.loads(subprocess.check_output(['node','run.mjs',out+'.gba',str(len(ch))]))\n    res+= [p+x for p,x in zip(ch,r)]\njson.dump(res,open(out+'.json','w'))\nEOF\npython3 mkb.py E0954291 bu 1,2,4,8,0x10,0x20,0x40,0x80,0x100,0x7f,0xff,0x1ff,0xffff,0x10000,0x1000000,0x80000000,0xffffffff,0xffffff00,0xfffffff0,0xffffffc0,0xffffff80 300 && python3 mkb.py E0D54291 bs 1,2,4,8,0x10,0x20,0x40,0x80,0x100,0x7f,0xff,0x1ff,0xffff,0x10000,0x1000000,0x80000000,0xffffffff,0xffffff00,0xfffffff0,0xffffffc0,0xffffff80 300 && ls"}
 ```
 
 **← Bash result**
@@ -641,7 +641,7 @@ umull.pairs
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > an.py <<'EOF'\nimport json, itertools, sys, collections\nd=json.load(open(sys.argv[1]))\nbyb=collections.defaultdict(list)\nfor a,b,_,_,fl,cp,lo,hi in d: byb[b].append((a,(cp>>29)&1))\ndef best(samples,k):\n    bestv=(0,None)\n    for bits in itertools.combinations(range(32),k):\n        t=collections.defaultdict(collections.Counter)\n        for a,c in samples: t[tuple((a>>i)&1 for i in bits)][c]+=1\n        sc=sum(max(v.values()) for v in t.values())\n        if sc>bestv[0]: bestv=(sc,bits,{k_:v.most_common(1)[0][0] for k_,v in t.items()})\n    return bestv\nfor b,s in byb.items():\n    ones=sum(c for a,c in s)\n    for k in (0,1,2,3):\n        sc,bits,tt=best(s,k) if k else (max(ones,len(s)-ones),(),None)\n        if sc>=0.985*len(s): break\n    print(hex(b),'n',len(s),'C=1 frac %.2f'%(ones/len(s)),'k',k,'fit %.3f'%(sc/len(s)),bits, tt if k and tt and len(tt)<=8 else '')\nEOF\npython3 an.py bu.json; echo; python3 an.py bs.json"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > an.py <<'EOF'\nimport json, itertools, sys, collections\nd=json.load(open(sys.argv[1]))\nbyb=collections.defaultdict(list)\nfor a,b,_,_,fl,cp,lo,hi in d: byb[b].append((a,(cp>>29)&1))\ndef best(samples,k):\n    bestv=(0,None)\n    for bits in itertools.combinations(range(32),k):\n        t=collections.defaultdict(collections.Counter)\n        for a,c in samples: t[tuple((a>>i)&1 for i in bits)][c]+=1\n        sc=sum(max(v.values()) for v in t.values())\n        if sc>bestv[0]: bestv=(sc,bits,{k_:v.most_common(1)[0][0] for k_,v in t.items()})\n    return bestv\nfor b,s in byb.items():\n    ones=sum(c for a,c in s)\n    for k in (0,1,2,3):\n        sc,bits,tt=best(s,k) if k else (max(ones,len(s)-ones),(),None)\n        if sc>=0.985*len(s): break\n    print(hex(b),'n',len(s),'C=1 frac %.2f'%(ones/len(s)),'k',k,'fit %.3f'%(sc/len(s)),bits, tt if k and tt and len(tt)<=8 else '')\nEOF\npython3 an.py bu.json; echo; python3 an.py bs.json"}
 ```
 
 **← Bash result**
@@ -678,7 +678,7 @@ umull.pairs
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json\nd=json.load(open('bu.json'))\nfor b in (1,4,0x10,0x40,0x100,0x10000):\n    ones=sorted(a for a,bb,_,_,_,cp,lo,hi in d if bb==b and (cp>>29)&1)\n    zeros=sorted(a for a,bb,_,_,_,cp,lo,hi in d if bb==b and not (cp>>29)&1)\n    print(hex(b),'ones',[format(x,'032b') for x in ones[:6]], len(ones))\n    print('  max zero near', [format(x,'032b') for x in zeros if any(abs(x-o)<2**28 for o in ones[:1])][:4])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json\nd=json.load(open('bu.json'))\nfor b in (1,4,0x10,0x40,0x100,0x10000):\n    ones=sorted(a for a,bb,_,_,_,cp,lo,hi in d if bb==b and (cp>>29)&1)\n    zeros=sorted(a for a,bb,_,_,_,cp,lo,hi in d if bb==b and not (cp>>29)&1)\n    print(hex(b),'ones',[format(x,'032b') for x in ones[:6]], len(ones))\n    print('  max zero near', [format(x,'032b') for x in zeros if any(abs(x-o)<2**28 for o in ones[:1])][:4])\nEOF"}
 ```
 
 **← Bash result**
@@ -699,7 +699,7 @@ umull.pairs
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,subprocess\nV=[0,1,0xffffffff,0x7f,0x80,0x81]\npairs=[[a,b,0,0,f] for a in V for b in V for f in (0,0x20000000)]\nres={}\nfor name,op in (('u',0xE0954291),('s',0xE0D54291)):\n    json.dump(pairs,open('t.pairs','w'))\n    subprocess.run(['node','gen.mjs','t.gba','%X'%op,'t.pairs'],check=True)\n    r=json.loads(subprocess.check_output(['node','run.mjs','t.gba',str(len(pairs))]))\n    res[name]=r\nprint('   a        b   | umull C(f0,f1) | smull C(f0,f1)')\nfor i in range(0,len(pairs),2):\n    a,b=pairs[i][:2]\n    print('%08x %08x |'%(a,b), [(res['u'][i+k][0]>>28)&15 for k in (0,1)], [(res['s'][i+k][0]>>28)&15 for k in (0,1)])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,subprocess\nV=[0,1,0xffffffff,0x7f,0x80,0x81]\npairs=[[a,b,0,0,f] for a in V for b in V for f in (0,0x20000000)]\nres={}\nfor name,op in (('u',0xE0954291),('s',0xE0D54291)):\n    json.dump(pairs,open('t.pairs','w'))\n    subprocess.run(['node','gen.mjs','t.gba','%X'%op,'t.pairs'],check=True)\n    r=json.loads(subprocess.check_output(['node','run.mjs','t.gba',str(len(pairs))]))\n    res[name]=r\nprint('   a        b   | umull C(f0,f1) | smull C(f0,f1)')\nfor i in range(0,len(pairs),2):\n    a,b=pairs[i][:2]\n    print('%08x %08x |'%(a,b), [(res['u'][i+k][0]>>28)&15 for k in (0,1)], [(res['s'][i+k][0]>>28)&15 for k in (0,1)])\nEOF"}
 ```
 
 **← Bash result**
@@ -788,7 +788,7 @@ fn main() {
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && export PATH=/opt/homebrew/opt/rustup/bin:$PATH && (cd ~/work/Gbe-test/gba-emu && cargo build --release --example iwdump 2>&1 | tail -1) && echo \"\" > empty.txt && cat > cmp.py <<'EOF'\nimport json,subprocess,struct,sys\n# usage: cmp.py opword_hex n seed acc(0/1) -> compares ours vs mesen\nsys.argv+=[]\nop,n,seed,acc=sys.argv[1],int(sys.argv[2]),int(sys.argv[3]),int(sys.argv[4])\nsubprocess.run(['python3','mk.py',op,'cmp',str(seed),str(n)]+(['acc'] if acc else []),check=True)\nref=json.load(open('cmp.json'))\nsubprocess.run(['~/work/Gbe-test/gba-emu/target/release/examples/iwdump','cmp.gba','empty.txt','3','cmp.bin'],check=True)\nraw=open('cmp.bin','rb').read()\nbad={'lo':0,'hi':0,'N':0,'Z':0,'C':0,'V':0}\nfor i,(a,b,l,h,fl,cp,lo,hi) in enumerate(ref):\n    o=struct.unpack_from('<III',raw,i*12)\n    if o[1]!=lo: bad['lo']+=1\n    if o[2]!=hi: bad['hi']+=1\n    for nm,bit in (('N',31),('Z',30),('C',29),('V',28)):\n        if (o[0]>>bit)&1!=(cp>>bit)&1: bad[nm]+=1\nprint(bad,len(ref))\nEOF\npython3 cmp.py E0954291 1500 11 0; python3 cmp.py E0D54291 1500 12 0; python3 cmp.py E0B54291 1500 13 1; python3 cmp.py E0F54291 1500 14 1"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && export PATH=/opt/homebrew/opt/rustup/bin:$PATH && (cd ~/work/Gbe-test/gba-emu && cargo build --release --example iwdump 2>&1 | tail -1) && echo \"\" > empty.txt && cat > cmp.py <<'EOF'\nimport json,subprocess,struct,sys\n# usage: cmp.py opword_hex n seed acc(0/1) -> compares ours vs mesen\nsys.argv+=[]\nop,n,seed,acc=sys.argv[1],int(sys.argv[2]),int(sys.argv[3]),int(sys.argv[4])\nsubprocess.run(['python3','mk.py',op,'cmp',str(seed),str(n)]+(['acc'] if acc else []),check=True)\nref=json.load(open('cmp.json'))\nsubprocess.run(['~/work/Gbe-test/gba-emu/target/release/examples/iwdump','cmp.gba','empty.txt','3','cmp.bin'],check=True)\nraw=open('cmp.bin','rb').read()\nbad={'lo':0,'hi':0,'N':0,'Z':0,'C':0,'V':0}\nfor i,(a,b,l,h,fl,cp,lo,hi) in enumerate(ref):\n    o=struct.unpack_from('<III',raw,i*12)\n    if o[1]!=lo: bad['lo']+=1\n    if o[2]!=hi: bad['hi']+=1\n    for nm,bit in (('N',31),('Z',30),('C',29),('V',28)):\n        if (o[0]>>bit)&1!=(cp>>bit)&1: bad[nm]+=1\nprint(bad,len(ref))\nEOF\npython3 cmp.py E0954291 1500 11 0; python3 cmp.py E0D54291 1500 12 0; python3 cmp.py E0B54291 1500 13 1; python3 cmp.py E0F54291 1500 14 1"}
 ```
 
 **← Bash result**
@@ -842,7 +842,7 @@ MULL op=e0d89192 rm=ffffffff rs=ffffffff lo=ffffffff hi=00000000 cpsr=00
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,subprocess\nV=[0,1,0xffffffff,0x7fffffff,0x80000000,0x80000001]\npairs=[[a,b,0,0,0] for b in V for a in V]\nres={}\nfor name,op in (('u',0xE0954291),('s',0xE0D54291)):\n    json.dump(pairs,open('t.pairs','w'))\n    subprocess.run(['node','gen.mjs','t.gba','%X'%op,'t.pairs'],check=True)\n    res[name]=json.loads(subprocess.check_output(['node','run.mjs','t.gba',str(len(pairs))]))\njson.dump({'pairs':pairs,'res':res},open('suite.json','w'))\nprint('rm       rs     | u:C  s:C')\nfor i,(a,b,*_) in enumerate(pairs):\n    cu=(res['u'][i][0]>>29)&1; cs=(res['s'][i][0]>>29)&1\n    if cu or cs: print('%08x %08x | %d %d'%(a,b,cu,cs))\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,subprocess\nV=[0,1,0xffffffff,0x7fffffff,0x80000000,0x80000001]\npairs=[[a,b,0,0,0] for b in V for a in V]\nres={}\nfor name,op in (('u',0xE0954291),('s',0xE0D54291)):\n    json.dump(pairs,open('t.pairs','w'))\n    subprocess.run(['node','gen.mjs','t.gba','%X'%op,'t.pairs'],check=True)\n    res[name]=json.loads(subprocess.check_output(['node','run.mjs','t.gba',str(len(pairs))]))\njson.dump({'pairs':pairs,'res':res},open('suite.json','w'))\nprint('rm       rs     | u:C  s:C')\nfor i,(a,b,*_) in enumerate(pairs):\n    cu=(res['u'][i][0]>>29)&1; cs=(res['s'][i][0]>>29)&1\n    if cu or cs: print('%08x %08x | %d %d'%(a,b,cu,cs))\nEOF"}
 ```
 
 **← Bash result**
@@ -869,7 +869,7 @@ ffffffff 80000001 | 1 0
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nfor f,sg in (('smull',1),('umull',0)):\n    d=json.load(open(f+'.json'))\n    cnt=collections.defaultdict(lambda:[0,0])\n    for a,b,_,_,fl,cp,lo,hi in d:\n        c=(cp>>29)&1\n        top=b>>24\n        if sg: cls='4c' if top not in (0,255) else ('3c' if (b>>16) not in (0,0xffff) else ('2c' if (b>>8) not in (0,0xffffff) else '1c'))\n        else: cls='4c' if top else ('3c' if b>>16 else ('2c' if b>>8 else '1c'))\n        ok=(c==((a>>31)^(b>>31)))\n        cnt[cls][0]+=ok; cnt[cls][1]+=1\n    print(f,dict(cnt))\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nfor f,sg in (('smull',1),('umull',0)):\n    d=json.load(open(f+'.json'))\n    cnt=collections.defaultdict(lambda:[0,0])\n    for a,b,_,_,fl,cp,lo,hi in d:\n        c=(cp>>29)&1\n        top=b>>24\n        if sg: cls='4c' if top not in (0,255) else ('3c' if (b>>16) not in (0,0xffff) else ('2c' if (b>>8) not in (0,0xffffff) else '1c'))\n        else: cls='4c' if top else ('3c' if b>>16 else ('2c' if b>>8 else '1c'))\n        ok=(c==((a>>31)^(b>>31)))\n        cnt[cls][0]+=ok; cnt[cls][1]+=1\n    print(f,dict(cnt))\nEOF"}
 ```
 
 **← Bash result**
@@ -880,7 +880,7 @@ umull {'4c': [649, 1503], '3c': [126, 210], '1c': [75, 138], '2c': [91, 149]}
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > probe.py <<'EOF'\nimport json,subprocess,sys\ndef run(op,pairs):\n    out=[]\n    for i in range(0,len(pairs),2000):\n        ch=[list(p)+[0]*(5-len(p)) for p in pairs[i:i+2000]]\n        json.dump(ch,open('pr.pairs','w'))\n        subprocess.run(['node','gen.mjs','pr.gba','%X'%op,'pr.pairs'],check=True)\n        r=json.loads(subprocess.check_output(['node','run.mjs','pr.gba',str(len(ch))]))\n        out+=r\n    return [(x[0]>>29)&1 for x in out]\nUMULLS=0xE0954291; SMULLS=0xE0D54291\nEOF\npython3 - <<'EOF'\nfrom probe import *\nimport itertools\nb=1\npairs=[(1<<k,b) for k in range(32)]+[((1<<i)|(1<<j),b) for i in range(32) for j in range(i)]\nr=run(UMULLS,pairs)\nprint('singles',[k for k in range(32) if r[k]])\nprint('pairs C=1:',[(pairs[i][0].bit_length()-1,(pairs[i][0]&(pairs[i][0]-1)).bit_length()-1) for i in range(32,len(pairs)) if r[i]])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > probe.py <<'EOF'\nimport json,subprocess,sys\ndef run(op,pairs):\n    out=[]\n    for i in range(0,len(pairs),2000):\n        ch=[list(p)+[0]*(5-len(p)) for p in pairs[i:i+2000]]\n        json.dump(ch,open('pr.pairs','w'))\n        subprocess.run(['node','gen.mjs','pr.gba','%X'%op,'pr.pairs'],check=True)\n        r=json.loads(subprocess.check_output(['node','run.mjs','pr.gba',str(len(ch))]))\n        out+=r\n    return [(x[0]>>29)&1 for x in out]\nUMULLS=0xE0954291; SMULLS=0xE0D54291\nEOF\npython3 - <<'EOF'\nfrom probe import *\nimport itertools\nb=1\npairs=[(1<<k,b) for k in range(32)]+[((1<<i)|(1<<j),b) for i in range(32) for j in range(i)]\nr=run(UMULLS,pairs)\nprint('singles',[k for k in range(32) if r[k]])\nprint('pairs C=1:',[(pairs[i][0].bit_length()-1,(pairs[i][0]&(pairs[i][0]-1)).bit_length()-1) for i in range(32,len(pairs)) if r[i]])\nEOF"}
 ```
 
 **← Bash result**
@@ -891,7 +891,7 @@ pairs C=1: [(26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26)
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport itertools\nT={0:(0,0,0),1:(1,0,1),2:(0,1,1)}  # (m,u,v)\nsols=[]\nfor ts in itertools.product(range(3),repeat=7):  # positions 25..31\n  for cin in (0,1):\n    ok=True\n    for a in range(128):  # a25..a31 bits\n        bits=[(a>>i)&1 for i in range(7)]  # a25..a31\n        c=cin\n        for j in range(7):\n            m,u,v=T[ts[j]]\n            A=bits[j]^m\n            if j==0: B=0\n            else:\n                mp,up,vp=T[ts[j-1]]\n                B=up|(bits[j-1]&vp)\n            c=(A&B)|(c&(A^B))\n        want=int(bits[1]==1 and bits[2]==0 and bits[3]==0 and bits[4]==0 and bits[5]==0)\n        if c!=want: ok=False;break\n    if ok: sols.append((ts,cin))\nprint(len(sols),sols[:5])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport itertools\nT={0:(0,0,0),1:(1,0,1),2:(0,1,1)}  # (m,u,v)\nsols=[]\nfor ts in itertools.product(range(3),repeat=7):  # positions 25..31\n  for cin in (0,1):\n    ok=True\n    for a in range(128):  # a25..a31 bits\n        bits=[(a>>i)&1 for i in range(7)]  # a25..a31\n        c=cin\n        for j in range(7):\n            m,u,v=T[ts[j]]\n            A=bits[j]^m\n            if j==0: B=0\n            else:\n                mp,up,vp=T[ts[j-1]]\n                B=up|(bits[j-1]&vp)\n            c=(A&B)|(c&(A^B))\n        want=int(bits[1]==1 and bits[2]==0 and bits[3]==0 and bits[4]==0 and bits[5]==0)\n        if c!=want: ok=False;break\n    if ok: sols.append((ts,cin))\nprint(len(sols),sols[:5])\nEOF"}
 ```
 
 **← Bash result**
@@ -901,7 +901,7 @@ pairs C=1: [(26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26)
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && B=0x1000000,0x2000000,0x4000000,0x8000000,0x10000000,0x20000000,0x40000000,0x7f000000,0x7fffffff,0x80000000,0x80000001,0xff000000,0xfe000000,0xc0000000,0xf0000000,0x3fffffff,0x55555555,0xaaaaaaaa,0xffffffff,0x7ffffffe && python3 mkb.py E0954291 bu4 $B 250 && python3 mkb.py E0D54291 bs4 $B 250 && python3 an.py bu4.json && echo && python3 an.py bs4.json"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && B=0x1000000,0x2000000,0x4000000,0x8000000,0x10000000,0x20000000,0x40000000,0x7f000000,0x7fffffff,0x80000000,0x80000001,0xff000000,0xfe000000,0xc0000000,0xf0000000,0x3fffffff,0x55555555,0xaaaaaaaa,0xffffffff,0x7ffffffe && python3 mkb.py E0954291 bu4 $B 250 && python3 mkb.py E0D54291 bs4 $B 250 && python3 an.py bu4.json && echo && python3 an.py bs4.json"}
 ```
 
 **← Bash result**
@@ -951,7 +951,7 @@ pairs C=1: [(26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26)
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,itertools\nd=json.load(open('bs4.json'))+json.load(open('bs.json'))+json.load(open('smull.json'))\ndef s32(x): return x-(1<<32) if x>>31 else x\nrows=[]\nfor a,b,_,_,fl,cp,lo,hi in d:\n    top=b>>24\n    if top in (0,255): continue\n    rows.append((a,b,(cp>>29)&1,lo,hi))\nprint(len(rows))\nfeats={}\ndef F(name,fn): feats[name]=fn\nF('a31',lambda a,b,lo,hi:a>>31); F('b31',lambda a,b,lo,hi:b>>31); F('lo31',lambda a,b,lo,hi:lo>>31); F('hi31',lambda a,b,lo,hi:hi>>31)\nF('hi0',lambda a,b,lo,hi:int(hi==0)); F('hiF',lambda a,b,lo,hi:int(hi==0xffffffff))\nF('b30',lambda a,b,lo,hi:(b>>30)&1); F('a30',lambda a,b,lo,hi:(a>>30)&1);F('b29',lambda a,b,lo,hi:(b>>29)&1)\nF('b24',lambda a,b,lo,hi:(b>>24)&1);F('b0',lambda a,b,lo,hi:b&1);F('b1',lambda a,b,lo,hi:(b>>1)&1)\nF('top_nz_not_ff', lambda a,b,lo,hi:1)\nnames=list(feats)\nres=[]\nfor k in (1,2,3):\n  for combo in itertools.combinations(names,k):\n    # find truth-table fit\n    from collections import defaultdict,Counter\n    t=defaultdict(Counter)\n    for a,b,c,lo,hi in rows: t[tuple(feats[n](a,b,lo,hi) for n in combo)][c]+=1\n    sc=sum(max(v.values()) for v in t.values())\n    res.append((sc/len(rows),combo))\nres.sort(reverse=True); print(res[:8])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,itertools\nd=json.load(open('bs4.json'))+json.load(open('bs.json'))+json.load(open('smull.json'))\ndef s32(x): return x-(1<<32) if x>>31 else x\nrows=[]\nfor a,b,_,_,fl,cp,lo,hi in d:\n    top=b>>24\n    if top in (0,255): continue\n    rows.append((a,b,(cp>>29)&1,lo,hi))\nprint(len(rows))\nfeats={}\ndef F(name,fn): feats[name]=fn\nF('a31',lambda a,b,lo,hi:a>>31); F('b31',lambda a,b,lo,hi:b>>31); F('lo31',lambda a,b,lo,hi:lo>>31); F('hi31',lambda a,b,lo,hi:hi>>31)\nF('hi0',lambda a,b,lo,hi:int(hi==0)); F('hiF',lambda a,b,lo,hi:int(hi==0xffffffff))\nF('b30',lambda a,b,lo,hi:(b>>30)&1); F('a30',lambda a,b,lo,hi:(a>>30)&1);F('b29',lambda a,b,lo,hi:(b>>29)&1)\nF('b24',lambda a,b,lo,hi:(b>>24)&1);F('b0',lambda a,b,lo,hi:b&1);F('b1',lambda a,b,lo,hi:(b>>1)&1)\nF('top_nz_not_ff', lambda a,b,lo,hi:1)\nnames=list(feats)\nres=[]\nfor k in (1,2,3):\n  for combo in itertools.combinations(names,k):\n    # find truth-table fit\n    from collections import defaultdict,Counter\n    t=defaultdict(Counter)\n    for a,b,c,lo,hi in rows: t[tuple(feats[n](a,b,lo,hi) for n in combo)][c]+=1\n    sc=sum(max(v.values()) for v in t.values())\n    res.append((sc/len(rows),combo))\nres.sort(reverse=True); print(res[:8])\nEOF"}
 ```
 
 **← Bash result**
@@ -962,7 +962,7 @@ pairs C=1: [(26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26), (26, 26)
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > model.py <<'EOF'\nimport json\nM64=(1<<64)-1\ndef booth(b,signed):\n    # digits for rs: signed -> 16 digits; unsigned -> 17 digits\n    n=16 if signed else 17\n    bits=b if not signed else b\n    ds=[]\n    for i in range(n):\n        def bit(k):\n            if k<0: return 0\n            if k>=32: return (b>>31)&1 if signed else 0\n            return (b>>k)&1\n        ds.append(bit(2*i-1)+bit(2*i)-2*bit(2*i+1))\n    return ds\ndef sim(a,b,signed,variant):\n    ds=booth(b,signed)\n    a_ext = a if not signed or not (a>>31) else a-(1<<32)   # python int signed\n    S=0;Cv=0\n    for i,d in enumerate(ds):\n        if variant.get('inv'):   # pp = ~(|d|*a) + inject 1\n            if d<0:\n                pp=((~((-d)*a_ext<<(2*i)))&M64); inj=1<<(2*i)\n            else:\n                pp=(d*a_ext<<(2*i))&M64; inj=0\n        else:\n            pp=(d*a_ext<<(2*i))&M64; inj=0\n        s=S^Cv^pp; c=((S&Cv)|(S&pp)|(Cv&pp))<<1\n        S=s; Cv=c&M64\n        if inj:\n            # add inj via another 3:2 with Cv free LSB? treat as third row\n            s=S^Cv^inj; c=((S&Cv)|(S&inj)|(Cv&inj))<<1\n            S=s;Cv=c&M64\n    return (S+Cv)>>64, S, Cv\nif __name__=='__main__':\n    import sys\n    for f,sg in (('smull',1),('umull',0)):\n        d=json.load(open(f+'.json'))\n        for var in ({},{'inv':1}):\n            ok=sum(1 for a,b,_,_,fl,cp,lo,hi in d if sim(
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > model.py <<'EOF'\nimport json\nM64=(1<<64)-1\ndef booth(b,signed):\n    # digits for rs: signed -> 16 digits; unsigned -> 17 digits\n    n=16 if signed else 17\n    bits=b if not signed else b\n    ds=[]\n    for i in range(n):\n        def bit(k):\n            if k<0: return 0\n            if k>=32: return (b>>31)&1 if signed else 0\n            return (b>>k)&1\n        ds.append(bit(2*i-1)+bit(2*i)-2*bit(2*i+1))\n    return ds\ndef sim(a,b,signed,variant):\n    ds=booth(b,signed)\n    a_ext = a if not signed or not (a>>31) else a-(1<<32)   # python int signed\n    S=0;Cv=0\n    for i,d in enumerate(ds):\n        if variant.get('inv'):   # pp = ~(|d|*a) + inject 1\n            if d<0:\n                pp=((~((-d)*a_ext<<(2*i)))&M64); inj=1<<(2*i)\n            else:\n                pp=(d*a_ext<<(2*i))&M64; inj=0\n        else:\n            pp=(d*a_ext<<(2*i))&M64; inj=0\n        s=S^Cv^pp; c=((S&Cv)|(S&pp)|(Cv&pp))<<1\n        S=s; Cv=c&M64\n        if inj:\n            # add inj via another 3:2 with Cv free LSB? treat as third row\n            s=S^Cv^inj; c=((S&Cv)|(S&inj)|(Cv&inj))<<1\n            S=s;Cv=c&M64\n    return (S+Cv)>>64, S, Cv\nif __name__=='__main__':\n    import sys\n    for f,sg in (('smull',1),('umull',0)):\n        d=json.load(open(f+'.json'))\n        for var in ({},{'inv':1}):\n            ok=sum(1 for a,b,_,_,fl,cp,lo,hi in d if sim(
 … [truncated 90 chars]
 ```
 
@@ -976,7 +976,7 @@ umull {'inv': 1} 432 2000
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random\nfrom probe import *\nrandom.seed(5)\n# for each b in 0..255, a samples: random a in biased set to enable pattern detection: a = random with high zeros\ndef sample():\n    out=[]\n    for _ in range(40):\n        a=random.getrandbits(32)>>random.randint(0,12)<<random.randint(0,12)\n        out.append(a&0xffffffff)\n    for k in range(32): out.append(1<<k)\n    for k in range(32): out.append(0xffffffff>>k)\n    for k in range(32): out.append((0xffffffff<<k)&0xffffffff)\n    return out\npairs=[(a,b) for b in range(256) for a in sample()]\nr=run(UMULLS,pairs)\njson.dump([(p[0],p[1],c) for p,c in zip(pairs,r)],open('u1.json','w'))\nr2=run(SMULLS,pairs)\njson.dump([(p[0],p[1],c) for p,c in zip(pairs,r2)],open('s1.json','w'))\nprint(len(pairs))\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random\nfrom probe import *\nrandom.seed(5)\n# for each b in 0..255, a samples: random a in biased set to enable pattern detection: a = random with high zeros\ndef sample():\n    out=[]\n    for _ in range(40):\n        a=random.getrandbits(32)>>random.randint(0,12)<<random.randint(0,12)\n        out.append(a&0xffffffff)\n    for k in range(32): out.append(1<<k)\n    for k in range(32): out.append(0xffffffff>>k)\n    for k in range(32): out.append((0xffffffff<<k)&0xffffffff)\n    return out\npairs=[(a,b) for b in range(256) for a in sample()]\nr=run(UMULLS,pairs)\njson.dump([(p[0],p[1],c) for p,c in zip(pairs,r)],open('u1.json','w'))\nr2=run(SMULLS,pairs)\njson.dump([(p[0],p[1],c) for p,c in zip(pairs,r2)],open('s1.json','w'))\nprint(len(pairs))\nEOF"}
 ```
 
 **← Bash result**
@@ -986,7 +986,7 @@ umull {'inv': 1} 432 2000
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nfor f in ('u1','s1'):\n    d=json.load(open(f+'.json'))\n    byb=collections.defaultdict(list)\n    for a,b,c in d: byb[b].append((a,c))\n    print(f)\n    out=[]\n    for b in range(256):\n        s=byb[b]\n        if not any(c for a,c in s): continue\n        # find field (lo,hi,val) fits 100%\n        found=None\n        for hi in range(31,-1,-1):\n            for lo in range(hi+1):\n                m=((1<<(hi-lo+1))-1)\n                for val in set((a>>lo)&m for a,c in s if c):\n                    if all((((a>>lo)&m)==val)==bool(c) for a,c in s):\n                        found=(hi,lo,val);break\n                if found:break\n            if found:break\n        out.append((b,found,sum(c for a,c in s)))\n    for o in out[:70]: print(o)\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nfor f in ('u1','s1'):\n    d=json.load(open(f+'.json'))\n    byb=collections.defaultdict(list)\n    for a,b,c in d: byb[b].append((a,c))\n    print(f)\n    out=[]\n    for b in range(256):\n        s=byb[b]\n        if not any(c for a,c in s): continue\n        # find field (lo,hi,val) fits 100%\n        found=None\n        for hi in range(31,-1,-1):\n            for lo in range(hi+1):\n                m=((1<<(hi-lo+1))-1)\n                for val in set((a>>lo)&m for a,c in s if c):\n                    if all((((a>>lo)&m)==val)==bool(c) for a,c in s):\n                        found=(hi,lo,val);break\n                if found:break\n            if found:break\n        out.append((b,found,sum(c for a,c in s)))\n    for o in out[:70]: print(o)\nEOF"}
 ```
 
 **← Bash result**
@@ -1137,7 +1137,7 @@ s1
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport itertools\nT={0:(0,0,0),1:(1,0,1),2:(0,1,1)}  # (m,u,v)\nsols=[]\nNP=6  # positions 25..30\nfor ts in itertools.product(range(3),repeat=NP):\n  for cin in (0,1):\n    ok=True\n    for a in range(1<<NP):\n        bits=[(a>>i)&1 for i in range(NP)]  # a25..a30\n        c=cin\n        for j in range(NP):\n            m,u,v=T[ts[j]]\n            A=bits[j]^m\n            if j==0: B=0\n            else:\n                mp,up,vp=T[ts[j-1]]\n                B=up|(bits[j-1]&vp)\n            c=(A&B)|(c&(A^B))\n        want=int(bits[1]==1 and bits[2]==0 and bits[3]==0 and bits[4]==0 and bits[5]==0)\n        if c!=want: ok=False;break\n    if ok: sols.append((ts,cin))\nprint(len(sols),sols[:5])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport itertools\nT={0:(0,0,0),1:(1,0,1),2:(0,1,1)}  # (m,u,v)\nsols=[]\nNP=6  # positions 25..30\nfor ts in itertools.product(range(3),repeat=NP):\n  for cin in (0,1):\n    ok=True\n    for a in range(1<<NP):\n        bits=[(a>>i)&1 for i in range(NP)]  # a25..a30\n        c=cin\n        for j in range(NP):\n            m,u,v=T[ts[j]]\n            A=bits[j]^m\n            if j==0: B=0\n            else:\n                mp,up,vp=T[ts[j-1]]\n                B=up|(bits[j-1]&vp)\n            c=(A&B)|(c&(A^B))\n        want=int(bits[1]==1 and bits[2]==0 and bits[3]==0 and bits[4]==0 and bits[5]==0)\n        if c!=want: ok=False;break\n    if ok: sols.append((ts,cin))\nprint(len(sols),sols[:5])\nEOF"}
 ```
 
 **← Bash result**
@@ -1147,7 +1147,7 @@ s1
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random\nd=json.load(open('u1.json'))\ns=[(a,c) for a,b,c in d if b==1]\n# add more random a for b==1 from bu.json\nd2=json.load(open('bu.json'))\ns+=[(a,(cp>>29)&1) for a,b,_,_,_,cp,lo,hi in d2 if b==1]\nprint(len(s),sum(c for a,c in s))\nimport numpy as np\nA=np.array([a for a,c in s],dtype=np.uint64); C=np.array([c for a,c in s],dtype=np.uint64)\nbest=[]\nfor c in range(1,1<<22):\n    P=A*np.uint64(c)\n    for k in range(0,64):\n        if np.array_equal((P>>np.uint64(k))&np.uint64(1),C): best.append((c,k)); \n    if len(best)>10: break\nprint(best[:10])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random\nd=json.load(open('u1.json'))\ns=[(a,c) for a,b,c in d if b==1]\n# add more random a for b==1 from bu.json\nd2=json.load(open('bu.json'))\ns+=[(a,(cp>>29)&1) for a,b,_,_,_,cp,lo,hi in d2 if b==1]\nprint(len(s),sum(c for a,c in s))\nimport numpy as np\nA=np.array([a for a,c in s],dtype=np.uint64); C=np.array([c for a,c in s],dtype=np.uint64)\nbest=[]\nfor c in range(1,1<<22):\n    P=A*np.uint64(c)\n    for k in range(0,64):\n        if np.array_equal((P>>np.uint64(k))&np.uint64(1),C): best.append((c,k)); \n    if len(best)>10: break\nprint(best[:10])\nEOF"}
 ```
 
 **← Bash result**
@@ -1161,7 +1161,7 @@ ModuleNotFoundError: No module named 'numpy'
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > cls.py <<'EOF'\nimport json,random,itertools,collections,sys\nfrom probe import *\nrandom.seed(21)\ndef gen(signed,m,n):\n    out=[]\n    while len(out)<n:\n        # b with m bytes significant\n        nb=8*m\n        b=random.getrandbits(nb)\n        if m<4 and signed:\n            if random.random()<0.5: b|=(0xffffffff<<nb)&0xffffffff\n        if m<4 and b>>(nb-8)==0 and not (signed and b&0x80000000): \n            if signed==0 or True:\n                if (b>>(nb-8))==0: continue\n        a=random.choice([random.getrandbits(32),random.getrandbits(32)&random.getrandbits(32),random.getrandbits(32)|random.getrandbits(32)])\n        out.append((a,b&0xffffffff))\n    return out\ndef cyc(b,signed):\n    x=(~b&0xffffffff) if signed and b>>31 else b\n    return 1 if x>>8==0 else 2 if x>>16==0 else 3 if x>>24==0 else 4\nif __name__=='__main__':\n    for signed in (0,1):\n        for m in (1,2,3,4):\n            pairs=gen(signed,m,3000)\n            pairs=[p for p in pairs if cyc(p[1],signed)==m]\n            r=run(SMULLS if signed else UMULLS,pairs)\n            json.dump([(a,b,c) for (a,b),c in zip(pairs,r)],open('cls_%d_%d.json'%(signed,m),'w'))\n            print(signed,m,len(pairs),sum(r))\nEOF\npython3 cls.py"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > cls.py <<'EOF'\nimport json,random,itertools,collections,sys\nfrom probe import *\nrandom.seed(21)\ndef gen(signed,m,n):\n    out=[]\n    while len(out)<n:\n        # b with m bytes significant\n        nb=8*m\n        b=random.getrandbits(nb)\n        if m<4 and signed:\n            if random.random()<0.5: b|=(0xffffffff<<nb)&0xffffffff\n        if m<4 and b>>(nb-8)==0 and not (signed and b&0x80000000): \n            if signed==0 or True:\n                if (b>>(nb-8))==0: continue\n        a=random.choice([random.getrandbits(32),random.getrandbits(32)&random.getrandbits(32),random.getrandbits(32)|random.getrandbits(32)])\n        out.append((a,b&0xffffffff))\n    return out\ndef cyc(b,signed):\n    x=(~b&0xffffffff) if signed and b>>31 else b\n    return 1 if x>>8==0 else 2 if x>>16==0 else 3 if x>>24==0 else 4\nif __name__=='__main__':\n    for signed in (0,1):\n        for m in (1,2,3,4):\n            pairs=gen(signed,m,3000)\n            pairs=[p for p in pairs if cyc(p[1],signed)==m]\n            r=run(SMULLS if signed else UMULLS,pairs)\n            json.dump([(a,b,c) for (a,b),c in zip(pairs,r)],open('cls_%d_%d.json'%(signed,m),'w'))\n            print(signed,m,len(pairs),sum(r))\nEOF\npython3 cls.py"}
 ```
 
 **← Bash result**
@@ -1178,7 +1178,7 @@ ModuleNotFoundError: No module named 'numpy'
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > fs.py <<'EOF'\nimport json,itertools,sys\ndef load(f):\n    return json.load(open(f))\ndef search(rows,maxk=3,extra=None,top=5):\n    n=len(rows); full=(1<<n)-1\n    feats={}\n    for k in range(32):\n        feats['a%d'%k]=sum(((a>>k)&1)<<i for i,(a,b,c) in enumerate(rows))\n        feats['b%d'%k]=sum(((b>>k)&1)<<i for i,(a,b,c) in enumerate(rows))\n    if extra:\n        for nm,fn in extra.items(): feats[nm]=sum((fn(a,b)&1)<<i for i,(a,b,c) in enumerate(rows))\n    Cm=sum(c<<i for i,(a,b,c) in enumerate(rows))\n    names=list(feats)\n    res=[]\n    for k in range(1,maxk+1):\n        best=[]\n        for combo in itertools.combinations(names,k):\n            ms=[full]\n            for nm in combo:\n                f=feats[nm]; ms=[m&f for m in ms]+[m&~f for m in ms]\n            sc=0\n            for m in ms:\n                ones=(m&Cm).bit_count(); tot=m.bit_count()\n                sc+=max(ones,tot-ones)\n            best.append((sc/n,combo))\n        best.sort(reverse=True)\n        res.append(best[:top])\n    return res\nif __name__=='__main__':\n    rows=load(sys.argv[1])\n    for r in search(rows,int(sys.argv[2])): print(r)\nEOF\nfor f in cls_1_4 cls_1_3 cls_1_2 cls_1_1; do echo $f; python3 fs.py $f.json 3; done"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > fs.py <<'EOF'\nimport json,itertools,sys\ndef load(f):\n    return json.load(open(f))\ndef search(rows,maxk=3,extra=None,top=5):\n    n=len(rows); full=(1<<n)-1\n    feats={}\n    for k in range(32):\n        feats['a%d'%k]=sum(((a>>k)&1)<<i for i,(a,b,c) in enumerate(rows))\n        feats['b%d'%k]=sum(((b>>k)&1)<<i for i,(a,b,c) in enumerate(rows))\n    if extra:\n        for nm,fn in extra.items(): feats[nm]=sum((fn(a,b)&1)<<i for i,(a,b,c) in enumerate(rows))\n    Cm=sum(c<<i for i,(a,b,c) in enumerate(rows))\n    names=list(feats)\n    res=[]\n    for k in range(1,maxk+1):\n        best=[]\n        for combo in itertools.combinations(names,k):\n            ms=[full]\n            for nm in combo:\n                f=feats[nm]; ms=[m&f for m in ms]+[m&~f for m in ms]\n            sc=0\n            for m in ms:\n                ones=(m&Cm).bit_count(); tot=m.bit_count()\n                sc+=max(ones,tot-ones)\n            best.append((sc/n,combo))\n        best.sort(reverse=True)\n        res.append(best[:top])\n    return res\nif __name__=='__main__':\n    rows=load(sys.argv[1])\n    for r in search(rows,int(sys.argv[2])): print(r)\nEOF\nfor f in cls_1_4 cls_1_3 cls_1_2 cls_1_1; do echo $f; python3 fs.py $f.json 3; done"}
 ```
 
 **← Bash result**
@@ -1203,7 +1203,7 @@ cls_1_1
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > model2.py <<'EOF'\nimport json,itertools\ndef digits(b,signed):\n    n=16 if signed else 17\n    def bit(k):\n        if k<0: return 0\n        if k>=32: return (b>>31)&1 if signed else 0\n        return (b>>k)&1\n    return [bit(2*i-1)+bit(2*i)-2*bit(2*i+1) for i in range(n)]\ndef sim(a,b,signed,W,order,signext,negmode,outbit):\n    M=(1<<W)-1\n    ds=digits(b,signed)\n    av = a-(1<<32) if signed and (a>>31) else a   # value of multiplicand (python int)\n    rows=[]; extra=[]\n    for i,d in enumerate(ds):\n        mag=abs(d)*av        # up to 34 bits signed\n        if d<0:\n            raw=(~(mag))     # inverted (python int, infinite sign)\n            inj=1<<(2*i)\n        else:\n            raw=mag; inj=0\n        # raw is a 34-bit-ish signed quantity (sign-extended); take 35 bit field\n        F=35\n        low=raw&((1<<F)-1); s=(raw>>(F-1))&1\n        if signext=='true':\n            r=(raw<<(2*i))&M\n            rows.append(r)\n        else:\n            r=((low&((1<<(F-1))-1))<<(2*i)) + ((1-s)<<(F-1+2*i)) # ~s trick\n            rows.append(r&M)\n            extra.append(-(1<<(F-1+2*i)))\n        if inj: rows.append(inj)\n    if signext!='true':\n        K=sum(extra)&M\n        rows.append(K)\n    S=0;Cv=0\n    if order=='rev': rows=rows[::-1]\n    for r in rows:\n        s_=S^Cv^r; c=(((S&Cv)|(S&r)|(Cv&r))<<1)&M\n        S=s_;Cv=c\n    tot=S+Cv\
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && cat > model2.py <<'EOF'\nimport json,itertools\ndef digits(b,signed):\n    n=16 if signed else 17\n    def bit(k):\n        if k<0: return 0\n        if k>=32: return (b>>31)&1 if signed else 0\n        return (b>>k)&1\n    return [bit(2*i-1)+bit(2*i)-2*bit(2*i+1) for i in range(n)]\ndef sim(a,b,signed,W,order,signext,negmode,outbit):\n    M=(1<<W)-1\n    ds=digits(b,signed)\n    av = a-(1<<32) if signed and (a>>31) else a   # value of multiplicand (python int)\n    rows=[]; extra=[]\n    for i,d in enumerate(ds):\n        mag=abs(d)*av        # up to 34 bits signed\n        if d<0:\n            raw=(~(mag))     # inverted (python int, infinite sign)\n            inj=1<<(2*i)\n        else:\n            raw=mag; inj=0\n        # raw is a 34-bit-ish signed quantity (sign-extended); take 35 bit field\n        F=35\n        low=raw&((1<<F)-1); s=(raw>>(F-1))&1\n        if signext=='true':\n            r=(raw<<(2*i))&M\n            rows.append(r)\n        else:\n            r=((low&((1<<(F-1))-1))<<(2*i)) + ((1-s)<<(F-1+2*i)) # ~s trick\n            rows.append(r&M)\n            extra.append(-(1<<(F-1+2*i)))\n        if inj: rows.append(inj)\n    if signext!='true':\n        K=sum(extra)&M\n        rows.append(K)\n    S=0;Cv=0\n    if order=='rev': rows=rows[::-1]\n    for r in rows:\n        s_=S^Cv^r; c=(((S&Cv)|(S&r)|(Cv&r))<<1)&M\n        S=s_;Cv=c\n    tot=S+Cv\
 … [truncated 511 chars]
 ```
 
@@ -1241,7 +1241,7 @@ umull 66 rev trick 65 1397 2000
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nfrom fs import *\nrows=load('cls_0_4.json')\n# restrict to a few bits for speed: all a,b bits k<=4 -> 64 feats choose 4 =635k heavy; do k=3 first\nr=search(rows,3)\nfor x in r: print(x)\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nfrom fs import *\nrows=load('cls_0_4.json')\n# restrict to a few bits for speed: all a,b bits k<=4 -> 64 feats choose 4 =635k heavy; do k=3 first\nr=search(rows,3)\nfor x in r: print(x)\nEOF"}
 ```
 
 **← Bash result**
@@ -1253,7 +1253,7 @@ umull 66 rev trick 65 1397 2000
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random,collections\nfrom probe import *\nfrom model2 import digits\nrandom.seed(3)\nA=[1<<k for k in range(32)]+[0xffffffff>>k for k in range(32)]+[(0xffffffff<<k)&0xffffffff for k in range(32)]+[random.getrandbits(32) for _ in range(100)]\nA=sorted(set(A))\nbs=list(range(256))\npairs=[(a,b) for b in bs for a in A]\nr=run(UMULLS,pairs)\nres={(a,b):c for (a,b),c in zip(pairs,r)}\njson.dump([(a,b,c) for (a,b),c in res.items()],open('grid_u.json','w'))\ngroups=collections.defaultdict(list)\nfor b in bs:\n    ds=digits(b,0)\n    nz=[(i,d) for i,d in enumerate(ds) if d]\n    key=nz[-1] if nz else None\n    groups[key].append(b)\nfor key,bl in sorted(groups.items(),key=lambda x:str(x[0])):\n    vecs={tuple(res[(a,b)] for a in A) for b in bl}\n    print(key,len(bl),'distinct C-vectors',len(vecs))\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random,collections\nfrom probe import *\nfrom model2 import digits\nrandom.seed(3)\nA=[1<<k for k in range(32)]+[0xffffffff>>k for k in range(32)]+[(0xffffffff<<k)&0xffffffff for k in range(32)]+[random.getrandbits(32) for _ in range(100)]\nA=sorted(set(A))\nbs=list(range(256))\npairs=[(a,b) for b in bs for a in A]\nr=run(UMULLS,pairs)\nres={(a,b):c for (a,b),c in zip(pairs,r)}\njson.dump([(a,b,c) for (a,b),c in res.items()],open('grid_u.json','w'))\ngroups=collections.defaultdict(list)\nfor b in bs:\n    ds=digits(b,0)\n    nz=[(i,d) for i,d in enumerate(ds) if d]\n    key=nz[-1] if nz else None\n    groups[key].append(b)\nfor key,bl in sorted(groups.items(),key=lambda x:str(x[0])):\n    vecs={tuple(res[(a,b)] for a in A) for b in bl}\n    print(key,len(bl),'distinct C-vectors',len(vecs))\nEOF"}
 ```
 
 **← Bash result**
@@ -1271,7 +1271,7 @@ None 1 distinct C-vectors 1
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport itertools\nT={0:(0,0,0),1:(1,0,1),2:(0,1,1)}\nNP=9 # positions 24..32 ; a bits a24..a32(a32=0)\nwant=lambda bits: int(bits[2]==1 and bits[3]==0 and bits[4]==0 and bits[5]==0 and bits[6]==0)  # a26=1,a27..a30=0\nsols=[]\nfor ts in itertools.product(range(3),repeat=NP):\n  for cin in (0,1):\n    outs={'c30':1,'c31':1,'c32':1,'s31':1,'s32':1,'s30':1}\n    for a in range(1<<8):  # a24..a31 free ; a32=0\n        bits=[(a>>i)&1 for i in range(8)]+[0]\n        c=cin; res={}\n        for j in range(NP):\n            m,u,v=T[ts[j]]\n            A=bits[j]^m\n            B=0 if j==0 else (T[ts[j-1]][1]|(bits[j-1]&T[ts[j-1]][2]))\n            s=A^B^c; c=(A&B)|(c&(A^B))\n            res['s%d'%(24+j)]=s; res['c%d'%(24+j)]=c\n        w=want(bits)\n        for k in list(outs):\n            if outs[k] and res[k]!=w: outs[k]=0\n        if not any(outs.values()): break\n    for k,v in outs.items():\n        if v: sols.append((ts,cin,k))\nprint(len(sols)); print(sols[:10])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport itertools\nT={0:(0,0,0),1:(1,0,1),2:(0,1,1)}\nNP=9 # positions 24..32 ; a bits a24..a32(a32=0)\nwant=lambda bits: int(bits[2]==1 and bits[3]==0 and bits[4]==0 and bits[5]==0 and bits[6]==0)  # a26=1,a27..a30=0\nsols=[]\nfor ts in itertools.product(range(3),repeat=NP):\n  for cin in (0,1):\n    outs={'c30':1,'c31':1,'c32':1,'s31':1,'s32':1,'s30':1}\n    for a in range(1<<8):  # a24..a31 free ; a32=0\n        bits=[(a>>i)&1 for i in range(8)]+[0]\n        c=cin; res={}\n        for j in range(NP):\n            m,u,v=T[ts[j]]\n            A=bits[j]^m\n            B=0 if j==0 else (T[ts[j-1]][1]|(bits[j-1]&T[ts[j-1]][2]))\n            s=A^B^c; c=(A&B)|(c&(A^B))\n            res['s%d'%(24+j)]=s; res['c%d'%(24+j)]=c\n        w=want(bits)\n        for k in list(outs):\n            if outs[k] and res[k]!=w: outs[k]=0\n        if not any(outs.values()): break\n    for k,v in outs.items():\n        if v: sols.append((ts,cin,k))\nprint(len(sols)); print(sols[:10])\nEOF"}
 ```
 
 **← Bash result**
@@ -1282,7 +1282,7 @@ None 1 distinct C-vectors 1
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random,collections\nfrom probe import *\nrandom.seed(9)\npairs=[(random.getrandbits(32),random.getrandbits(32)) for _ in range(6000)]\npairs=[(a,b) for a,b in pairs if (b>>24) not in (0,255)]\ncu=run(UMULLS,pairs); cs=run(SMULLS,pairs)\njson.dump([(a,b,u,s) for (a,b),u,s in zip(pairs,cu,cs)],open('joint4.json','w'))\nt=collections.defaultdict(collections.Counter)\nfor (a,b),u,s in zip(pairs,cu,cs):\n    t[(a>>31,b>>31,(b>>30)&1,(b>>29)&1)][(u,s)]+=1\nfor k,v in sorted(t.items()): print(k,dict(v))\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,random,collections\nfrom probe import *\nrandom.seed(9)\npairs=[(random.getrandbits(32),random.getrandbits(32)) for _ in range(6000)]\npairs=[(a,b) for a,b in pairs if (b>>24) not in (0,255)]\ncu=run(UMULLS,pairs); cs=run(SMULLS,pairs)\njson.dump([(a,b,u,s) for (a,b),u,s in zip(pairs,cu,cs)],open('joint4.json','w'))\nt=collections.defaultdict(collections.Counter)\nfor (a,b),u,s in zip(pairs,cu,cs):\n    t[(a>>31,b>>31,(b>>30)&1,(b>>29)&1)][(u,s)]+=1\nfor k,v in sorted(t.items()): print(k,dict(v))\nEOF"}
 ```
 
 **← Bash result**
@@ -1307,7 +1307,7 @@ None 1 distinct C-vectors 1
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nrows=json.load(open('cls_0_4.json'))\ndef rule(a,b):\n    a31=a>>31&1; b31=b>>31&1; b30=b>>30&1\n    if b31==0: return int(a31 and b>=0x7f000000)\n    if b30: return a>>30&1\n    return a31\nok=sum(rule(a,b)==c for a,b,c in rows); print(ok,len(rows))\n# analyze b31=0,a31=1 : what b makes C=1\nones=[b for a,b,c in rows if a>>31 and not b>>31 and c]; zeros=[b for a,b,c in rows if a>>31 and not b>>31 and not c]\nprint(len(ones),len(zeros))\nprint(sorted(hex(b) for b in ones)[:12]); print(sorted(hex(b) for b in zeros)[-12:])\n# fraction of C=1 by top-6-bits of b\nt=collections.defaultdict(lambda:[0,0])\nfor a,b,c in rows:\n    if a>>31 and not b>>31: t[b>>26][0]+=c; t[b>>26][1]+=1\nprint({k:tuple(v) for k,v in sorted(t.items())})\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nrows=json.load(open('cls_0_4.json'))\ndef rule(a,b):\n    a31=a>>31&1; b31=b>>31&1; b30=b>>30&1\n    if b31==0: return int(a31 and b>=0x7f000000)\n    if b30: return a>>30&1\n    return a31\nok=sum(rule(a,b)==c for a,b,c in rows); print(ok,len(rows))\n# analyze b31=0,a31=1 : what b makes C=1\nones=[b for a,b,c in rows if a>>31 and not b>>31 and c]; zeros=[b for a,b,c in rows if a>>31 and not b>>31 and not c]\nprint(len(ones),len(zeros))\nprint(sorted(hex(b) for b in ones)[:12]); print(sorted(hex(b) for b in zeros)[-12:])\n# fraction of C=1 by top-6-bits of b\nt=collections.defaultdict(lambda:[0,0])\nfor a,b,c in rows:\n    if a>>31 and not b>>31: t[b>>26][0]+=c; t[b>>26][1]+=1\nprint({k:tuple(v) for k,v in sorted(t.items())})\nEOF"}
 ```
 
 **← Bash result**
@@ -1321,7 +1321,7 @@ None 1 distinct C-vectors 1
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,itertools,collections\nfor fn,sg in (('cls_0_4.json',0),('cls_1_4.json',1)):\n    rows=json.load(open(fn))\n    names=['a31','a30','a29']+['b%d'%k for k in range(31,22,-1)]\n    def f(nm,a,b): return (a>>int(nm[1:]))&1 if nm[0]=='a' else (b>>int(nm[1:]))&1\n    for k in range(1,8):\n        best=None\n        for combo in itertools.combinations(names,k):\n            t=collections.defaultdict(collections.Counter)\n            for a,b,c in rows: t[tuple(f(n,a,b) for n in combo)][c]+=1\n            sc=sum(max(v.values()) for v in t.values())/len(rows)\n            if best is None or sc>best[0]: best=(sc,combo)\n        print(fn,k,best)\n        if best[0]>0.9999: break\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,itertools,collections\nfor fn,sg in (('cls_0_4.json',0),('cls_1_4.json',1)):\n    rows=json.load(open(fn))\n    names=['a31','a30','a29']+['b%d'%k for k in range(31,22,-1)]\n    def f(nm,a,b): return (a>>int(nm[1:]))&1 if nm[0]=='a' else (b>>int(nm[1:]))&1\n    for k in range(1,8):\n        best=None\n        for combo in itertools.combinations(names,k):\n            t=collections.defaultdict(collections.Counter)\n            for a,b,c in rows: t[tuple(f(n,a,b) for n in combo)][c]+=1\n            sc=sum(max(v.values()) for v in t.values())/len(rows)\n            if best is None or sc>best[0]: best=(sc,combo)\n        print(fn,k,best)\n        if best[0]>0.9999: break\nEOF"}
 ```
 
 **← Bash result**
@@ -1339,7 +1339,7 @@ cls_1_4.json 3 (1.0, ('a31', 'b31', 'b30'))
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nrows=json.load(open('cls_0_4.json'))+json.load(open('joint4.json')) if False else json.load(open('cls_0_4.json'))\nt=collections.defaultdict(set)\nfor a,b,c in rows: t[(b>>28&15,a>>30&3)].add(c)\nprint('b[31:28] rows, a[31:30] cols 00 01 10 11')\nfor bt in range(16):\n    print(format(bt,'04b'),[ (min(t[(bt,at)]) if len(t[(bt,at)])==1 else ('?' if t[(bt,at)] else '-')) for at in range(4)])\nEOF"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && python3 - <<'EOF'\nimport json,collections\nrows=json.load(open('cls_0_4.json'))+json.load(open('joint4.json')) if False else json.load(open('cls_0_4.json'))\nt=collections.defaultdict(set)\nfor a,b,c in rows: t[(b>>28&15,a>>30&3)].add(c)\nprint('b[31:28] rows, a[31:30] cols 00 01 10 11')\nfor bt in range(16):\n    print(format(bt,'04b'),[ (min(t[(bt,at)]) if len(t[(bt,at)])==1 else ('?' if t[(bt,at)] else '-')) for at in range(4)])\nEOF"}
 ```
 
 **← Bash result**
@@ -1376,7 +1376,7 @@ SAME
 
 **→ Bash**
 ```
-{"command": "cd /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && export PATH=/opt/homebrew/opt/rustup/bin:$PATH && (cd ~/work/Gbe-test/gba-emu && cargo build --release --example iwdump 2>&1 | tail -1) && python3 cmp.py E0954291 2000 31 0; python3 cmp.py E0D54291 2000 32 0; cd ~/work/Gbe-test/gba-emu && cargo test --release 2>&1 | grep -E \"test result|FAILED|failed\" | head"}
+{"command": "cd /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ml && export PATH=/opt/homebrew/opt/rustup/bin:$PATH && (cd ~/work/Gbe-test/gba-emu && cargo build --release --example iwdump 2>&1 | tail -1) && python3 cmp.py E0954291 2000 31 0; python3 cmp.py E0D54291 2000 32 0; cd ~/work/Gbe-test/gba-emu && cargo test --release 2>&1 | grep -E \"test result|FAILED|failed\" | head"}
 ```
 
 **← Bash result**
@@ -1397,7 +1397,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 **← Bash result**
 ```
 Finished `release` profile [optimized] target(s) in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  103540 Nov  9 13:33 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  103540 Nov  9 13:33 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
   aw-thumb-alu                 video=1.0000 first_diverge=2 diverging=3/400
   mgba-shifter                 video=1.0000 first_diverge=2 diverging=1/600
 
@@ -1688,7 +1688,7 @@ const N: u32 = 1 << 31;
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; mkdir -p /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ir; I=/tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ir; ROM=../gba-eval/corpus/roms/test/tonc/irq-demo.gba; target/release/examples/steps $ROM 214000 > $I/irq.ours; node scripts/mesteps.mjs $ROM 214000 > $I/irq.ref; python3 - <<EOF\nfor nm in ('ours','ref'):\n    L=open('$I/irq.'+nm).read().split('\\n')\n    ents=[i for i,l in enumerate(L) if l.split(' ')[0]=='20']\n    print(nm,len(ents),ents[-8:])\n    for i in ents[-4:]:\n        print('  ',i,L[i-6:i+2])\nEOF"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; mkdir -p /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ir; I=/tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/ir; ROM=../gba-eval/corpus/roms/test/tonc/irq-demo.gba; target/release/examples/steps $ROM 214000 > $I/irq.ours; node scripts/mesteps.mjs $ROM 214000 > $I/irq.ref; python3 - <<EOF\nfor nm in ('ours','ref'):\n    L=open('$I/irq.'+nm).read().split('\\n')\n    ents=[i for i,l in enumerate(L) if l.split(' ')[0]=='20']\n    print(nm,len(ents),ents[-8:])\n    for i in ents[-4:]:\n        print('  ',i,L[i-6:i+2])\nEOF"}
 ```
 
 **← Bash result**
@@ -1707,7 +1707,7 @@ ref 5 [209607, 210268, 211377, 212486, 213595]
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cp src/cpu.rs /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/cpu.rs.good; python3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\ns=s.replace(\"    fn irq_line(&self) -> bool;\\n\",\"    fn irq_line(&self) -> bool;\\n    fn irq_age(&self) -> u32 { 0 }\\n\",1)\ns=s.replace(\"    #[inline] fn irq_line(&self) -> bool { Bus::irq_line(self) }\\n\",\"    #[inline] fn irq_line(&self) -> bool { Bus::irq_line(self) }\\n    #[inline] fn irq_age(&self) -> u32 { Bus::irq_age(self) }\\n\",1)\ns=s.replace(\"\"\"        if b.halted() {\n            b.idle(1);\n            return;\n        }\"\"\",\"\"\"        if b.halted() {\n            b.idle(1);\n            self.was_halt = true;\n            return;\n        }\n        if self.was_halt { self.was_halt = false; let w: u32 = std::env::var(\"WAKE\").ok().and_then(|v| v.parse().ok()).unwrap_or(0); if w > 0 { b.idle(w); } }\"\"\",1)\ns=s.replace(\"let take = self.cpsr & FI == 0 && b.irq_line();\",\"let dd: u32 = std::env::var(\\\"IRQD\\\").ok().and_then(|v| v.parse().ok()).unwrap_or(6);\\n        let take = self.cpsr & FI == 0 && b.irq_age() >= dd && b.irq_line();\",1)\ns=s.replace(\"    irq_prev: bool,\\n\",\"    irq_prev: bool,\\n    was_halt: bool,\\n\",1)\ns=s.replace(\"            irq_prev: false,\\n\",\"            irq_prev: false,\\n            was_halt: false,\\n\",1)\nopen(p,'w').write(s)\nEOF\ncargo b
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cp src/cpu.rs /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/cpu.rs.good; python3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\ns=s.replace(\"    fn irq_line(&self) -> bool;\\n\",\"    fn irq_line(&self) -> bool;\\n    fn irq_age(&self) -> u32 { 0 }\\n\",1)\ns=s.replace(\"    #[inline] fn irq_line(&self) -> bool { Bus::irq_line(self) }\\n\",\"    #[inline] fn irq_line(&self) -> bool { Bus::irq_line(self) }\\n    #[inline] fn irq_age(&self) -> u32 { Bus::irq_age(self) }\\n\",1)\ns=s.replace(\"\"\"        if b.halted() {\n            b.idle(1);\n            return;\n        }\"\"\",\"\"\"        if b.halted() {\n            b.idle(1);\n            self.was_halt = true;\n            return;\n        }\n        if self.was_halt { self.was_halt = false; let w: u32 = std::env::var(\"WAKE\").ok().and_then(|v| v.parse().ok()).unwrap_or(0); if w > 0 { b.idle(w); } }\"\"\",1)\ns=s.replace(\"let take = self.cpsr & FI == 0 && b.irq_line();\",\"let dd: u32 = std::env::var(\\\"IRQD\\\").ok().and_then(|v| v.parse().ok()).unwrap_or(6);\\n        let take = self.cpsr & FI == 0 && b.irq_age() >= dd && b.irq_line();\",1)\ns=s.replace(\"    irq_prev: bool,\\n\",\"    irq_prev: bool,\\n    was_halt: bool,\\n\",1)\ns=s.replace(\"            irq_prev: false,\\n\",\"            irq_prev: false,\\n            was_halt: false,\\n\",1)\nopen(p,'w').write(s)\nEOF\ncargo b
 … [truncated 236 chars]
 ```
 
@@ -2176,7 +2176,7 @@ first diff at instr 237119 ours 800041a 3 ref 8000414 11
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cp /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/cpu.rs.good src/cpu.rs; python3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\ns=s.replace(\"let take = self.cpsr & FI == 0 && b.irq_line();\",\"let line = b.irq_line();\",1)\ns=s.replace(\"        // The reference runs one more instruction after the IRQ line is seen, then enters (3 cycles).\",\"        // The line is sampled before the instruction, but the I flag after it (so `subs pc,lr,#4` out of an IRQ handler is interruptible at once).\",1)\ns=s.replace(\"        if take {\\n            // next instruction\",\"        if line && self.cpsr & FI == 0 {\\n            // next instruction\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n \"let line\\|if line\" src/cpu.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A8; for R in test/tonc/irq-demo homebrew/piugba homebrew/celeste-classic homebrew/anguna; do echo \"$R $(scripts/lockstep.sh $R 400000 2>&1 | grep -E 'first diff|identical'|cut -c1-70)\"; done"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cp /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/cpu.rs.good src/cpu.rs; python3 - <<'EOF'\np='src/cpu.rs'; s=open(p).read()\ns=s.replace(\"let take = self.cpsr & FI == 0 && b.irq_line();\",\"let line = b.irq_line();\",1)\ns=s.replace(\"        // The reference runs one more instruction after the IRQ line is seen, then enters (3 cycles).\",\"        // The line is sampled before the instruction, but the I flag after it (so `subs pc,lr,#4` out of an IRQ handler is interruptible at once).\",1)\ns=s.replace(\"        if take {\\n            // next instruction\",\"        if line && self.cpsr & FI == 0 {\\n            // next instruction\",1)\nopen(p,'w').write(s)\nEOF\ngrep -n \"let line\\|if line\" src/cpu.rs; cargo build --release --example steps 2>&1 | grep -E \"^error\" -A8; for R in test/tonc/irq-demo homebrew/piugba homebrew/celeste-classic homebrew/anguna; do echo \"$R $(scripts/lockstep.sh $R 400000 2>&1 | grep -E 'first diff|identical'|cut -c1-70)\"; done"}
 ```
 
 **← Bash result**
@@ -2202,18 +2202,18 @@ Now build and grade.
 test result: ok. 11 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
--rwxr-xr-x@ 1 vitaliy  staff  104346 Nov  9 13:42 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  104346 Nov  9 13:42 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 - 2026-11-09T11:42:54Z gba_emu.wasm sha=7cd745df procedural=0.8000 replay=0.9045 audio=0.9675 overall=0.8962 dir=~/work/Gbe-test/gba-emu/results/20261109T134254
 ```
 
 **→ Bash**
 ```
-{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cp /tmp/claude-501/-Users-vitaliy-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/cpu.rs.good src/cpu.rs; ./scripts/build.sh 2>&1 | tail -1; ./scripts/grade.sh >/dev/null 2>&1; tail -1 ../.claude-flow/data/scores.md"}
+{"command": "cd ~/work/Gbe-test/gba-emu; export PATH=/opt/homebrew/opt/rustup/bin:$PATH; cp /tmp/claude-501/-Users-USER-work-Gbe-test/2cbb11f1-a7a2-402f-bc9b-6a4faabf55e9/scratchpad/cpu.rs.good src/cpu.rs; ./scripts/build.sh 2>&1 | tail -1; ./scripts/grade.sh >/dev/null 2>&1; tail -1 ../.claude-flow/data/scores.md"}
 ```
 
 **← Bash result**
 ```
--rwxr-xr-x@ 1 vitaliy  staff  103540 Nov  9 13:45 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
+-rwxr-xr-x@ 1 USER  staff  103540 Nov  9 13:45 ~/work/Gbe-test/gba-emu/target/wasm32-unknown-unknown/release/gba_emu.wasm
 - 2026-11-09T11:45:11Z gba_emu.wasm sha=e9da9b93 procedural=0.8000 replay=0.9385 audio=0.9838 overall=0.9199 dir=~/work/Gbe-test/gba-emu/results/20261109T134510
 ```
 

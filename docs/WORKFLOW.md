@@ -24,4 +24,4 @@
 - Rejected approaches: fixed one-instruction IRQ delays (fixed one ROM, broke another), a flat +1 VRAM contention stall (worse), hard-coding multiply-carry tables (replaced by a labelled partial rule).
 
 ## What is reproducible
-Everything needed to rebuild and re-grade is in this repository (see the root `README.md`). The full agent conversations are not included yet.
+Everything needed to rebuild and re-grade is in this repository (see the root `README.md`). The agent conversations are in `conversations/` (cleaned) and `raw-transcripts/` (redacted raw); see `RECORDS.md`.
